@@ -15,11 +15,12 @@ public class Child extends Human{
     protected Degree degree;
     
     public void findTreasure(){
-        
+        // event trouver un trésor
     }
     
     public void born(){
-        
+        System.out.println("Félicitations! " + name + surname + "est né! Ses parents " 
+            + father.name + " & " + mother.name + " sont ravis!");
     }
     
     public void study(){

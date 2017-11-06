@@ -16,11 +16,17 @@ public class Police extends Adult{
     public Rank rank;
     
     public void takeIn(){
-        
+        // event arrestation
     }
     
-    public void promote(){
-        
+    public void promote(Rank rank){
+        System.out.println(name + " " + surname + " a été promu " + rank + " après " + experience + " années de service.");
+        this.rank = rank;
+    }
+    
+    @Override
+    public void die(){
+        // Si comissaire, on doit promouvoir un nouveau comissaire.
     }
     
 }

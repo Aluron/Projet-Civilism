@@ -27,12 +27,12 @@ public class Game {
     public Game() {
         // CODE DE CREATION DE PARTIE A FAIRE !!
         System.out.println("Bonjour, vous avez lancez une partie de Civilism");
-    System.out.println("Quelle est le nom de votre ville");
-    Scanner keyboard = new Scanner(System.in);
-    //NOM_DE_VILLE = keyboard.nextLine();
+        System.out.println("Quelle est le nom de votre ville");
+        Scanner keyboard = new Scanner(System.in);
+        //NOM_DE_VILLE = keyboard.nextLine();
     
-   System.out.println("Vous recevez "+ Constantes.BEGIN_MONEY + "€ pour le debut de votre partie et" + Constantes.BEGIN_HUMAN +" personnes");
-   System.out.println("Vous avez "+ Constantes.BEGIN_BUILDING +" batiments au commencement de ce jeu :"+ 
+        System.out.println("Vous recevez "+ Constantes.BEGIN_MONEY + "€ pour le debut de votre partie et" + Constantes.BEGIN_HUMAN +" personnes");
+        System.out.println("Vous avez "+ Constantes.BEGIN_BUILDING +" batiments au commencement de ce jeu :"+ 
            "\n" +"- une ecole "+ 
            "\n" +"- une atelier" +
            "\n" + "- un commissariat" +

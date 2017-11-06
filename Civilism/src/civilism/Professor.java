@@ -5,7 +5,7 @@
  */
 package civilism;
 
-import java.util.List;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,14 +18,26 @@ public class Professor {
     
     protected Boolean free;
     
-    protected List<Child> pupils;
-    protected List<String> formerPupils;
+    protected ArrayList<Child> pupils = new ArrayList<Child>();
+    protected ArrayList<Adult> formerPupils = new ArrayList<Adult>();
     
     public void educate(){
-        
+        for (int i=0; i < pupils.size(); i++){
+            pupils.get(i).education++;
+        }
     }
     
+    public void newPupil(Child pupil){
+        pupils.add(pupil);
+    }
     
+    public void graduatePupil(Child pupil){
+        pupils.remove(pupil);
+    }
+    
+    public void formerPupil(Adult pupil){
+        formerPupils.add(pupil);
+    }
     
     
 }

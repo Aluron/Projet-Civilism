@@ -11,6 +11,8 @@ package civilism;
  */
 public class Human{
     
+    protected Boolean isAlive;
+    
     protected Name name;
     protected Name surname;
     protected Integer age;
@@ -22,11 +24,11 @@ public class Human{
        
     
     public void introduce(){
-        
+        System.out.println(name + " : " + "Bonjour, je m'appelle " +  name + " " + surname +  ". J'ai " + age + "ans et vis au " + home);
     }
     
     public void parle(String says){
-        
+        System.out.println(name + " : " + says);
     }
     
 }
