@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test.civilism;
+package civilism;
 
 /**
  *
  * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
  */
-public class Formation {
+public class School {
     int teacher_number;
     int size;
     // directeur = empty;
@@ -19,7 +19,7 @@ public class Formation {
     /////////////////////////////////////////////
     
     
-    public Formation(int teacher_number, int taille) {
+    public School(int teacher_number, int taille) {
         this.teacher_number = teacher_number;
         this.size = size;
     }
