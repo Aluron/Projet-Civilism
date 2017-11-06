@@ -17,7 +17,7 @@ public class Police extends Adult{
     public Rank rank;
     
     public void takeIn(){
-        
+   ////////Dzadzdaazdadzzd///////     
     }
     
     public void promote(){
