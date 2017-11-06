@@ -1,0 +1,35 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package civilism;
+
+/**
+ *
+ * @author qkame
+ */
+public class Worker extends Adult{
+    
+    private static final Integer PRODUCTION = 300;
+    
+    public Factory factory;
+    public Job job;
+    
+    public void work(){
+        
+    }
+    
+    public void promote(){
+        
+    }
+    
+    public void retire(){
+        
+    }
+    
+    public void protest(){
+        
+    }
+    
+}
