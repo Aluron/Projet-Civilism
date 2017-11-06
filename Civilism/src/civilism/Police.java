@@ -12,6 +12,7 @@ package civilism;
 public class Police extends Adult{
     
     public Office office;
+    public static String FUCKDAPOLICE;
     
     public Rank rank;
     
