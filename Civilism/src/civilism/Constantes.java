@@ -11,7 +11,7 @@ package civilism;
  */
 public class Constantes {
     
-   //////////Formation///////////
+   //////////School///////////
     protected final static Integer SCHOOL_FULL=5;
     
     //////////Game///////////////
@@ -20,7 +20,7 @@ public class Constantes {
     protected final static Integer BEGIN_MONEY = 10000;
     protected String NOM_DE_VILLE;    
     
-    ////////////Atelier////////////////////////////
+    ////////////Factory///////////////////////////
     protected final static Integer WORKSHOP_FULL = 5;
     
     ////////////Police_station//////////////////
