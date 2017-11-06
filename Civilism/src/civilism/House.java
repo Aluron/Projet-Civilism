@@ -13,6 +13,7 @@ public class House {
     //habitant
     //Constantes.HOUSE_FULL;
     protected Integer habitant_number = 0;
+    protected static Integer house_number = 0;
 
     public House() {
     }
@@ -23,7 +24,8 @@ public class House {
     public void infos() {
         int i=1;
         // A remplacer apres pour lenght de la liste
-        System.out.println(this.habitant_number);
+        System.out.println("le nombre de d'habitant dans votre maison est de " + this.habitant_number);
+        System.out.println("Il existe " + this.house_number + " maisons dans votre ville");
         while (i< this.habitant_number){
             //System.out.print(super.human.name + "" + super.human.surname);
         }   
@@ -31,7 +33,9 @@ public class House {
     
     public void description(){
         System.out.println("La maison est l'endroit où vivent les personnages");
-        System.out.println("");
+        System.out.println("Une maison peut contenir " + Constantes.HOUSE_FULL + " au maximun ");
+        System.out.println("Chaque personnage de votre jeu a besoin d'une maison sinon son mécontentement augmente");
+        System.out.println("ATTENTION: Trop de mécontentement est mauvais dans la gestion de votre ville.");
     }
     
     
