@@ -11,9 +11,19 @@ package civilism;
  */
 public class Office {
     
-    int Policeman_number;
-    //// commisaire = empty ;
+    protected Integer policeman_number = 0;
+    protected Police commissaire ;
     
+    
+    public void infos(){
+        System.out.println("Vous avez " + this.policeman_number + " dans votre commissariat");
+        if (commissaire != null ){
+            System.out.println("Il n'y à pas encore de commissaire");
+        }
+        else{
+            System.out.println("Votre commaissaire porte le nom de " + commissaire.name + " " + commissaire.surname);
+        }
+    }
     
     
 }

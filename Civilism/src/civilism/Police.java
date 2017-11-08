@@ -16,7 +16,11 @@ public class Police extends Adult{
     public Rank rank;
     
     public void takeIn(){
+<<<<<<< HEAD
         // event arrestation
+=======
+   
+>>>>>>> 95b7d1101302665aae44980cb2c73450955e64bb
     }
     
     public void promote(Rank rank){
