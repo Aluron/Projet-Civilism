@@ -17,11 +17,19 @@ public class Civilism {
     public static void main(String[] args) {
         // TODO code application logic here
         
+        /**
+         * Creates an instance of a Game.
+         */
         Game newGame = new Game();
-        
-        while(1==1){
+
+        /**
+         * Loop of the Game.
+         * Ends with a specific number of turn.
+         */
+        while(newGame.turnNumber < Constantes.TURN_LIMIT){
             newGame.observation();
             newGame.decision();
+            newGame.turnNumber++;
         }
         
     }

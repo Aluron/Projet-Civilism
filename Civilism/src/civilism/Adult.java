@@ -17,9 +17,9 @@ public class Adult extends Human{
     public static Integer experience;
     
     public void die(){
-        System.out.println("La ville est en deuil aujourd'hui. " + name + " " + surname + " est mort à l'âge de " + age + ".");
-        
-        
+        System.out.println("La ville est en deuil aujourd'hui. " + name + " " + surname + " est mort à l'âge de " + age + ".");       
     }
+    
+    
     
 }

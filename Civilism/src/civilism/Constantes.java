@@ -11,22 +11,52 @@ package civilism;
  */
 public class Constantes {
     
-   //////////School///////////
+    //////////School///////////
+    /**
+     * Capacity (max of Students) of a School.
+     */
     protected final static Integer SCHOOL_FULL=5;
     
     //////////Game///////////////
+    /**
+     * Number of inhabitants at the benning of the Game.
+     */
     protected final static Integer BEGIN_HUMAN = 4;
+    /**
+     * Number of buildings at the beggining of the Game
+     */
     protected final static Integer BEGIN_BUILDING = 4;
+    /**
+     * Cash available at the beginning of the Game.
+     */
     protected final static Integer BEGIN_MONEY = 10000;
+    
+    /**
+     * Default name of the city
+     */
     protected String NOM_DE_VILLE;    
+    /**
+     * Limit of turns. Past this limit, the Game is over
+     */
+    protected final static Integer TURN_LIMIT = 50;
+    /**
+     * Name of the Narrator/Advisor
+     */
+    public static final String NARRATOR = "Penultimo";
     
     ////////////Factory///////////////////////////
+    /**
+     * Capacity (max of Workers) of a Factory.
+     */
     protected final static Integer WORKSHOP_FULL = 5;
     
     ////////////Police_station//////////////////
     
     
     //////////////House////////////////////////
+    /**
+     * Capacity (max of inhabitants) of a House.
+     */
     protected final static Integer HOUSE_FULL = 5;
     
     /////////////BUILDING///////////////////////
