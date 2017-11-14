@@ -11,11 +11,22 @@ package civilism;
  */
 public class Constantes {
     
+    
+    /*
+    INCIDENCE D AVOIR UN DIRECTEUR ET UN BOSS ??
+    */
+    
     //////////School///////////
     /**
      * Capacity (max of Students) of a School.
      */
+    ////////////////////////////////////////
+    ////protected final static Integer MIDDLE_SCHOOL_FULL=10;
+    ////protected final static Integer BIG_SCHOOL_FULL=15;
+    ///////////////////////////////////////////////////
     protected final static Integer SCHOOL_FULL=5;
+    protected final static Integer MAINTENANCE_SCHOOL = 300 ; 
+    
     
     //////////Game///////////////
     /**
@@ -49,9 +60,10 @@ public class Constantes {
      * Capacity (max of Workers) of a Factory.
      */
     
-    protected final static Integer WORKSHOP_FULL = 5; //SUPPOSER CONSTANTE 
+    protected final static Integer COMPAGNY_FULL = 5; 
     protected final static Integer WORKER_MONEY = 100 ;
-    protected final static Integer MAINTENANCE_FACTORY = 300 ; // SUPPOSER CONSTANTE
+    protected final static Integer MAINTENANCE_FACTORY = 300 ;
+    
     
     ////////////Police_station//////////////////
     
@@ -66,10 +78,13 @@ public class Constantes {
     protected final static Integer MAINTENANCE_OFFICE = 300 ; // SUPPOSER CONSTANTE
     
     /////////////BUILDING///////////////////////
-    protected final static Integer PETIT_COMPANY =100;
-    protected final static Integer MOYEN_COMPANY =300;
-    protected final static Integer GRAND_COMPANY =500;
+    
     protected final static Integer RATE_BURN =90;
+    /////////////////////////////////////////////
+    ///////////protected final static Integer MOYEN_COMPANY =300;
+    ///////////protected final static Integer GRAND_COMPANY =500;
+    ///////////////////////////////////////////:
+   
     
     
     
