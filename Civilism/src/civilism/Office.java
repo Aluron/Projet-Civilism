@@ -11,19 +11,37 @@ package civilism;
  */
 public class Office {
     
-    protected Integer policeman_number = 0;
+    protected static Integer policeman_number = 0;  // Il existe qu'un object commissariat mais il peut s'ameliorer
     protected Police commissaire ;
     
     
+    
+    
+    /*
+    Infos permet d'afficher le nom du commissaire et et le nombre de policier
+    */
     public void infos(){
-        System.out.println("Vous avez " + this.policeman_number + " dans votre commissariat");
-        if (commissaire != null ){
+        System.out.println("Vous avez " + policeman_number + " dans votre commissariat");
+        if (commissaire == null ){
             System.out.println("Il n'y à pas encore de commissaire");
         }
         else{
             System.out.println("Votre commaissaire porte le nom de " + commissaire.name + " " + commissaire.surname);
-        }
+        } 
+        System.out.println("L'entretien du commissariat coûte "  + Constantes.MAINTENANCE_OFFICE );
+    }
+    /*
+    Affiche l'utilité du commissariat
+    */
+    public void description (){
+            System.out.println("Le commissariat est l'endroit òu l'on trouve les policers en service");
+            System.out.println("Les policers permettent de faire régner l'ordre dans la ville");
+            System.out.println("Pas assez de policiers et trop de mécontentement de la population peut-être un danger pour votre ville.");
     }
     
+    //////Qu'es que c'était?///////
+    public void rapport (){
+        
+    }
     
 }

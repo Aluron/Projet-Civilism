@@ -48,7 +48,10 @@ public class Constantes {
     /**
      * Capacity (max of Workers) of a Factory.
      */
-    protected final static Integer WORKSHOP_FULL = 5;
+    
+    protected final static Integer WORKSHOP_FULL = 5; //SUPPOSER CONSTANTE 
+    protected final static Integer WORKER_MONEY = 100 ;
+    protected final static Integer MAINTENANCE_FACTORY = 300 ; // SUPPOSER CONSTANTE
     
     ////////////Police_station//////////////////
     
@@ -57,13 +60,18 @@ public class Constantes {
     /**
      * Capacity (max of inhabitants) of a House.
      */
-    protected final static Integer HOUSE_FULL = 5;
+    protected final static Integer HOUSE_FULL = 5; 
+    
+        ////////////Police_station//////////////////
+    protected final static Integer MAINTENANCE_OFFICE = 300 ; // SUPPOSER CONSTANTE
     
     /////////////BUILDING///////////////////////
     protected final static Integer PETIT_COMPANY =100;
     protected final static Integer MOYEN_COMPANY =300;
     protected final static Integer GRAND_COMPANY =500;
     protected final static Integer RATE_BURN =90;
+    
+    
     
     ////////////Improvement////////////////////
     protected final static Integer IMPROVE_MONEY = 500;
