@@ -5,19 +5,33 @@
  */
 package civilism;
 
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
  */
-public class House {
+public class House extends Building{
     //habitant
     //Constantes.HOUSE_FULL;
     protected Integer habitant_number = 0;
     protected static Integer house_number = 0;
+    
+    ArrayList habitant = new ArrayList();
 
-    public House() {
+    public House(String adress, Integer price, Integer max_capacity) {
+        super(adress, price, max_capacity);
     }
+
  
+    
+    public Boolean is_full(){
+        if (this.habitant_number >=  Constantes.HOUSE_FULL){
+            return true;
+        }
+        return false;
+    }
     /*
     Info permet de connaître le nombre d'habitant de la maison et les personnages 
     */

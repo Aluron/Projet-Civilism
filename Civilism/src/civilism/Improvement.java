@@ -29,4 +29,7 @@ public interface Improvement {
         }
     }
 */
-}
+ public boolean new_building();
+    
+ }
+

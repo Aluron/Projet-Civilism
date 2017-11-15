@@ -9,10 +9,14 @@ package civilism;
  *
  * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
  */
-public class Office {
+public class Office extends Building {
     
     protected static Integer policeman_number = 0;  // Il existe qu'un object commissariat mais il peut s'ameliorer
     protected Police commissaire ;
+
+    public Office(String adress, Integer price, Integer max_capacity) {
+        super(adress, price, max_capacity);
+    }
     
     
     

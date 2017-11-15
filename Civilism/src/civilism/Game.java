@@ -27,7 +27,7 @@ public class Game {
     /**
      * Ammount of Cash the player has.
      */
-    protected Integer cash;
+    protected static Integer cash;
     /**
      * Index of the Turn being played.
      */

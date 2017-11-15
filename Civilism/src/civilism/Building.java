@@ -24,6 +24,7 @@ public class Building {
         this.price = price;
         this.max_capacity = max_capacity;
         
+        
     }
 //////////////GETTER and SETTER/////////////////////
     ////////////////////////////////////
@@ -85,5 +86,23 @@ public class Building {
     }
 /////////////////////////////////////////////////////////////     
     
-  
+  /**
+   * entretien permet de recuperer le cout de l'entretien total des batiments
+   * @return Integer
+   */
+  public Integer entretien (){
+      Integer maintenance = Constantes.MAINTENANCE_FACTORY * Factory.number_factory
+              + Constantes.MAINTENANCE_OFFICE * 1
+              + Constantes.MAINTENANCE_SCHOOL * School.number_school;
+      return maintenance;
+  } 
+  /////////////////////////////////////////////////////////
+  public Boolean is_full(Integer personn, Integer full){
+        if (personn >= full){
+            return true;
+        }
+        return false;
+    }
 }
+///////////////////////////////////////////////////////////
+  

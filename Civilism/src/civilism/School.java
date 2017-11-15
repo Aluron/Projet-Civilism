@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
  */
-public class School {
+public class School extends Building implements Improvement{
     protected static Integer teacher_number;
     protected Integer teacher;
     protected Professor directeur;
@@ -23,20 +23,18 @@ public class School {
     
 /////////////////////////////////////////////////////////////
     /////////////////////////////////////////////
-    
-   
-    
-    public School(int teacher_number, int taille) {
-        this.teacher_number = teacher_number;
- 
+
+    public School(String adress, Integer price, Integer max_capacity) {
+        super(adress, price, max_capacity);
     }
     
+ 
     /**
      * Regarde si l'école est pleine
      * @return boolean
      */
     public boolean is_full(){
-        if (this.teacher_number >=Constantes.SCHOOL_FULL){
+        if (School.teacher_number >=Constantes.SCHOOL_FULL){
             return (true);
         }
         return (false);
@@ -64,7 +62,14 @@ public class School {
         System.out.println("Une formation est plus ou moins longue selon la formation de l'élève");
         System.out.println("Mais attention, il y a un coût d'entretien à votre école" );
     }
-    
+    /*
+     @Override
+    public boolean new_building() {
+        if()
+    }
+    */
+   
+
     
 }
 ///////////////////////////////////////////////////////////

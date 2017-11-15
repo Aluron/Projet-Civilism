@@ -5,19 +5,26 @@
  */
 package civilism;
 
-import java.util.Hashtable;
+import java.util.ArrayList;
+
 
 /**
  *
  * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
  */
-public class Factory {
+public class Factory extends Building implements Improvement{
     
-    protected static Integer worker_number;
-    protected Integer worker;
+    protected static Integer total_worker_number;
+    protected Integer worker_number;
     protected Worker boss ;
     
     protected static Integer number_factory;
+    
+    ArrayList worker = new ArrayList();
+
+    public Factory(String adress, Integer price, Integer max_capacity) {
+        super(adress, price, max_capacity);
+    }
     
     
     /**
@@ -38,14 +45,14 @@ public class Factory {
      * @return INTEGER
      */
     public Integer produce(){
-        return (this.worker_number * Constantes.WORKER_MONEY); //prend en compte toute les usines
+        return (Factory.total_worker_number * Constantes.WORKER_MONEY); //prend en compte toute les usines
     }
     /**
      * Calcule le rendement totale de l'usine (combien gagne - combien perdu)
      * @return Integer
      */
     public Integer account(){
-        Integer output= Constantes.MAINTENANCE_FACTORY * this.number_factory;
+        Integer output= Constantes.MAINTENANCE_FACTORY * Factory.number_factory;
         Integer input = produce();
         return (input - output);
         
@@ -60,8 +67,8 @@ public class Factory {
     public void infos() {
         int i=1;
         // A remplacer apres pour lenght de la liste
-        System.out.println("Le nombre de travalleur dans vos usine est de  " + this.worker_number);
-        System.out.println("Le nombre de travailleur de cette usine est de " + this.worker);
+        System.out.println("Le nombre de travalleur dans vos usine est de  " + this.total_worker_number);
+        System.out.println("Le nombre de travailleur de cette usine est de " + this.worker_number);
         if (this.boss== null ){
             System.out.println("Il n'y à pas de patron dans votre usine");
         }
@@ -78,10 +85,9 @@ public class Factory {
         System.out.println("Chaque travailleur vous crée de la richesse d'une valeur de " + Constantes.WORKER_MONEY);
         System.out.println("Mais attention, il y a un coût d'entretien à votre usine" );
     }
+}
 
     // PERMET LA CREATION D UN DICO VOIR AVEC MOREL --> MAP
-
-}
 
 /*
     public Integer correspondance (){
