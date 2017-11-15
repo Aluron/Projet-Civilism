@@ -66,18 +66,7 @@ public class Building {
      * @param entretien
      * @return 
      */
-    public Integer maintenance (Integer entretien){ // SELON LA CAPACITE MAXIMUN
-        switch (entretien)
-        {   case 5:
-                return Constantes.PETIT_COMPANY;
-            case 10:
-                return Constantes.MOYEN_COMPANY;
-            default:
-                return Constantes.GRAND_COMPANY;
 
-        }
-        
-    }
 //////////////////////////////////////////////////////////////  
     /**
      * Dependra de 2 pourcentages et retournera si oui ou non l'object brule
