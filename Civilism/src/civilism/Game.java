@@ -32,7 +32,6 @@ public class Game {
      * Index of the Turn being played.
      */
     protected Integer turnNumber;
-    
     /**
      * List of all the inhabitants in the city.
      */
@@ -50,17 +49,21 @@ public class Game {
      * Command entered by the player.
      */
     protected String action;
-
+    /**
+     * Keywords entered by the player.
+     */
+    protected String[] keywords;
+    
+    
+    
     /**
      * Constructor.
      * Beginning of the Game (Description, Introduction, Creation...)
      */
     public Game() {
         // CODE DE CREATION DE PARTIE A FAIRE !!
-        
-        turnNumber =0;
-        
-        
+        turnNumber = 1;
+
         /**
          * Introduction
          */
@@ -108,6 +111,7 @@ public class Game {
          * Initialization of the Game
          */
         cash = Constantes.BEGIN_MONEY;
+        
         /**
          * BATIMENTS DE BASE A CREER !!!!!!!!!!!!!!!!!!!!
          */
@@ -126,16 +130,44 @@ public class Game {
         if (turnNumber == 1){
             // Code de l'explication de la phase d'observation
         }
+        // ATTENTION BOUCLE
         action = keyboard.nextLine();
-        switch (action){
-            case "help":        // help on a command
-            case "infos":       // infos on an element
-            case "description":     // description of the role of an element
-            case "finish": endOfObservation();      // End of the phase, 
-            default: listOfCommands();
+        keywords = analyse(action);
+        while( !isEnd(keywords)){
+            switch (keywords[0]){
+                case "help":        // help on a command
+                    switch (keywords[1]){
+                        case "infos":
+                        case "desc":
+                        case "finish":
+                        // Ajouter tous les cas !!!
+                        default: listOfCommands();
+                    }
+                case "infos":       // infos on an element
+                    switch (keywords[1]){
+                        case "school":
+                        case "factory":
+                        case "office":
+                        case "house":
+                        case "city":
+                        // Ajouter tous les cas !!!
+                        default: listOfCommands();
+                    }
+                case "desc":     // description of the role of an element
+                    switch (keywords[1]){
+                        case "child":
+                        case "adult":
+                        case "professor":
+                        case "worker":
+                        case "scientist":
+                        case "police":
+                        // Ajouter tous les cas !!!
+                        default: listOfCommands();
+                    }
+                case "finish": endOfObservation();      // End of the phase, 
+                default: listOfCommands();
+            }
         }
-        
-        
     }
     
     /**
@@ -147,6 +179,8 @@ public class Game {
         if (turnNumber == 1){
             // Code de l'explication de la phase de décision
         }
+        
+        
     }
     
     /**
@@ -172,8 +206,19 @@ public class Game {
         
     }
     
+    /**
+     * Converts the input into keywords
+     * @param input
+     * @return the extracted keywords
+     */
+    private String[] analyse(String input){
+        return input.split(" ");
+    }
     
     
+    private Boolean isEnd(String[] input){
+        return input[0].equals("finish");
+    }
     
     
 }

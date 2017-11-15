@@ -30,6 +30,8 @@ public class Civilism {
             newGame.observation();
             newGame.decision();
             newGame.turnNumber++;
+            
+            
         }
         
     }
