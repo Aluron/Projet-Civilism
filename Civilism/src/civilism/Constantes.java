@@ -64,6 +64,7 @@ public class Constantes {
     protected final static Integer WORKER_MONEY = 100 ;
     protected final static Integer MAINTENANCE_FACTORY = 300 ;
     
+   
     
     ////////////Police_station//////////////////
     
