@@ -6,7 +6,8 @@
 package civilism;
 
 /**
- *
+ * A Scientist is virtually here to improve the city, trought the improvement of the buildings.
+ * The Scientist class inherits from the Adult class.
  * @author qkame
  */
 public class Scientist extends Adult{

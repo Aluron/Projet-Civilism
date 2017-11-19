@@ -6,7 +6,7 @@
 package civilism;
 
 /**
- *
+ * This Enum contains all available Jobs.
  * @author qkame
  */
 public enum Job {

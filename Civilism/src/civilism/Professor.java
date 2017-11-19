@@ -8,7 +8,8 @@ package civilism;
 import java.util.ArrayList;
 
 /**
- *
+ * A Professor is virtually here to teach Children.
+ * The Professsor clas inherits from the Adult class.
  * @author qkame
  */
 public class Professor {

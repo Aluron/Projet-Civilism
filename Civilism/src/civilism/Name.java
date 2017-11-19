@@ -6,7 +6,7 @@
 package civilism;
 
 /**
- *
+ * This Enum contains every available Names for the characters.
  * @author qkame
  */
 public class Name {

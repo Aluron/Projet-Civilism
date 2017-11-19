@@ -9,7 +9,7 @@ package civilism;
 import java.util.ArrayList;
 
 /**
- *
+ * 
  * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
  */
 public class House extends Building{

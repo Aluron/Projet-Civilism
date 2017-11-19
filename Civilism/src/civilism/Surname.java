@@ -6,7 +6,7 @@
 package civilism;
 
 /**
- *
+ * This Enum contains all available Surnames for the characters.
  * @author qkame
  */
 public enum Surname {
