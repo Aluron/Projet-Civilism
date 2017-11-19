@@ -17,7 +17,7 @@ public class Building {
     protected Integer max_capacity;
 //////////////////////////////////////////////
     //////////////////////////////////////////
-    public Building(String adress, Integer price, Integer max_capacity) {
+    public Building(String adress,String name, Integer price, Integer max_capacity) {
         this.adress = adress;
         //name = Scanner...;
         this.name = name;
@@ -62,11 +62,7 @@ public class Building {
     //////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////
     
-    /**
-     * Selon la capacité maximun l'entretien d'un batiment coute plus cher
-     * @param entretien
-     * @return 
-     */
+
 
 //////////////////////////////////////////////////////////////  
     /**
@@ -77,12 +73,7 @@ public class Building {
      */
     public boolean burn (Integer first_rate,Integer second_rate){
         Integer rate = first_rate * second_rate;
-        if (rate > Constantes.RATE_BURN){
-            return true;
-        }
-        else {
-            return false;
-        }
+        return rate > Constantes.RATE_BURN;
     }
 /////////////////////////////////////////////////////////////     
     
@@ -97,11 +88,14 @@ public class Building {
       return maintenance;
   } 
   /////////////////////////////////////////////////////////
+  /**
+   * Know if the building is full
+   * @param personn
+   * @param full
+   * @return 
+   */
   public Boolean is_full(Integer personn, Integer full){
-        if (personn >= full){
-            return true;
-        }
-        return false;
+        return personn >= full;
     }
 }
 ///////////////////////////////////////////////////////////

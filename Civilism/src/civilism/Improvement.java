@@ -29,7 +29,17 @@ public interface Improvement {
         }
     }
 */
- public boolean new_building();
-    
+    /**
+     * Permet de savoir si la condition pour crée un building sont remplies
+     * @param recherche
+     * @param money
+     * @return 
+     */
+ public boolean new_building(Integer recherche, Integer money);
+ 
+ /**
+  * Créer le nouveau batiment
+  */
+ public void create_building();    
  }
 
