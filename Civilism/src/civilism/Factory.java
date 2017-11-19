@@ -22,10 +22,11 @@ public class Factory extends Building implements Improvement{
     
     ArrayList worker = new ArrayList();
 
-    public Factory(String adress, Integer price, Integer max_capacity) {
-        super(adress, price, max_capacity);
+    public Factory(String adress, String name, Integer price, Integer max_capacity) {
+        super(adress, name, price, max_capacity);
     }
-    
+
+
     
     /**
      * is_full permet de savoir si Factory est pleine ou pas

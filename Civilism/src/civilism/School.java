@@ -24,9 +24,11 @@ public class School extends Building implements Improvement{
 /////////////////////////////////////////////////////////////
     /////////////////////////////////////////////
 
-    public School(String adress, Integer price, Integer max_capacity) {
-        super(adress, price, max_capacity);
+    public School(String adress, String name, Integer price, Integer max_capacity) {
+        super(adress, name, price, max_capacity);
     }
+
+
     
  
     /**
