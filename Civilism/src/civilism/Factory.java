@@ -22,22 +22,20 @@ public class Factory extends Building implements Improvement{
     
     ArrayList worker = new ArrayList();
 
-    public Factory(String adress, Integer price, Integer max_capacity) {
-        super(adress, price, max_capacity);
+    public Factory(String adress, String name, Integer price, Integer max_capacity) {
+        super(adress, name, price, max_capacity);
     }
-    
+
+
     
     /**
      * is_full permet de savoir si Factory est pleine ou pas
      * @return 
      */
     public Boolean is_full(){
-        if (worker_number >=  Constantes.COMPAGNY_FULL){
-            return true;
-        }
-        return false;
+        return worker_number >=  Constantes.COMPAGNY_FULL;
     }
-    
+    // CEST QUOI CE BORLDE ICI ?
     
     /**
      * 
@@ -67,7 +65,7 @@ public class Factory extends Building implements Improvement{
     public void infos() {
         int i=1;
         // A remplacer apres pour lenght de la liste
-        System.out.println("Le nombre de travalleur dans vos usine est de  " + this.total_worker_number);
+        System.out.println("Le nombre de travalleur dans vos usine est de  " + Factory.total_worker_number);
         System.out.println("Le nombre de travailleur de cette usine est de " + this.worker_number);
         if (this.boss== null ){
             System.out.println("Il n'y à pas de patron dans votre usine");
@@ -84,6 +82,33 @@ public class Factory extends Building implements Improvement{
         System.out.println("L'usine est à sa pleine capacité à " + Constantes.COMPAGNY_FULL+ "mais vous pouvez avoir plusieurs usines");
         System.out.println("Chaque travailleur vous crée de la richesse d'une valeur de " + Constantes.WORKER_MONEY);
         System.out.println("Mais attention, il y a un coût d'entretien à votre usine" );
+    }
+
+    
+    /**
+     * Permet de savoir si un nouveau batiment peut-être crée
+     * @param recherche
+     * @param money
+     * @return 
+     */
+    @Override
+    public boolean new_building(Integer recherche, Integer money) {
+        if (recherche <= Constantes.IMPROVE_SKILL){
+            System.out.println("Vous n'avez pas assez de point de recherche pour obtenir une nouvelle usine");
+            return false;
+        }
+        if (money <= Constantes.IMPROVE_MONEY){
+            System.out.println("Vous n'avez pas assez d'argent pour obtenir une nouvelle usine");
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
+    @Override
+    public void create_building() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
 

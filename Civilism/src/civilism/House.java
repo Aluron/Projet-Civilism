@@ -20,38 +20,38 @@ public class House extends Building{
     
     ArrayList habitant = new ArrayList();
 
-    public House(String adress, Integer price, Integer max_capacity) {
-        super(adress, price, max_capacity);
+    public House(String adress, String name, Integer price, Integer max_capacity) {
+        super(adress, name, price, max_capacity);
     }
+
+  
 
  
     
     public Boolean is_full(){
-        if (this.habitant_number >=  Constantes.HOUSE_FULL){
-            return true;
-        }
-        return false;
+        return this.habitant_number >=  Constantes.HOUSE_FULL;
     }
-    /*
-    Info permet de connaître le nombre d'habitant de la maison et les personnages 
-    */
+/**
+ * Info permet de connaître le nombre d'habitant de la maison et les personnages 
+ */
     public void infos() {
         int i=1;
         // A remplacer apres pour lenght de la liste
         System.out.println("le nombre de d'habitant dans votre maison est de " + this.habitant_number);
-        System.out.println("Il existe " + this.house_number + " maisons dans votre ville");
+        System.out.println("Il existe " + House.house_number + " maisons dans votre ville");
         while (i< this.habitant_number){
             //System.out.print(super.human.name + "" + super.human.surname);
         }   
     }
     
+    /**
+     * Permet de décrire l'utilité de la maison
+     */
     public void description(){
         System.out.println("La maison est l'endroit où vivent les personnages");
         System.out.println("Une maison peut contenir " + Constantes.HOUSE_FULL + " au maximun ");
         System.out.println("Chaque personnage de votre jeu a besoin d'une maison sinon son mécontentement augmente");
         System.out.println("ATTENTION: Trop de mécontentement est mauvais dans la gestion de votre ville.");
     }
-    
-    
-    
+ 
 }

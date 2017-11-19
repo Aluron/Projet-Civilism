@@ -24,9 +24,11 @@ public class School extends Building implements Improvement{
 /////////////////////////////////////////////////////////////
     /////////////////////////////////////////////
 
-    public School(String adress, Integer price, Integer max_capacity) {
-        super(adress, price, max_capacity);
+    public School(String adress, String name, Integer price, Integer max_capacity) {
+        super(adress, name, price, max_capacity);
     }
+
+
     
  
     /**
@@ -39,11 +41,13 @@ public class School extends Building implements Improvement{
         }
         return (false);
     }
-    
+    /**
+     * Permet de récuperer les informations liés à l'object School
+     */
       public void infos() {
         int i=1;
         // A remplacer apres pour lenght de la liste
-        System.out.println("Le nombre de travalleur dans vos école est de " + this.teacher_number);
+        System.out.println("Le nombre de travalleur dans vos école est de " + School.teacher_number);
           System.out.println("Le nombre de travailleur dans cette école est de " + this.teacher);
         if (this.directeur== null ){
             System.out.println("Il n'y à pas de directeur dans votre école ");
@@ -62,15 +66,37 @@ public class School extends Building implements Improvement{
         System.out.println("Une formation est plus ou moins longue selon la formation de l'élève");
         System.out.println("Mais attention, il y a un coût d'entretien à votre école" );
     }
-    /*
-     @Override
-    public boolean new_building() {
-        if()
+    
+    
+    
+    /**
+     * Permet de savoir si un nouveau batiment peut-être crée
+     * @param recherche
+     * @param money
+     * @return 
+     */
+    @Override
+    public boolean new_building(Integer recherche, Integer money) {
+        if (recherche <= Constantes.IMPROVE_SKILL){
+            System.out.println("Vous n'avez pas assez de point de recherche pour obtenir une nouvelle école");
+            return false;
+        }
+        if (money <= Constantes.IMPROVE_MONEY){
+            System.out.println("Vous n'avez pas assez d'argent pour obtenir une nouvelle école");
+            return false;
+        }
+        else{
+            return true;
+        }
     }
-    */
-   
 
     
+    //COMMENT ON CREE UN NOUVELLE OBJECT SCHOOL?
+    @Override
+    public void create_building() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+   
 }
 ///////////////////////////////////////////////////////////
 /*

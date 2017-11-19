@@ -21,15 +21,20 @@ public class Constantes {
     /**
      * Capacity (max of Students) of a School.
      */
+    protected final static Integer SCHOOL_FULL=5;
     ////////////////////////////////////////
     ////protected final static Integer MIDDLE_SCHOOL_FULL=10;
     ////protected final static Integer BIG_SCHOOL_FULL=15;
     ///////////////////////////////////////////////////
-    protected final static Integer SCHOOL_FULL=5;
+    
+    /**
+     * Number of cash for maintenance about School
+     */
     protected final static Integer MAINTENANCE_SCHOOL = 300 ; 
     
     
     //////////Game///////////////
+    
     /**
      * Number of inhabitants at the benning of the Game.
      */
@@ -57,15 +62,19 @@ public class Constantes {
     public static final String NARRATOR = "Penultimo";
     
     ////////////Factory///////////////////////////
+    
     /**
      * Capacity (max of Workers) of a Factory.
      */
-    
     protected final static Integer COMPAGNY_FULL = 5; 
+    /**
+     * Number of cash win about worker
+     */
     protected final static Integer WORKER_MONEY = 100 ;
+    /**
+     * Number of cash for maintenance about Factory
+     */
     protected final static Integer MAINTENANCE_FACTORY = 300 ;
-    
-   
     
     ////////////Police_station//////////////////
     
@@ -93,6 +102,7 @@ public class Constantes {
     ////////////Improvement////////////////////
     protected final static Integer IMPROVE_MONEY = 500;
     protected final static Integer IMPROVE_SKILL = 10;
+    
     
     
     
