@@ -19,6 +19,14 @@ public class Police extends Adult{
     public void takeIn(){
         // event arrestation
     }
+
+    public Police(Office office, Rank rank, Name name, Name surname, House home) {
+        super(name, surname, home);
+        this.office = office;
+        this.rank = rank;
+    }
+    
+    
     
     public void promote(Rank rank){
         System.out.println(name + " " + surname + " a été promu " + rank + " après " + experience + " années de service.");

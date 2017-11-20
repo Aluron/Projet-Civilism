@@ -16,6 +16,14 @@ public class Worker extends Adult{
     
     public Factory factory;
     public Job job;
+
+    public Worker(Factory factory, Job job, Name name, Name surname, House home) {
+        super(name, surname, home);
+        this.factory = factory;
+        this.job = job;
+    }
+    
+    
     
     public void work(){
         

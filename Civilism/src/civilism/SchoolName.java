@@ -6,11 +6,11 @@
 package civilism;
 
 /**
- * This Enum contains every available Names for the characters.
+ *
  * @author qkame
  */
-public enum Name {
+public enum SchoolName {
     
-    MAXIME, SAMI, THIBAUT, BENOIT, QUENTIN, MICKAEL, HUGO, SIMON;
+    SAINT_JEAN, SAINT_PAUL, OZANAM, JULES_FERRY, JEAN_MACE;
     
 }

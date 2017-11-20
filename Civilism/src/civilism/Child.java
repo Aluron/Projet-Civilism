@@ -20,18 +20,20 @@ public class Child extends Human{
      * Class degree the child attends.
      */
     protected Degree degree;
+
+    public Child(Integer education, Degree degree, Name name, Name surname, House home) {
+        super(name, surname, home);
+        this.education = education;
+        this.degree = degree;
+        System.out.println("Félicitations! " + this.name + this.surname + "est né!");
+    }
+    
+    
     
     public void findTreasure(){
         // event trouver un trésor
     }
     
-    /**
-     * Simple SOUT function to announce the birth of the child.
-     */
-    public void born(){
-        System.out.println("Félicitations! " + name + surname + "est né! Ses parents " 
-            + father.name + " & " + mother.name + " sont ravis!");
-    }
     
     /**
      * Represents the fact that the child passes an educational year (Increments the eductation Var).
@@ -49,4 +51,7 @@ public class Child extends Human{
         System.out.println("");
         
     }
+    
+    
+    
 }

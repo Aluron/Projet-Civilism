@@ -14,7 +14,7 @@ public class Office extends Building {
     protected static Integer policeman_number = 0;  // Il existe qu'un object commissariat mais il peut s'ameliorer
     protected Police commissaire ;
 
-    public Office(String adress, String name, Integer price, Integer max_capacity) {
+    public Office(Adress adress, String name, Integer price, Integer max_capacity) {
         super(adress, name, price, max_capacity);
     }
 

@@ -12,8 +12,8 @@ package civilism;
  */
 public class Adult extends Human{
     
-    public Adult partner = new Adult();
-    public Child child = new Child();
+    public Adult partner;
+    public Child child;
     
     public static Integer experience;
     
@@ -23,13 +23,9 @@ public class Adult extends Human{
     public void die(){
         System.out.println("La ville est en deuil aujourd'hui. " + name + " " + surname + " est mort à l'âge de " + age + ".");       
     }
-    
-    
-    public Adult(){
-        
+
+    public Adult(Name name, Name surname, House home) {
+        super(name, surname, home);
     }
     
-    public Adult(Child young){
-        super.father = young.father;
-    }
 }

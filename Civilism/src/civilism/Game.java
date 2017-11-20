@@ -40,6 +40,9 @@ public class Game {
      * List of all the buildings in the city.
      */
     private List<Building> buildings;
+    private List<House> houses;
+    private List<School> schools;
+    private List<Factory> factories;
 
     /**
      * Tool for the input (keyboard).
@@ -119,6 +122,7 @@ public class Game {
         inhabitants = Constantes.BEGIN_INHABITANT_LIST;
         buildings = Constantes.BEGIN_BUILDING_LIST;
         */
+        
     }
 
     /**
@@ -184,8 +188,6 @@ public class Game {
     }
 
     
-    
-    
     /**
      * Analyses a String and extracts keywords from it.
      * @param input (String)
@@ -205,7 +207,7 @@ public class Game {
     /**
      * Prints the List of all implemented commands.
      */
-    private void listOfCommands(){
+    private static void listOfCommands(){
         System.out.println("Les commandes disponibles sont: \n"
         + "help:    "
         + "info:    "
@@ -225,6 +227,33 @@ public class Game {
 
     private Boolean isEnd(String[] input){
         return input[0].equals("finish");
+    }
+    
+    private void initialisation(){
+
+        System.out.println("Quelle est le nom de votre école?");
+        String name;
+        name= keyboard.nextLine();
+        School school = new School(Adress.Rue_Nationale,name);
+        
+        System.out.println("Quelle est le nom de votre comissariat?");
+        name= keyboard.nextLine();
+        Office office = new Office(Adress.Boulevard_Liberte,name);
+        
+        System.out.println("Quelle est le nom de votre Factory");
+        name= keyboard.nextLine();
+        Factory factory = new Factory (Adress.Rue_Nationale,name);
+        
+        System.out.println("Quelle est le nom de votre école?");
+        name= keyboard.nextLine();
+        House house = new House (Adress.Rue_Nationale,name);
+        
+        Adult mickael = new Adult(Name.MAXIME, Surname.DUPOND, house);
+        Adult benoit = new Adult(Name.BENOIT, Surname.PEPIN, house);
+        Adult quentin = new Adult(Name.QUENTIN, Surname.KAMENDA, house)
+        this.inhabitants.add(mickael);
+        this.inhabitants.add(benoit);
+        this.inhabitants.add(quentin);
     }
 
 

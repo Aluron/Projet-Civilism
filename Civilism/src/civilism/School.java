@@ -17,14 +17,14 @@ public class School extends Building implements Improvement{
     protected Professor directeur;
     ArrayList eleve = new ArrayList();
     ArrayList prof = new ArrayList();
-    protected static Integer number_school = 1;  //Si nouvelle object crée implémenter la variable
+    protected static Integer number_school = 1;  //Si nouvel object créé, implémenter la variable
     
     //Constantes.SCHOOL_full;
     
 /////////////////////////////////////////////////////////////
     /////////////////////////////////////////////
 
-    public School(String adress, String name, Integer price, Integer max_capacity) {
+    public School(Adress adress, String name, Integer price, Integer max_capacity) {
         super(adress, name, price, max_capacity);
     }
 

@@ -12,15 +12,24 @@ import java.util.ArrayList;
  * The Professsor clas inherits from the Adult class.
  * @author qkame
  */
-public class Professor {
+public class Professor extends Adult{
     
     public School school;
     public Title title;
     
     protected Boolean free;
     
-    protected ArrayList<Child> pupils = new ArrayList<Child>();
-    protected ArrayList<Adult> formerPupils = new ArrayList<Adult>();
+    protected ArrayList<Child> pupils = new ArrayList<>();
+    protected ArrayList<Adult> formerPupils = new ArrayList<>();
+
+    public Professor(School school, Title title, Boolean free, Name name, Name surname, House home) {
+        super(name, surname, home);
+        this.school = school;
+        this.title = title;
+        this.free = free;
+    }
+    
+    
     
     public void educate(){
         for (int i=0; i < pupils.size(); i++){

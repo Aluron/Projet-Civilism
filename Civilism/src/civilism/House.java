@@ -20,8 +20,9 @@ public class House extends Building{
     
     ArrayList habitant = new ArrayList();
 
-    public House(String adress, String name, Integer price, Integer max_capacity) {
+    public House(Adress adress, String name, Integer price, Integer max_capacity) {
         super(adress, name, price, max_capacity);
+        
     }
 
   

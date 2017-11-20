@@ -6,11 +6,11 @@
 package civilism;
 
 /**
- * This Enum contains every available Names for the characters.
+ *
  * @author qkame
  */
-public enum Name {
+public enum Adress {
     
-    MAXIME, SAMI, THIBAUT, BENOIT, QUENTIN, MICKAEL, HUGO, SIMON;
+    RUE_PIERRE_DUPONT, AVENUE_DE_L_ISEN, BOULEVARD_DES_REVES_BRISES;
     
 }

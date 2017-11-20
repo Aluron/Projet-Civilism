@@ -10,7 +10,7 @@ package civilism;
  * It is the "mother" of the Child and the Adult class.
  * @author qkame
  */
-public class Human{
+public abstract class Human{
     
     /**
      * True if alive, False if dead.
@@ -38,12 +38,71 @@ public class Human{
     /**
      * Father of the character.
      */
-    public Adult father;
+    //public Adult father;
     /**
      * Mother of the character.
      */
-    public Adult mother;
+    //public Adult mother;
+
+    /**
+     * Constructor for an Object Character.
+     * @param name The Name of the character
+     * @param surname The Surname of the character
+     * @param home The house where the character lives
+     * @param father The father of the character
+     * @param mother The mother of the character
+     */
+    public Human(Name name, Name surname, House home) {
+        this.name = name;
+        this.surname = surname;
+        this.home = home;
+        //this.father = father;
+        //this.mother = mother;
+        this.isAlive = true;
+    }
+
+    public Boolean getIsAlive() {
+        return isAlive;
+    }
+
+    public void setIsAlive(Boolean isAlive) {
+        this.isAlive = isAlive;
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public void setName(Name name) {
+        this.name = name;
+    }
+
+    public Name getSurname() {
+        return surname;
+    }
+
+    public void setSurname(Name surname) {
+        this.surname = surname;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public House getHome() {
+        return home;
+    }
+
+    public void setHome(House home) {
+        this.home = home;
+    }
        
+    
+    
     
     /**
      * Simple SOUT function to make the character introduce himself.

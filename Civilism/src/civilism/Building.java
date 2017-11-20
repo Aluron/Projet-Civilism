@@ -11,13 +11,13 @@ package civilism;
  */
 public class Building {
     
-    protected String adress;
+    protected Adress adress;
     protected String name;
     protected Integer price;
     protected Integer max_capacity;
 //////////////////////////////////////////////
     //////////////////////////////////////////
-    public Building(String adress,String name, Integer price, Integer max_capacity) {
+    public Building(Adress adress, String name, Integer price, Integer max_capacity) {
         this.adress = adress;
         //name = Scanner...;
         this.name = name;
@@ -28,11 +28,11 @@ public class Building {
     }
 //////////////GETTER and SETTER/////////////////////
     ////////////////////////////////////
-    public String getAdress() {
+    public Adress getAdress() {
         return adress;
     }
 
-    public void setAdress(String adress) {
+    public void setAdress(Adress adress) {
         this.adress = adress;
     }
 

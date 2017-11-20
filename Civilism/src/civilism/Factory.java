@@ -22,7 +22,7 @@ public class Factory extends Building implements Improvement{
     
     ArrayList worker = new ArrayList();
 
-    public Factory(String adress, String name, Integer price, Integer max_capacity) {
+    public Factory(Adress adress, String name, Integer price, Integer max_capacity) {
         super(adress, name, price, max_capacity);
     }
 
