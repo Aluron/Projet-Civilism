@@ -19,6 +19,10 @@ public class House extends Building{
     protected static Integer house_number = 0;
     
     ArrayList habitant = new ArrayList();
+
+    public House(Adress adress, String name) {
+        super(adress, name);
+    }
  
     
     public Boolean is_full(){

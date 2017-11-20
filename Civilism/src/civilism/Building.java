@@ -9,12 +9,17 @@ package civilism;
  *
  * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
  */
-public abstract class Building {
+public class Building {
     
     protected Adress adress;
     protected String name;
 //    protected Integer price;
 //    protected Integer max_capacity;
+
+    public Building(Adress adress, String name) {
+        this.adress = adress;
+        this.name = name;
+    }
 
 //////////////////////////////////////////////////////////////  
     /**

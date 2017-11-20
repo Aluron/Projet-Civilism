@@ -18,8 +18,14 @@ public class School extends Building implements Improvement{
     ArrayList eleve = new ArrayList();
     ArrayList prof = new ArrayList();
     protected static Integer number_school = 1;  //Si nouvel object créé, implémenter la variable
+
+    public School(Integer teacher, Professor directeur, Adress adress, String name) {
+        super(adress, name);
+        this.teacher = teacher;
+        this.directeur = directeur;
+    }
     
-    //Constantes.SCHOOL_full;
+ 
     
 /////////////////////////////////////////////////////////////
     /////////////////////////////////////////////
