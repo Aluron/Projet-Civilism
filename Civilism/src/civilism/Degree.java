@@ -6,7 +6,7 @@
 package civilism;
 
 /**
- *
+ * This Enum contains several Degree available for the Child.
  * @author qkame
  */
 public enum Degree {

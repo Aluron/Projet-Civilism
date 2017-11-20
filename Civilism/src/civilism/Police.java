@@ -6,7 +6,8 @@
 package civilism;
 
 /**
- *
+ * The Police is virtually here to maintain the Law&Order in the city.
+ * The Police class inherits from the Adult Class.
  * @author qkame
  */
 public class Police extends Adult{

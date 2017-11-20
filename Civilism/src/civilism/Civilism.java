@@ -6,7 +6,7 @@
 package civilism;
 
 /**
- *
+ * This is the main Instance, where the Game starts.
  * @author qkame
  */
 public class Civilism {

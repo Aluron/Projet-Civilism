@@ -6,7 +6,7 @@
 package civilism;
 
 /**
- *
+ * This Enum contains all available ranks for a Police Officer.
  * @author qkame
  */
 public enum Rank {

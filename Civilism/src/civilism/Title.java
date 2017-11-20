@@ -6,7 +6,7 @@
 package civilism;
 
 /**
- *
+ * This Enum contains all available Title for the Professors/Scientists.
  * @author qkame
  */
 public enum Title {

@@ -6,7 +6,8 @@
 package civilism;
 
 /**
- *
+ * This Class contains all the Constants of the game. 
+ * Possible imprivement: Change these Vars to set the difficulty.
  * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
  */
 public class Constantes {

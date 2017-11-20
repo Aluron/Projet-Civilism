@@ -6,7 +6,7 @@
 package civilism;
 
 /**
- *
+ * This Enum contains available Research domains.
  * @author qkame
  */
 public enum Domain {

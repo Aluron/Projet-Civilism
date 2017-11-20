@@ -6,7 +6,8 @@
 package civilism;
 
 /**
- *
+ * The Workers are the characters thet produce for the city. The "create" money.
+ * The Worker class inherits from the Adult class.
  * @author qkame
  */
 public class Worker extends Adult{
