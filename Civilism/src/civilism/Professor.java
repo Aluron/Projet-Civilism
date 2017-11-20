@@ -22,7 +22,7 @@ public class Professor extends Adult{
     protected ArrayList<Child> pupils = new ArrayList<>();
     protected ArrayList<Adult> formerPupils = new ArrayList<>();
 
-    public Professor(School school, Title title, Boolean free, Name name, Name surname, House home) {
+    public Professor(School school, Title title, Boolean free, Name name, Surname surname, House home) {
         super(name, surname, home);
         this.school = school;
         this.title = title;

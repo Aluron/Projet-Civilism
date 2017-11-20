@@ -17,7 +17,7 @@ public class Scientist extends Adult{
     public Title title;
     protected Domain domain;
 
-    public Scientist(Title title, Domain domain, Name name, Name surname, House home) {
+    public Scientist(Title title, Domain domain, Name name, Surname surname, House home) {
         super(name, surname, home);
         this.title = title;
         this.domain = domain;

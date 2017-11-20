@@ -24,7 +24,7 @@ public class Adult extends Human{
         System.out.println("La ville est en deuil aujourd'hui. " + name + " " + surname + " est mort à l'âge de " + age + ".");       
     }
 
-    public Adult(Name name, Name surname, House home) {
+    public Adult(Name name, Surname surname, House home) {
         super(name, surname, home);
     }
     

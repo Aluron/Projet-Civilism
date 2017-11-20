@@ -21,7 +21,7 @@ public class Child extends Human{
      */
     protected Degree degree;
 
-    public Child(Integer education, Degree degree, Name name, Name surname, House home) {
+    public Child(Integer education, Degree degree, Name name, Surname surname, House home) {
         super(name, surname, home);
         this.education = education;
         this.degree = degree;

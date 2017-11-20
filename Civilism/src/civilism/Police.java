@@ -20,7 +20,7 @@ public class Police extends Adult{
         // event arrestation
     }
 
-    public Police(Office office, Rank rank, Name name, Name surname, House home) {
+    public Police(Office office, Rank rank, Name name, Surname surname, House home) {
         super(name, surname, home);
         this.office = office;
         this.rank = rank;

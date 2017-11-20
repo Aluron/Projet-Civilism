@@ -24,7 +24,7 @@ public abstract class Human{
     /**
      * Surname of a character.
      */
-    protected Name surname;
+    protected Surname surname;
     /**
      * Age of the character (equivalent to his experience).
      */
@@ -49,10 +49,9 @@ public abstract class Human{
      * @param name The Name of the character
      * @param surname The Surname of the character
      * @param home The house where the character lives
-     * @param father The father of the character
      * @param mother The mother of the character
      */
-    public Human(Name name, Name surname, House home) {
+    public Human(Name name, Surname surname, House home) {
         this.name = name;
         this.surname = surname;
         this.home = home;
@@ -77,11 +76,11 @@ public abstract class Human{
         this.name = name;
     }
 
-    public Name getSurname() {
+    public Surname getSurname() {
         return surname;
     }
 
-    public void setSurname(Name surname) {
+    public void setSurname(Surname surname) {
         this.surname = surname;
     }
 
