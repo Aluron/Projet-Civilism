@@ -22,8 +22,12 @@ public class Game {
     /**
      * Creation Date of the Game instance.
      */
+<<<<<<< HEAD
+    public Date creationDate; 
+=======
     private Date creationDate;
 
+>>>>>>> 0ee33add237274f05a91339805803a26a4d2021d
     /**
      * Ammount of Cash the player has.
      */
@@ -39,11 +43,15 @@ public class Game {
     /**
      * List of all the buildings in the city.
      */
+<<<<<<< HEAD
+    protected List<Building> buildings;
+=======
     private List<Building> buildings;
     private List<House> houses;
     private List<School> schools;
     private List<Factory> factories;
 
+>>>>>>> 0ee33add237274f05a91339805803a26a4d2021d
     /**
      * Tool for the input (keyboard).
      */
@@ -55,10 +63,16 @@ public class Game {
     /**
      * Keywords entered by the player.
      */
+<<<<<<< HEAD
+    protected String[] keywords;
+    
+    
+=======
     private String[] keywords;
 
 
 
+>>>>>>> 0ee33add237274f05a91339805803a26a4d2021d
     /**
      * Constructor.
      * Beginning of the Game (Description, Introduction, Creation...)
@@ -123,6 +137,17 @@ public class Game {
         buildings = Constantes.BEGIN_BUILDING_LIST;
         */
         
+<<<<<<< HEAD
+=======
+        ///////////////////////////////
+        //CREATION DES OBJECTS/////////
+        create_object();
+        //////////////////////////////
+        
+        
+        
+        
+>>>>>>> 0361636b73a9607697923972ab2b5767ebf7aa11
     }
 
     /**
@@ -135,6 +160,7 @@ public class Game {
             // Code de l'explication de la phase d'observation
         }
         // ATTENTION BOUCLE
+        
         action = keyboard.nextLine();
         keywords = analyse(action);
         while( !isEnd(keywords)){
@@ -149,7 +175,7 @@ public class Game {
                     }
                 case "infos":       // infos on an element
                     switch (keywords[1]){
-                        case "school":
+                        case "school": 
                         case "factory":
                         case "office":
                         case "house":
@@ -187,6 +213,14 @@ public class Game {
 
     }
 
+    
+    /**
+     * Permet de crée tous les objects pour la classe Game
+     */
+    public static void create_object(){
+        School school = new School("Title.CHERCHEUR","Title.ENSEIGNANT",3,5);
+        
+    }
     
     /**
      * Analyses a String and extracts keywords from it.
