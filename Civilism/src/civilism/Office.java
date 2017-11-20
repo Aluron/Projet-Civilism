@@ -14,15 +14,7 @@ public class Office extends Building {
     protected static Integer policeman_number = 0;  // Il existe qu'un object commissariat mais il peut s'ameliorer
     protected Police commissaire ;
 
-    public Office(Adress adress, String name) {
-        super(adress, name);
-    }
 
-
-    
-    
-    
-    
     /*
     Infos permet d'afficher le nom du commissaire et et le nombre de policier
     */

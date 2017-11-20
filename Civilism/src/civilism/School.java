@@ -24,14 +24,6 @@ public class School extends Building implements Improvement{
 /////////////////////////////////////////////////////////////
     /////////////////////////////////////////////
 
-    public School(Adress adress, String name) {
-        super(adress, name);
-    }
-    
-
-
-    
- 
     /**
      * Regarde si l'école est pleine
      * @return boolean
