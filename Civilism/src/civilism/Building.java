@@ -13,17 +13,13 @@ public class Building {
     
     protected Adress adress;
     protected String name;
-    protected Integer price;
-    protected Integer max_capacity;
-//////////////////////////////////////////////
-    //////////////////////////////////////////
-    public Building(Adress adress, String name, Integer price, Integer max_capacity) {
+//    protected Integer price;
+//    protected Integer max_capacity;
+
+    
+    public Building(Adress adress, String name) {
         this.adress = adress;
-        //name = Scanner...;
         this.name = name;
-        this.price = price;
-        this.max_capacity = max_capacity;
-        
         
     }
 //////////////GETTER and SETTER/////////////////////
@@ -44,24 +40,10 @@ public class Building {
         this.name = name;
     }
 
-    public Integer getPrice() {
-        return price;
-    }
-
-    public void setPrice(Integer price) {
-        this.price = price;
-    }
-
-    public Integer getMax_capacity() {
-        return max_capacity;
-    }
-
-    public void setMax_capacity(Integer max_capacity) {
-        this.max_capacity = max_capacity;
-    }
     //////////////////////////////////////////////////////////
     //////////////////////////////////////////////////////////
     
+
 
 
 //////////////////////////////////////////////////////////////  
@@ -71,7 +53,7 @@ public class Building {
      * @param second_rate
      * @return 
      */
-    public boolean burn (Integer first_rate,Integer second_rate){
+    public static  boolean burn (Integer first_rate,Integer second_rate){
         Integer rate = first_rate * second_rate;
         return rate > Constantes.RATE_BURN;
     }
@@ -81,7 +63,7 @@ public class Building {
    * entretien permet de recuperer le cout de l'entretien total des batiments
    * @return Integer
    */
-  public Integer entretien (){
+  public static Integer entretien (){
       Integer maintenance = Constantes.MAINTENANCE_FACTORY * Factory.number_factory
               + Constantes.MAINTENANCE_OFFICE * 1
               + Constantes.MAINTENANCE_SCHOOL * School.number_school;

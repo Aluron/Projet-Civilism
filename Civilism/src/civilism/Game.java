@@ -22,12 +22,8 @@ public class Game {
     /**
      * Creation Date of the Game instance.
      */
-<<<<<<< HEAD
     public Date creationDate; 
-=======
-    private Date creationDate;
 
->>>>>>> 0ee33add237274f05a91339805803a26a4d2021d
     /**
      * Ammount of Cash the player has.
      */
@@ -43,15 +39,11 @@ public class Game {
     /**
      * List of all the buildings in the city.
      */
-<<<<<<< HEAD
     protected List<Building> buildings;
-=======
-    private List<Building> buildings;
     private List<House> houses;
     private List<School> schools;
     private List<Factory> factories;
 
->>>>>>> 0ee33add237274f05a91339805803a26a4d2021d
     /**
      * Tool for the input (keyboard).
      */
@@ -63,16 +55,9 @@ public class Game {
     /**
      * Keywords entered by the player.
      */
-<<<<<<< HEAD
-    protected String[] keywords;
-    
-    
-=======
+
     private String[] keywords;
 
-
-
->>>>>>> 0ee33add237274f05a91339805803a26a4d2021d
     /**
      * Constructor.
      * Beginning of the Game (Description, Introduction, Creation...)
@@ -137,17 +122,7 @@ public class Game {
         buildings = Constantes.BEGIN_BUILDING_LIST;
         */
         
-<<<<<<< HEAD
-=======
-        ///////////////////////////////
-        //CREATION DES OBJECTS/////////
-        create_object();
-        //////////////////////////////
-        
-        
-        
-        
->>>>>>> 0361636b73a9607697923972ab2b5767ebf7aa11
+        initialisation();
     }
 
     /**
@@ -191,6 +166,10 @@ public class Game {
                         case "worker":
                         case "scientist":
                         case "police":
+                        case "school": School.description();
+                        case "factory": Factory.description();
+                        case "office": Office.description();
+                        case "house":  House.description();
                         // Ajouter tous les cas !!!
                         default: listOfCommands();
                     }
@@ -214,13 +193,7 @@ public class Game {
     }
 
     
-    /**
-     * Permet de crée tous les objects pour la classe Game
-     */
-    public static void create_object(){
-        School school = new School("Title.CHERCHEUR","Title.ENSEIGNANT",3,5);
-        
-    }
+
     
     /**
      * Analyses a String and extracts keywords from it.
@@ -263,32 +236,41 @@ public class Game {
         return input[0].equals("finish");
     }
     
+    /**
+     * Initialises the first objects to be created
+     */
     private void initialisation(){
 
+        System.out.println("Vous pouvez maintenant choisir les noms de vos premiers bâtiments. Si vous voulez garder les noms par défaut, appuyez sur Entrée.");
+        
         System.out.println("Quelle est le nom de votre école?");
         String name;
         name= keyboard.nextLine();
-        School school = new School(Adress.Rue_Nationale,name);
+        School school = new School(Adress.AVENUE_DE_L_ISEN,name);
         
         System.out.println("Quelle est le nom de votre comissariat?");
         name= keyboard.nextLine();
-        Office office = new Office(Adress.Boulevard_Liberte,name);
+        Office office = new Office(Adress.BOULEVARD_DES_REVES_BRISES,name);
         
         System.out.println("Quelle est le nom de votre Factory");
         name= keyboard.nextLine();
-        Factory factory = new Factory (Adress.Rue_Nationale,name);
+        Factory factory = new Factory (Adress.RUE_PIERRE_DUPONT,name);
         
         System.out.println("Quelle est le nom de votre école?");
         name= keyboard.nextLine();
-        House house = new House (Adress.Rue_Nationale,name);
+        House house = new House (Adress.RUE_DE_LA_PAIX,name);
         
         Adult mickael = new Adult(Name.MAXIME, Surname.DUPOND, house);
         Adult benoit = new Adult(Name.BENOIT, Surname.PEPIN, house);
-        Adult quentin = new Adult(Name.QUENTIN, Surname.KAMENDA, house)
+        Adult quentin = new Adult(Name.QUENTIN, Surname.KAMENDA, house);
         this.inhabitants.add(mickael);
         this.inhabitants.add(benoit);
         this.inhabitants.add(quentin);
     }
 
+    public void infos(){
+        System.out.println("Dans " + this.townName +" vous avez " + this.cash +" â‚¬" );
+        System.out.println("Vous avez "+ this.inhabitants.size() +" dans votre ville");
+    }
 
 }

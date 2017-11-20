@@ -22,8 +22,8 @@ public class Factory extends Building implements Improvement{
     
     ArrayList worker = new ArrayList();
 
-    public Factory(Adress adress, String name, Integer price, Integer max_capacity) {
-        super(adress, name, price, max_capacity);
+    public Factory(Adress adress, String name) {
+        super(adress, name);
     }
 
 
@@ -77,7 +77,7 @@ public class Factory extends Building implements Improvement{
     /**
      * description permet de connaitre des informations de l'utilité d'un Factory
      */
-    public void description(){
+    public static void description(){
         System.out.println("L'usine permet de rapporter de l'argent");
         System.out.println("L'usine est à sa pleine capacité à " + Constantes.COMPAGNY_FULL+ "mais vous pouvez avoir plusieurs usines");
         System.out.println("Chaque travailleur vous crée de la richesse d'une valeur de " + Constantes.WORKER_MONEY);

@@ -24,9 +24,10 @@ public class School extends Building implements Improvement{
 /////////////////////////////////////////////////////////////
     /////////////////////////////////////////////
 
-    public School(Adress adress, String name, Integer price, Integer max_capacity) {
-        super(adress, name, price, max_capacity);
+    public School(Adress adress, String name) {
+        super(adress, name);
     }
+    
 
 
     
@@ -59,7 +60,7 @@ public class School extends Building implements Improvement{
     /**
      * description permet de connaitre des informations de l'utilité d'un Factory
      */
-    public void description(){
+    public static void description(){
         System.out.println("L'école est le lieu ou les élèves apprennent leur futur métier");
         System.out.println("L'école à pour capacité " + Constantes.SCHOOL_FULL + "mais vous pouvez en avoir plusieurs");
         System.out.println("Chaque professeur peut avoir un et seulement un élève pendant sa période de formation " );

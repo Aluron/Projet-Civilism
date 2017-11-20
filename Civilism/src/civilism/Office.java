@@ -14,8 +14,8 @@ public class Office extends Building {
     protected static Integer policeman_number = 0;  // Il existe qu'un object commissariat mais il peut s'ameliorer
     protected Police commissaire ;
 
-    public Office(Adress adress, String name, Integer price, Integer max_capacity) {
-        super(adress, name, price, max_capacity);
+    public Office(Adress adress, String name) {
+        super(adress, name);
     }
 
 
@@ -39,7 +39,7 @@ public class Office extends Building {
     /*
     Affiche l'utilité du commissariat
     */
-    public void description (){
+    public static void description (){
             System.out.println("Le commissariat est l'endroit òu l'on trouve les policers en service");
             System.out.println("Les policers permettent de faire régner l'ordre dans la ville");
             System.out.println("Pas assez de policiers et trop de mécontentement de la population peut-être un danger pour votre ville.");

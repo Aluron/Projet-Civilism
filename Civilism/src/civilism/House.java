@@ -20,8 +20,8 @@ public class House extends Building{
     
     ArrayList habitant = new ArrayList();
 
-    public House(Adress adress, String name, Integer price, Integer max_capacity) {
-        super(adress, name, price, max_capacity);
+    public House(Adress adress, String name) {
+        super(adress, name);
         
     }
 
@@ -48,7 +48,7 @@ public class House extends Building{
     /**
      * Permet de décrire l'utilité de la maison
      */
-    public void description(){
+    public static void description(){
         System.out.println("La maison est l'endroit où vivent les personnages");
         System.out.println("Une maison peut contenir " + Constantes.HOUSE_FULL + " au maximun ");
         System.out.println("Chaque personnage de votre jeu a besoin d'une maison sinon son mécontentement augmente");
