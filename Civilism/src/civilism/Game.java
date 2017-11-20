@@ -23,7 +23,6 @@ public class Game {
      * Creation Date of the Game instance.
      */
     public Date creationDate; 
-    
     /**
      * Ammount of Cash the player has.
      */
@@ -40,7 +39,6 @@ public class Game {
      * List of all the buildings in the city.
      */
     protected List<Building> buildings;
-    
     /**
      * Tool for the input (keyboard).
      */
@@ -53,7 +51,6 @@ public class Game {
      * Keywords entered by the player.
      */
     protected String[] keywords;
-    
     
     
     /**
@@ -119,6 +116,15 @@ public class Game {
         inhabitants = Constantes.BEGIN_INHABITANT_LIST;
         buildings = Constantes.BEGIN_BUILDING_LIST;
         */
+        
+        ///////////////////////////////
+        //CREATION DES OBJECTS/////////
+        create_object();
+        //////////////////////////////
+        
+        
+        
+        
     }
     
     /**
@@ -131,6 +137,7 @@ public class Game {
             // Code de l'explication de la phase d'observation
         }
         // ATTENTION BOUCLE
+        
         action = keyboard.nextLine();
         keywords = analyse(action);
         while( !isEnd(keywords)){
@@ -145,7 +152,7 @@ public class Game {
                     }
                 case "infos":       // infos on an element
                     switch (keywords[1]){
-                        case "school":
+                        case "school": 
                         case "factory":
                         case "office":
                         case "house":
@@ -180,6 +187,14 @@ public class Game {
             // Code de l'explication de la phase de décision
         }
         
+        
+    }
+    
+    /**
+     * Permet de crée tous les objects pour la classe Game
+     */
+    public static void create_object(){
+        School school = new School("Title.CHERCHEUR","Title.ENSEIGNANT",3,5);
         
     }
     
