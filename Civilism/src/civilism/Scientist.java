@@ -23,6 +23,10 @@ public class Scientist extends Adult{
         this.domain = domain;
     }
     
+    public static void description (){
+            System.out.println("Le scientifique à pour fonction de faire gagner des points de compétences ");
+            System.out.println("Ces points de compétences vous permettent d'avoir d'autres maisons, d'autres usines ou d'autres écoles ");
+    }
     
     public void search(){
         

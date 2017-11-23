@@ -47,7 +47,7 @@ public class Game {
     /**
      * Tool for the input (keyboard).
      */
-    private final Scanner keyboard = new Scanner(System.in);
+    protected final Scanner keyboard = new Scanner(System.in);
     
     /**
      * Command entered by the player.
@@ -115,14 +115,6 @@ public class Game {
          * Initialization of the Game
          */
         cash = Constantes.BEGIN_MONEY;
-
-        /**
-         * BATIMENTS DE BASE A CREER !!!!!!!!!!!!!!!!!!!!
-         */
-        /*
-        inhabitants = Constantes.BEGIN_INHABITANT_LIST;
-        buildings = Constantes.BEGIN_BUILDING_LIST;
-        */
         initialisation();
     }
        
@@ -240,6 +232,8 @@ public class Game {
         }
         return false;
         
+        System.out.println("La phase d'observation et dorÈnavant terminÈe. Quelles dÈcisions majeures pour " + townName + " alez vous prendre maintenant ?");
+        
 
     }
    
@@ -338,7 +332,7 @@ this.inhabitants.add(mickael);
         
     }
     public void finish(){
-        System.out.println("Si vous entrez 'finish' dans la barre de jeu alors votre tour observation et d'analyse de vos donn√©es sera termin√©");
+        System.out.println("Si vous entrez 'finish' dans la barre de jeu, alors votre tour d'observation et d'analyse sera termin√©");
         System.out.println("Vous passerez donc √† la phase d√©cisionnel du jeu");
         System.out.println("");
     }

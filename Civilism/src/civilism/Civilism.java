@@ -11,9 +11,10 @@ package civilism;
  */
 public class Civilism {
 
-    /**
-     * @param args the command line arguments
-     */
+
+    
+    protected static String etat;
+    
     public static void main(String[] args) {
         // TODO code application logic here
         
@@ -26,12 +27,33 @@ public class Civilism {
          * Loop of the Game.
          * Ends with a specific number of turn.
          */
+   
+        /*
+        ATTENTUON CE N EST PAS A GAME DE COMPTER SES PROPRES TOUR, C'est le main qui pilote le game et non game qui se pilote lui même
+        car en plus turnNumber est pas static
+        IDEM POUR CASH 
+        IDEM POur Inhuman
+        */
+        
+        //INIT DE ETAT
+        etat = "observation";
         while(newGame.turnNumber < Constantes.TURN_LIMIT){
-            newGame.observation();
-            newGame.decision();
-            newGame.turnNumber++;
             
+            if ("observation".equals(etat)){
+                boolean observation = newGame.observation();
+                if (true == observation ){
+                    etat = "decision";
+                }
+                
+            }
             
+            if ("decision".equals(etat)){
+                boolean decision = newGame.decision();
+                if (true == decision){
+                 etat= "observation";
+                 newGame.turnNumber++;
+                }  
+            }
         }
         
     }

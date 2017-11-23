@@ -59,6 +59,7 @@ public abstract class Human{
         //this.mother = mother;
         this.isAlive = true;
     }
+    
 
     public Boolean getIsAlive() {
         return isAlive;

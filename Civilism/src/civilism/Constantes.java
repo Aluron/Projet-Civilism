@@ -16,7 +16,13 @@ public class Constantes {
     /*
     INCIDENCE D AVOIR UN DIRECTEUR ET UN BOSS ??
     */
+    //////////Child.///////////////////////
+    protected final static Integer OUVRIER=1;
+    protected final static Integer POLICIER=3;
+    protected final static Integer PROFESSEUR=5;
+    protected final static Integer CHERCHEUR=5;
     
+ 
     //////////School///////////
     /**
      * Capacity (max of Students) of a School.

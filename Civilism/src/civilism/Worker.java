@@ -23,6 +23,10 @@ public class Worker extends Adult{
         this.job = job;
     }
     
+    public static void description (){
+            System.out.println("Un travailleur à l'usine vous permet d'obtenir de l'argent ");
+            System.out.println("Pour chaque travalleur vous gagné : " + Constantes.WORKER_MONEY);      
+    }
     
     
     public void work(){

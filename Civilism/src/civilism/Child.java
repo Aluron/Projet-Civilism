@@ -29,7 +29,6 @@ public class Child extends Human{
     }
     
     
-    
     public void findTreasure(){
         // event trouver un trésor
     }
@@ -52,6 +51,28 @@ public class Child extends Human{
         
     }
     
+    public static void description (){
+            System.out.println("Les enfants sont le futur de votre ville");
+            System.out.println("Vous avez un nouvel enfant quand un enfant fini sa formation");
+            System.out.println("Votre nombre d'enfant est limité selon le nombre de professeur");
+            System.out.println("Pour que votre enfant soit un ouvrier, il lui faut " + Constantes.OUVRIER );
+            System.out.println("¨Pour un policier " + Constantes.POLICIER);
+            System.out.println("Pour un professeur " +Constantes.PROFESSEUR);
+            System.out.println("Pour un chercheur "+ Constantes.CHERCHEUR);
+    }
+    
+    protected void affectation(Child child){
+        System.out.println("Un enfant est ne et pret à se former. " + child.name + " " + child.surname + " est en attente d'une formation. Que choisissez-vous comme etudes pour lui ?");
+        System.out.println("(RAPPEL: un enfant peut étudier les metiers d'ouvrier, de policier, de professuer ou de chercheur.)");
+        switch (Game.keyboard.nextLine()){
+            case "help": 
+            case "ouvrier": child.degree = Degree.ELEMENTARY;
+            case "policier": child.degree = Degree.HIGHSCHOOL;
+            case "professeur": child.degree = Degree.COLLEGE;
+            case "chercheur": child.degree = Degree.UNIVERSITY;
+            default: 
+        }
+    }
     
     
 }

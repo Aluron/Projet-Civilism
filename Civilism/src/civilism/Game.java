@@ -5,6 +5,7 @@
  */
 package civilism;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -15,11 +16,11 @@ import java.util.Scanner;
  */
 public class Game {
 
-    /**
+    protected String townName;
+/**
      * Name of the town (and by extension the name of the Game)
      */
-    protected final String townName;
-    /**
+        /**
      * Creation Date of the Game instance.
      */
     public Date creationDate; 
@@ -43,26 +44,27 @@ public class Game {
     private List<House> houses;
     private List<School> schools;
     private List<Factory> factories;
-
     /**
      * Tool for the input (keyboard).
      */
-    private final Scanner keyboard = new Scanner(System.in);
+    protected static final Scanner keyboard = new Scanner(System.in);
+    
     /**
      * Command entered by the player.
      */
-    private String action;
+    private String[] action;
     /**
      * Keywords entered by the player.
      */
 
-    private String[] keywords;
+    private String keywords;
 
     /**
      * Constructor.
      * Beginning of the Game (Description, Introduction, Creation...)
      */
-    public Game() {
+   public Game() {
+       
         // CODE DE CREATION DE PARTIE A FAIRE !!
         turnNumber = 1;
 
@@ -113,128 +115,163 @@ public class Game {
          * Initialization of the Game
          */
         cash = Constantes.BEGIN_MONEY;
-
-        /**
-         * BATIMENTS DE BASE A CREER !!!!!!!!!!!!!!!!!!!!
-         */
-        /*
-        inhabitants = Constantes.BEGIN_INHABITANT_LIST;
-        buildings = Constantes.BEGIN_BUILDING_LIST;
-        */
-        
         initialisation();
     }
-
+       
     /**
      * First phase of a turn.
      * This is the phase when/where the player is given all the informations he needs before making any decision.
+     * @return 
      */
-    protected void observation(){
+    protected boolean observation(){
         // CODE DES COMMANDES
         if (turnNumber == 1){
             // Code de l'explication de la phase d'observation
+            // DEPLACE A UNE FONCTION A PART POUR EVITER QUE CA BOUCLE APRES CHAQUE COMMANDE
         }
         // ATTENTION BOUCLE
         
-        action = keyboard.nextLine();
-        keywords = analyse(action);
-        while( !isEnd(keywords)){
-            switch (keywords[0]){
-                case "help":        // help on a command
-                    switch (keywords[1]){
-                        case "infos":
-                        case "desc":
-                        case "finish":
-                        // Ajouter tous les cas !!!
-                        default: listOfCommands();
+        // PROBLEME NE SORT JAMAIS DU IF SI VOUS AVEZ DEJA FAIT LA SEMAINE
+
+//        String word;
+        keywords = keyboard.nextLine();
+        
+        if (!"".equals(keywords))  { // EVITE LES BUGS DE BOUCLE
+            String concat = keywords.concat(" #");
+            action = analyse(concat);
+            while(!"finish".equals(keywords)){
+                switch (action[0]){
+                    case "help":        // help on a command
+//                        System.out.println("Dans help, il y a 3 commandes qui vous donneront des informations sur ce que fait chacun des commandes utile dans la phase d'observation");
+//                        System.out.println("infos ,desc et finish");
+//                        System.out.println("");
+//                        word = keyboard.nextLine();
+                            switch (action[1]){
+                                case "infos": this.helpInfos();
+                                    return false;
+                                case "desc": this.helpDesc();
+                                    return false;
+                                case "finish": this.helpFinish();
+                                    return false;
+                            
+                                // Ajouter tous les cas !!!
+                                default: listOfCommands();
+                                    return false;
+                        }      
+                    case "infos":       // infos on an element
+//                        System.out.println("Dans infos, il y à les détails de chacun de vos batiments");
+//                        System.out.println("taper : school, factory, office, house, city pour les connaitre");
+//                        System.out.println("");
+//                        word = keyboard.nextLine();
+                        switch (action[1]){
+                            case "school": 
+                                return false;
+                            case "factory":
+                                return false;
+                            case "office":
+                                return false;
+                            case "house":
+                                return false;
+                            case "city":
+                                return false;
+                            // Ajouter tous les cas !!!
+                            default: infos();
+                                return false;    
+       
+                        }
+                    case "desc":     // description of the role of an element
+//                        System.out.println("Dans desc, il y à les détails des informations globales sue votre jeu");
+//                        System.out.println("taper : child, adult, professor, worker, scientist, police, school, factory, office , house pour les connaitre");
+//                        System.out.println("");
+//                        word = keyboard.nextLine();
+                        switch (action[1]){
+                            case "child": 
+                                Child.description();
+                                return false;
+                            case "adult": 
+                                Adult.description();
+                                return false;
+                            case "professor": 
+                                Professor.description();
+                                return false;
+                            case "worker": 
+                                Worker.description();
+                                return false;
+                            case "scientist": 
+                                Scientist.description();
+                                return false;
+                            case "police": 
+                                Police.description();
+                                return false;
+                            case "school": 
+                                School.description();
+                                return false;
+                            case "factory": 
+                                Factory.description();
+                                return false;
+                            case "office": 
+                                Office.description();
+                                return false;
+                            case "house":  
+                                House.description();
+                                return false;
+                            // Ajouter tous les cas !!!
+                            default: desc();
+                                return false;    
+                        }
+                    case "finish":
+                        System.out.println("--- Fin de la phase d'observation ---");
+                        return true;     // End of the phase,
+                        
+                    default: return false;
                     }
-                case "infos":       // infos on an element
-                    switch (keywords[1]){
-                        case "school": 
-                        case "factory":
-                        case "office":
-                        case "house":
-                        case "city":
-                        // Ajouter tous les cas !!!
-                        default: listOfCommands();
-                    }
-                case "desc":     // description of the role of an element
-                    switch (keywords[1]){
-                        case "child":
-                        case "adult":
-                        case "professor":
-                        case "worker":
-                        case "scientist":
-                        case "police":
-                        case "school": School.description();
-                        case "factory": Factory.description();
-                        case "office": Office.description();
-                        case "house":  House.description();
-                        // Ajouter tous les cas !!!
-                        default: listOfCommands();
-                    }
-                case "finish": endOfObservation();      // End of the phase,
-                default: listOfCommands();
-            }
+                }
+            return true;
         }
+        return false;
     }
 
     /**
      * Second phase of a turn.
      * This is the phase when/where the player makes decisions that will impact the game.
+     * @return 
      */
-    protected void decision(){
+    protected boolean decision(){
         //CODE D'EXECUTION
+        System.out.println("ton return a marche");
         if (turnNumber == 1){
             // Code de l'explication de la phase de décision
         }
-
-
+        
+        System.out.println("La phase d'observation et dorenavant terminee.");
+        System.out.println("Quelles decisions majeures pour " + this.townName + " alez vous prendre maintenant ?");
+        
+        
+        return false;
+    }
+   
+    /**
+     * Prints the List of all implemented commands.
+     */
+    private static void listOfCommands(){
+        System.out.println("");
+        System.out.println("Les commandes disponibles sont: \n"
+        + "help:    "
+        + "infos:    "
+        + "desc:    "
+        + "finish:  ");
+        System.out.println("");
     }
 
-    
-
-    
     /**
      * Analyses a String and extracts keywords from it.
      * @param input (String)
      * @return An Array of detected keywords in the "input" String
      */
-    private List<String> stringAnalysis(String input){
-        return null;
-    }
-
-    /**
-     * Ends the 1st phase and launches the 2nd phase.
-     */
-    private void endOfObservation(){
-
-    }
-
-    /**
-     * Prints the List of all implemented commands.
-     */
-    private static void listOfCommands(){
-        System.out.println("Les commandes disponibles sont: \n"
-        + "help:    "
-        + "info:    "
-        + "desc:    "
-        + "finish:  ");
-    }
-
-    /**
-     * Converts the input into keywords
-     * @param input
-     * @return the extracted keywords
-     */
     private String[] analyse(String input){
         return input.split(" ");
     }
 
-
-    private Boolean isEnd(String[] input){
-        return input[0].equals("finish");
-    }
     
     /**
      * Initialises the first objects to be created
@@ -246,31 +283,68 @@ public class Game {
         System.out.println("Quelle est le nom de votre école?");
         String name;
         name= keyboard.nextLine();
-        School school = new School(Adress.AVENUE_DE_L_ISEN,name);
+        School school = new School(null,null,Adress.AVENUE_DE_L_ISEN,name);
         
         System.out.println("Quelle est le nom de votre comissariat?");
         name= keyboard.nextLine();
-        Office office = new Office(Adress.BOULEVARD_DES_REVES_BRISES,name);
+        Office office = new Office(null,Adress.BOULEVARD_DES_REVES_BRISES,name);
         
         System.out.println("Quelle est le nom de votre Factory");
         name= keyboard.nextLine();
-        Factory factory = new Factory (Adress.RUE_PIERRE_DUPONT,name);
+        Factory factory = new Factory (0,null,Adress.RUE_PIERRE_DUPONT,name);
         
-        System.out.println("Quelle est le nom de votre école?");
+        System.out.println("Quelle est le nom de votre Maison ?");
         name= keyboard.nextLine();
         House house = new House (Adress.RUE_DE_LA_PAIX,name);
         
-        Adult mickael = new Adult(Name.MAXIME, Surname.DUPOND, house);
+        Adult mickael = new Adult(Name.MAXIME, Surname.DUPOND, house);      
+        //this.inhabitants.add(mickael);
         Adult benoit = new Adult(Name.BENOIT, Surname.PEPIN, house);
+        //this.inhabitants.add(benoit);
         Adult quentin = new Adult(Name.QUENTIN, Surname.KAMENDA, house);
-        this.inhabitants.add(mickael);
-        this.inhabitants.add(benoit);
-        this.inhabitants.add(quentin);
+        //this.inhabitants.add(quentin);
+
     }
 
+    public void helpInfos(){
+        System.out.println("La commande 'infos' permet de connaître le statut de chaque élément du jeu");
+        System.out.println("'info' seul vous donne le statut actuel de votre ville (argent et habitants)");
+        System.out.println("'info' accompagné du nom d'un élément du jeu vous donne le statut actuel de l'élément.");
+        System.out.println("Argumuments disponibles:     'school', 'factory', 'house', city'");
+        
+    }
+    
+    public void helpDesc(){
+        System.out.println("La commande 'desc' permet d'accéder aux détails des informations globales sue votre jeu");
+        System.out.println("Vous y trouverez les informations concernant chaques metiers ou chaques batiments, mais aussi "
+                + "la compréhension du système du jeu dans les phases enfant/adulte de vos personnages ");
+        System.out.println("");
+        
+    }
+    
+    public void helpFinish(){
+        System.out.println("Si vous entrez 'finish' dans la barre de jeu, alors votre tour d'observation et d'analyse sera terminé");
+        System.out.println("Vous passerez donc à la phase décisionnel du jeu");
+        System.out.println("");
+    }
+    
+    public void helpObservation(){
+        Game.listOfCommands();
+    }
+    
+    public void helpDecision(){
+        
+    }
+    
     public void infos(){
-        System.out.println("Dans " + this.townName +" vous avez " + this.cash +" â‚¬" );
-        System.out.println("Vous avez "+ this.inhabitants.size() +" dans votre ville");
+        System.out.println("Dans " + this.townName +" vous avez " + this.cash +" € " );
+        System.out.println("");
+        //PB AVEC LA LISTE
+        //System.out.println("Vous avez "+ this.inhabitants.size() +" dans votre ville");
     }
-
+    
+    public void desc(){
+        System.out.println("Civilism est un jeu issu d'un projet scolaire ISEN, réalisé par Quentin KAMENDA & Benoît PEPIN");
+    }
+    
 }

@@ -38,7 +38,7 @@ public class Civilism {
         */
         
         //INIT DE ETAT
-        etat= "observation";
+        etat = "observation";
         while(newGame.turnNumber < Constantes.TURN_LIMIT){
             
             if ("observation".equals(etat)){

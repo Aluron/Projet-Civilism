@@ -26,6 +26,11 @@ public class Police extends Adult{
         this.rank = rank;
     }
     
+    public static void description (){
+            System.out.println("Le Policier sert au matien de l'ordre ");
+            System.out.println("Le policier travaille au commisseriat");
+            System.out.println("Pas assez de policiers et trop de mécontentement de la population peut-être un danger pour votre ville.");
+    }
     
     
     public void promote(Rank rank){

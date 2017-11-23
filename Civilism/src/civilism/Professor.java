@@ -29,6 +29,10 @@ public class Professor extends Adult{
         this.free = free;
     }
     
+    public static void description (){
+            System.out.println("Un professeur à uniquement un élève  ");
+            System.out.println("Chaque professeur permet d'avoir un élève, plus vous avez de professeur plus vous pouvez avoir d'élève et augmenter rapidement votre population");
+    }
     
     
     public void educate(){

@@ -28,4 +28,13 @@ public class Adult extends Human{
         super(name, surname, home);
     }
     
+     public static void description (){
+            System.out.println("L'adulte est un enfant qui a fini sa formation ");
+            System.out.println("A la fin de sa formation devient un adulte à voué à un travail soit :");
+            System.out.println("- Policier");
+            System.out.println("- travailleur à l'usine");
+            System.out.println("- professeur");
+            System.out.println("- chercheur");
+    }
+    
 }
