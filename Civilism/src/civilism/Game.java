@@ -5,7 +5,7 @@
  */
 package civilism;
 
-import java.util.Arrays;
+import java.util.Vector;
 import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
@@ -36,7 +36,7 @@ public class Game {
     /**
      * List of all the inhabitants in the city.
      */
-    private List<Human> inhabitants;
+    private Vector<Human> inhabitants = new Vector();
     /**
      * List of all the buildings in the city.
      */
@@ -302,11 +302,11 @@ public class Game {
         House house = new House (Adress.RUE_DE_LA_PAIX,name);
         
         Adult mickael = new Adult(Name.MAXIME, Surname.DUPOND, house);      
-        //this.inhabitants.add(mickael);
+        this.inhabitants.add(mickael);
         Adult benoit = new Adult(Name.BENOIT, Surname.PEPIN, house);
-        //this.inhabitants.add(benoit);
+        this.inhabitants.add(benoit);
         Adult quentin = new Adult(Name.QUENTIN, Surname.KAMENDA, house);
-        //this.inhabitants.add(quentin);
+        this.inhabitants.add(quentin);
 
     }
 
@@ -343,8 +343,7 @@ public class Game {
     public void infos(){
         System.out.println("Dans " + this.townName +" vous avez " + this.cash +" € " );
         System.out.println("");
-        //PB AVEC LA LISTE
-        //System.out.println("Vous avez "+ this.inhabitants.size() +" dans votre ville");
+        System.out.println("Vous avez "+ this.inhabitants.size() +" dans votre ville");
     }
     
     public void desc(){
