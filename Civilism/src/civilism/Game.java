@@ -139,6 +139,10 @@ public class Game {
         if (!"".equals(keywords))  { // EVITE LES BUGS DE BOUCLE
             String concat = keywords.concat(" #");
             action = analyse(concat);
+            try{
+                fastQuit(action[0]);
+            } catch (QuitException e) {}
+            
             while(!"finish".equals(keywords)){
                 switch (action[0]){
                     case "help":        // help on a command
@@ -345,6 +349,13 @@ public class Game {
     
     public void desc(){
         System.out.println("Civilism est un jeu issu d'un projet scolaire ISEN, réalisé par Quentin KAMENDA & Benoît PEPIN");
+    }
+    
+    public void fastQuit(String input)
+            throws QuitException{
+        if ("quit".equals(input)){
+            throw new QuitException();
+        }
     }
     
 }
