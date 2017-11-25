@@ -28,7 +28,8 @@ public class Game {
     /**
      * Ammount of Cash the player has.
      */
-    private Integer cash;
+    protected Integer cash;
+    protected Integer recherche;
     /**
      * Index of the Turn being played.
      */
@@ -36,14 +37,17 @@ public class Game {
     /**
      * List of all the inhabitants in the city.
      */
-    private Vector<Human> inhabitants = new Vector();
+    protected Vector<Human> inhabitants = new Vector();
+    protected Vector<Child> children = new Vector();
+    
     /**
      * List of all the buildings in the city.
      */
-    protected List<Building> buildings;
-    private List<House> houses;
-    private List<School> schools;
-    private List<Factory> factories;
+    protected Vector<Building> buildings;
+    private Vector<House> houses;
+    private Vector<School> schools;
+    private Vector<Factory> factories;
+    private Office office;
     /**
      * Tool for the input (keyboard).
      */
@@ -251,8 +255,10 @@ public class Game {
         
         System.out.println("Quelles decisions majeures pour " + this.townName + " alez vous prendre maintenant ?");
         
+        characterGestion();
+        shop();
         
-        return false;
+        return true;
     }
    
     /**
@@ -289,23 +295,30 @@ public class Game {
         String name;
         name= keyboard.nextLine();
         School school = new School(null,null,Adress.AVENUE_DE_L_ISEN,name);
+        buildings.add(school);
         
         System.out.println("Quelle est le nom de votre comissariat?");
         name= keyboard.nextLine();
-        Office office = new Office(null,Adress.BOULEVARD_DES_REVES_BRISES,name);
+        office = new Office(null,Adress.BOULEVARD_DES_REVES_BRISES,name);
+        buildings.add(office);   
         
         System.out.println("Quelle est le nom de votre Factory");
         name= keyboard.nextLine();
         Factory factory = new Factory (0,null,Adress.RUE_PIERRE_DUPONT,name);
+        buildings.add(factory);
         
         House house = new House (Adress.RUE_DE_LA_PAIX);
         
-        Adult mickael = new Adult(Name.MAXIME, Surname.DUPOND, house);      
+        Adult mickael = new Professor(school, Title.ENSEIGNANT, true, Name.MAXIME, Surname.DUPOND, house);      
         this.inhabitants.add(mickael);
-        Adult benoit = new Adult(Name.BENOIT, Surname.PEPIN, house);
+        Adult benoit = new Worker(factory, Job.WORKER, Name.BENOIT, Surname.PEPIN, house);
         this.inhabitants.add(benoit);
-        Adult quentin = new Adult(Name.QUENTIN, Surname.KAMENDA, house);
+        Adult quentin = new Worker(factory, Job.WORKER, Name.QUENTIN, Surname.KAMENDA, house);
         this.inhabitants.add(quentin);
+        
+        Child jean = new Child(Name.JEAN, Surname.JOULIA, house);
+        this.children.add(jean);
+        
 
     }
 
@@ -356,7 +369,73 @@ public class Game {
         }
     }
     
-    public void addHouse(Adress adress){
+    protected void characterGestion(){
+        for (Child child : children) {
+            if (child.education >= child.ambition){
+                this.affectation(child);
+            }
+        }
+    }
+    
+    protected void affectation(Child child){
+        System.out.println(child.name + " " + child.surname + " a besoin d'éducation. Vers quelle filière voulez-vous qu'il se dirige ? ('worker', 'police', 'professor', 'scientist')");
+        System.out.println("Filières possibles: worker [1 tour]; police  [3 tours]; professor [5 tours]; scientist [5 tours]");
         
+        action = analyse(keyboard.nextLine().concat(" #"));
+        try{
+            fastQuit(action[0]);
+        } catch (QuitException e) {}
+        switch(action[0]){
+            case "worker": 
+                Worker worker = new Worker(this.factories.elementAt(0), Job.WORKER, child.name, child.surname, child.home);
+                child = null;
+                break;
+            case "police":
+                Police police = new Police(this.office, Rank.AGENT, child.name, child.surname, child.home);
+                child = null;
+                break;
+            case "professor":
+                Professor prof = new Professor(this.schools.elementAt(0), Title.ENSEIGNANT, true, child.name, child.surname, child.home);
+                child = null;
+                break;
+            case "scientist":
+                Scientist scientist = new Scientist(Title.ENSEIGNANT, Domain.PHARMACOLOGY, child.name, child.surname, child.home);
+                child = null;
+                break;
+            default: 
+                affectation(child);
+                break;
+        }
+    }
+    
+    public void shop(){
+        System.out.println("Nous allons maintenant passer Ã  la gestion de vos batiments");
+        keywords = "";
+        while ("finish".equals(keywords)){
+            System.out.println("Veulliez Ã©crire dans la console l'amÃ©lioration souhaitÃ©, si vous ne voulez rien amÃ©liorer ecrivez finish");
+            System.out.println("Les amÃ©liorations disponibles sont : house, school, factory");
+            keywords= keyboard.nextLine();
+            switch (keywords){
+                case "house":
+                    if (true==this.houses.elementAt(0).checkBuilding(0, cash)){
+                        this.houses.elementAt(0).create_building();
+                    }
+                break;
+                case "school":
+                    if (true==this.schools.elementAt(0).checkBuilding(recherche, cash)){
+                        this.schools.elementAt(0).create_building();
+                    }
+                break;
+                case "factory":
+                    if(true == this.factories.elementAt(0).checkBuilding(recherche, cash)){
+                        this.factories.elementAt(0).create_building();
+                    }
+                break;
+                case "finish": 
+                    System.out.println("Vous sortez de l'amÃ©lioration");
+                    
+                default : 
+            }       
+        }
     }
 }

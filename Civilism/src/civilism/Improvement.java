@@ -35,7 +35,7 @@ public interface Improvement {
      * @param money
      * @return 
      */
- public boolean upgradeBuilding(Integer recherche, Integer money);
+ public boolean checkBuilding(Integer recherche, Integer money);
  
  /**
   * Créer le nouveau batiment

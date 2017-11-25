@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * 
  * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
  */
-public class House extends Building{
+public class House extends Building implements Improvement{
     //habitant
     //Constantes.HOUSE_FULL;
     protected Integer habitant_number = 0;
@@ -51,6 +51,22 @@ public class House extends Building{
         System.out.println("Une maison peut contenir " + Constantes.HOUSE_FULL + " au maximun ");
         System.out.println("Chaque personnage de votre jeu a besoin d'une maison sinon son mécontentement augmente");
         System.out.println("ATTENTION: Trop de mécontentement est mauvais dans la gestion de votre ville.");
+    }
+    
+    @Override
+    public void create_building(){
+        House house2 = new House(Adress.RUE_DE_LA_PAIX);
+    }
+
+    @Override
+    public boolean checkBuilding(Integer recherche, Integer money) {
+        if (money <= Constantes.IMPROVE_HOUSE){
+            System.out.println("Vous n'avez pas les fonds suffisants pour acheter une nouvelle maison.");
+            return false;
+        }
+        else {
+            return true;
+        }
     }
  
 }

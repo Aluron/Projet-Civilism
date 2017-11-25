@@ -94,7 +94,7 @@ public class Factory extends Building implements Improvement{
      * @return 
      */
     @Override
-    public boolean upgradeBuilding(Integer recherche, Integer money) {
+    public boolean checkBuilding(Integer recherche, Integer money) {
         if (recherche <= Constantes.IMPROVE_SKILL){
             System.out.println("Vous n'avez pas assez de point de recherche pour obtenir une nouvelle usine");
             return false;

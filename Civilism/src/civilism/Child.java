@@ -20,6 +20,10 @@ public class Child extends Human{
      * Class degree the child attends.
      */
     protected Degree degree;
+    /**
+     * The number of years the child aims to stay in the education system.
+     */
+    protected Integer ambition;
 
     public Child(Integer education, Degree degree, Name name, Surname surname, House home) {
         super(name, surname, home);
@@ -28,10 +32,10 @@ public class Child extends Human{
         System.out.println("Félicitations! " + this.name + this.surname + "est né!");
     }
     
-    
-    public void findTreasure(){
-        // event trouver un trésor
+    public Child(Name name, Surname surname, House home){
+        super(name, surname, home);
     }
+    
     
     
     /**
@@ -42,12 +46,35 @@ public class Child extends Human{
     }
     
     /**
-     * The child becomes an adult. Deletes the Object to create his equivalent as an Adult.
+     * The child becomes a worker. Deletes the Object to create his equivalent as an Adult.
+     * @param child The Child to become Worker.
      */
-    public void becomeAdult(){
-        // Delete the object "Child" and create an object "Adult"
+    public static void becomeWorker(Child child, Factory factory){
+        Worker worker = new Worker(factory, Job.WORKER, child.name, child.surname, child.home);
         
-        System.out.println("");
+    }
+    
+    /**
+     * The child becomes a Police man. Deletes the Object to create his equivalent as an Adult.
+     * @param child The Child to become Police.
+     */
+    public static void becomePolice(Child child){
+        
+    }
+    
+    /**
+     * The child becomes a Professor. Deletes the Object to create his equivalent as an Adult.
+     * @param child The Child to become Professor.
+     */
+    public static void becomeProfessor(Child child){
+        
+    }
+    
+    /**
+     * The child becomes a scientist. Deletes the Object to create his equivalent as an Adult.
+     * @param child The Child to become Scientist.
+     */
+    public static void becomeScientist(Child child){
         
     }
     
@@ -57,7 +84,7 @@ public class Child extends Human{
             System.out.println("Votre nombre d'enfant est limité selon le nombre de professeur");
             System.out.println("Pour que votre enfant soit un ouvrier, il lui faut " + Constantes.OUVRIER );
             System.out.println("¨Pour un policier " + Constantes.POLICIER);
-            System.out.println("Pour un professeur " +Constantes.PROFESSEUR);
+            System.out.println("Pour un professeur " + Constantes.PROFESSEUR);
             System.out.println("Pour un chercheur "+ Constantes.CHERCHEUR);
     }
     

@@ -11,6 +11,6 @@ package civilism;
  */
 public enum Name {
     
-    MAXIME, SAMI, THIBAUT, BENOIT, QUENTIN, MICKAEL, HUGO, SIMON;
+    MAXIME, SAMI, JEAN, THIBAUT, BENOIT, QUENTIN, MICKAEL, HUGO, SIMON;
     
 }

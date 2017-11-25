@@ -19,6 +19,7 @@ public class Building {
     public Building(Adress adress, String name) {
         this.adress = adress;
         this.name = name;
+        
     }
     
     public Building(Adress adress){

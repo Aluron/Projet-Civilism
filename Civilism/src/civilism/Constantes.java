@@ -108,6 +108,7 @@ public class Constantes {
     ////////////Improvement////////////////////
     protected final static Integer IMPROVE_MONEY = 500;
     protected final static Integer IMPROVE_SKILL = 10;
+    protected final static Integer IMPROVE_HOUSE = 400;
     
     
     
