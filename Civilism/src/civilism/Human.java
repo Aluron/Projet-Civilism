@@ -49,7 +49,6 @@ public abstract class Human{
      * @param name The Name of the character
      * @param surname The Surname of the character
      * @param home The house where the character lives
-     * @param mother The mother of the character
      */
     public Human(Name name, Surname surname, House home) {
         this.name = name;

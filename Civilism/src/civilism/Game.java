@@ -43,10 +43,10 @@ public class Game {
     /**
      * List of all the buildings in the city.
      */
-    protected Vector<Building> buildings;
-    private Vector<House> houses;
-    private Vector<School> schools;
-    private Vector<Factory> factories;
+    protected Vector<Building> buildings = new Vector();
+    private Vector<House> houses = new Vector();
+    private Vector<School> schools = new Vector();
+    private Vector<Factory> factories = new Vector();
     private Office office;
     /**
      * Tool for the input (keyboard).
@@ -129,6 +129,7 @@ public class Game {
      */
     protected boolean observation(){
         // CODE DES COMMANDES
+
         if (turnNumber == 1){
             // Code de l'explication de la phase d'observation
             // DEPLACE A UNE FONCTION A PART POUR EVITER QUE CA BOUCLE APRES CHAQUE COMMANDE
@@ -371,7 +372,7 @@ public class Game {
     
     protected void characterGestion(){
         for (Child child : children) {
-            if (child.education >= child.ambition){
+            if (child.ambition==null){
                 this.affectation(child);
             }
         }
@@ -411,7 +412,7 @@ public class Game {
     public void shop(){
         System.out.println("Nous allons maintenant passer Ã  la gestion de vos batiments");
         keywords = "";
-        while ("finish".equals(keywords)){
+        while (!"finish".equals(keywords)){
             System.out.println("Veulliez Ã©crire dans la console l'amÃ©lioration souhaitÃ©, si vous ne voulez rien amÃ©liorer ecrivez finish");
             System.out.println("Les amÃ©liorations disponibles sont : house, school, factory");
             keywords= keyboard.nextLine();
@@ -420,6 +421,7 @@ public class Game {
                     if (true==this.houses.elementAt(0).checkBuilding(0, cash)){
                         this.houses.elementAt(0).create_building();
                     }
+                    
                 break;
                 case "school":
                     if (true==this.schools.elementAt(0).checkBuilding(recherche, cash)){

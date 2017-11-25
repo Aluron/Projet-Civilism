@@ -34,6 +34,7 @@ public class Child extends Human{
     
     public Child(Name name, Surname surname, House home){
         super(name, surname, home);
+        this.education = 0;
     }
     
     
