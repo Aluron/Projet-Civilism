@@ -248,6 +248,7 @@ public class Game {
         }
         
         System.out.println("La phase d'observation et dorenavant terminee.");
+        
         System.out.println("Quelles decisions majeures pour " + this.townName + " alez vous prendre maintenant ?");
         
         
