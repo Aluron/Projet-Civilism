@@ -20,8 +20,10 @@ public class House extends Building{
     
     ArrayList habitant = new ArrayList();
 
-    public House(Adress adress, String name) {
-        super(adress, name);
+    public House(Adress adress) {
+        super(adress);
+        name = "house".concat(House.house_number.toString());
+        this.name = name;
     }
  
     

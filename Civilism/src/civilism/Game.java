@@ -297,9 +297,7 @@ public class Game {
         name= keyboard.nextLine();
         Factory factory = new Factory (0,null,Adress.RUE_PIERRE_DUPONT,name);
         
-        System.out.println("Quelle est le nom de votre Maison ?");
-        name= keyboard.nextLine();
-        House house = new House (Adress.RUE_DE_LA_PAIX,name);
+        House house = new House (Adress.RUE_DE_LA_PAIX);
         
         Adult mickael = new Adult(Name.MAXIME, Surname.DUPOND, house);      
         this.inhabitants.add(mickael);
@@ -343,7 +341,7 @@ public class Game {
     public void infos(){
         System.out.println("Dans " + this.townName +" vous avez " + this.cash +" € " );
         System.out.println("");
-        System.out.println("Vous avez "+ this.inhabitants.size() +" dans votre ville");
+        System.out.println("Vous avez "+ this.inhabitants.size() + " habitants dans votre ville");
     }
     
     public void desc(){
@@ -357,4 +355,7 @@ public class Game {
         }
     }
     
+    public void addHouse(Adress adress){
+        
+    }
 }

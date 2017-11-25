@@ -20,6 +20,10 @@ public class Building {
         this.adress = adress;
         this.name = name;
     }
+    
+    public Building(Adress adress){
+        this.adress = adress;
+    }
 
 //////////////////////////////////////////////////////////////  
     /**
