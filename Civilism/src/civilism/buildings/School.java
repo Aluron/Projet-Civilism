@@ -23,6 +23,8 @@ public class School extends Building implements Improvement{
     ArrayList scientist = new ArrayList();
     protected static Integer number_school = 1;  //Si nouvel object créé, implémenter la variable
 
+    
+    
     public School(Professor directeur, Adress adress, String name) {
         super(adress, name);
         this.teacher = 0;
@@ -50,7 +52,7 @@ public class School extends Building implements Improvement{
       public void infos() {
         int i=1;
         // A remplacer apres pour lenght de la liste
-        System.out.println("Le nombre de professeurs dans" + this.name + "est de " + School.teacher_number);
+        System.out.println("Le nombre de professeurs dans " + this.name + "est de " + School.teacher_number);
           System.out.println("Le nombre de travailleur dans cette école est de " + this.teacher);
         if (this.directeur== null ){
             System.out.println("Il n'y à pas de directeur dans votre école ");
@@ -97,11 +99,12 @@ public class School extends Building implements Improvement{
     
     //COMMENT ON CREE UN NOUVELLE OBJECT SCHOOL?
     @Override
-    public void create_building() {
+    public void create_building(Vector bulding) {
         System.out.println("Quelle est le nom de votre nouvelle école?");
         String keywords = Game.keyboard.nextLine();
         School school = new School(null,Adress.AVENUE_DE_L_ISEN,keywords);
         System.out.println("Vous avez créer une école");
+        bulding.add(school);
     }
     
     
@@ -130,6 +133,7 @@ public class School extends Building implements Improvement{
             }
         }
     }
+
    
 }
 ///////////////////////////////////////////////////////////

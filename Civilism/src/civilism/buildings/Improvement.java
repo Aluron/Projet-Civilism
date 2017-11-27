@@ -5,6 +5,9 @@
  */
 package civilism.buildings;
 
+import civilism.Game;
+import java.util.Vector;
+
 /**
  *
  * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
@@ -39,7 +42,9 @@ public interface Improvement {
  
  /**
   * Créer le nouveau batiment
+     * @param bulding
   */
- public void create_building();    
+ public void create_building(Vector bulding);    
+ 
  }
 

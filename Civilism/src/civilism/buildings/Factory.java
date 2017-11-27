@@ -114,11 +114,13 @@ public class Factory extends Building implements Improvement{
     }
 
     @Override
-    public void create_building() {
+    public void create_building(Vector bulding) {
         System.out.println("Quel est le nom de votre nouvelle usine?");
         String keywords = Game.keyboard.nextLine();
         Factory factory = new Factory(null,Adress.RUE_DE_LA_PAIX,keywords);
         System.out.println("Vous venez de créer une usine");
+        bulding.add(factory);
+        
     }
     
     public static void addWorker(Vector<Factory> factories, Worker worker){

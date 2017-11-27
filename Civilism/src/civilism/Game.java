@@ -178,14 +178,25 @@ public class Game {
                     case "infos":
                         switch (action[1]){
                             case "school": 
+                                for(int i = 0; i <schools.size() ; i++){
+                                    this.schools.elementAt(i).infos();
+                                }
                                 return false;
                             case "factory":
+                                for(int i = 0; i < factories.size(); i++){
+                                    this.factories.elementAt(i).infos();
+                                }
                                 return false;
                             case "office":
+                                office.infos();
                                 return false;
                             case "house":
+                                for(int i = 0; i <houses.size(); i++){
+                                    this.houses.elementAt(i).infos();
+                                }
                                 return false;
                             case "city":
+                                this.infos();
                                 return false;
                             // Ajouter tous les cas voulus
                             default: infos();
@@ -463,7 +474,7 @@ public class Game {
             switch (keywords){
                 case "house":
                     if (this.houses.elementAt(0).checkBuilding(recherche,cash)){
-                        this.houses.elementAt(0).create_building();
+                        this.houses.elementAt(0).create_building(houses);
                         cash = cash - Constantes.IMPROVE_HOUSE;
                         System.out.println("Vos comptes en banque maintenant est de :" + cash);
                     }
@@ -471,13 +482,13 @@ public class Game {
                 break;
                 case "school":
                     if (this.schools.elementAt(0).checkBuilding(recherche,cash)){
-                        this.schools.elementAt(0).create_building();
+                        this.schools.elementAt(0).create_building(schools);
                         update_values();
                     }
                 break;
                 case "factory":
                     if(this.factories.elementAt(0).checkBuilding(recherche,cash)){
-                        this.factories.elementAt(0).create_building();
+                        this.factories.elementAt(0).create_building(factories);
                         update_values();
                     }
                 break;
@@ -488,6 +499,9 @@ public class Game {
             }       
         }
     }
+    /**
+     * Update search and cash values after buying some buldings
+     */
     public void update_values(){
         recherche =  recherche - Constantes.IMPROVE_SKILL;
         System.out.println("Vos points de recherches sont maintenant de : " + recherche);
