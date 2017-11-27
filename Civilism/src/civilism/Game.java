@@ -10,7 +10,6 @@ import civilism.buildings.*;
 import civilism.exceptions.*;
 import java.util.Vector;
 import java.util.Date;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -19,11 +18,11 @@ import java.util.Scanner;
  */
 public class Game {
 
-    protected String townName;
-/**
+    /**
      * Name of the town (and by extension the name of the Game)
      */
-        /**
+    protected String townName;
+    /**
      * Creation Date of the Game instance.
      */
     public Date creationDate; 
@@ -32,30 +31,48 @@ public class Game {
      * Ammount of Cash the player has.
      */
     protected Integer cash;
+    /**
+     * Research points number the player has.
+     */
     protected Integer recherche;
     /**
      * Index of the Turn being played.
      */
     protected Integer turnNumber;
     /**
-     * List of all the inhabitants in the city.
+     * List of all the inhabitants(adults) in the city.
      */
     protected Vector<Human> inhabitants = new Vector();
+    /**
+     * List of all the children in the city.
+     */
     protected Vector<Child> children = new Vector();
     
     /**
      * List of all the buildings in the city.
      */
     protected Vector<Building> buildings = new Vector();
-    private Vector<House> houses = new Vector();
-    private Vector<School> schools = new Vector();
-    private Vector<Factory> factories = new Vector();
-    private Office office;
+    /**
+     * List of all the houses in the city.
+     */
+    protected Vector<House> houses = new Vector();
+    /**
+     * List of all the schools in the city.
+     */
+    public Vector<School> schools = new Vector();
+    /**
+     * List of all the schools in the city.
+     */
+    public Vector<Factory> factories = new Vector();
+    /**
+     * Instance of the only office in the city.
+     */
+    protected Office office;
+    
     /**
      * Tool for the input (keyboard).
      */
     public static final Scanner keyboard = new Scanner(System.in);
-    
     /**
      * Command entered by the player.s
      */
@@ -63,17 +80,16 @@ public class Game {
     /**
      * Keywords entered by the player.
      */
-
     private String keywords;
 
     /**
      * Constructor.
      * Beginning of the Game (Description, Introduction, Creation...)
      */
-   public Game() {
-       
-        // CODE DE CREATION DE PARTIE A FAIRE !!
+    public Game() {
         turnNumber = 1;
+        
+        System.console();
 
         /**
          * Introduction
@@ -119,7 +135,7 @@ public class Game {
         System.out.println("");
 
         /**
-         * Initialization of the Game
+         * Initialization of the Game ecosystem
          */
         cash = Constantes.BEGIN_MONEY;
         recherche =Constantes.BEGIN_SEARCH;
@@ -132,20 +148,13 @@ public class Game {
      * @return 
      */
     protected boolean observation(){
-        // CODE DES COMMANDES
-
         if (turnNumber == 1){
             // Code de l'explication de la phase d'observation
-            // DEPLACE A UNE FONCTION A PART POUR EVITER QUE CA BOUCLE APRES CHAQUE COMMANDE
         }
-        // ATTENTION BOUCLE
         
-        // PROBLEME NE SORT JAMAIS DU IF SI VOUS AVEZ DEJA FAIT LA SEMAINE
-
-//        String word;
         keywords = keyboard.nextLine();
         
-        if (!"".equals(keywords))  { // EVITE LES BUGS DE BOUCLE
+        if (!"".equals(keywords)){
             String concat = keywords.concat(" #");
             action = analyse(concat);
             try{
@@ -154,28 +163,19 @@ public class Game {
             
             while(!"finish".equals(keywords)){
                 switch (action[0]){
-                    case "help":        // help on a command
-//                        System.out.println("Dans help, il y a 3 commandes qui vous donneront des informations sur ce que fait chacun des commandes utile dans la phase d'observation");
-//                        System.out.println("infos ,desc et finish");
-//                        System.out.println("");
-//                        word = keyboard.nextLine();
-                            switch (action[1]){
-                                case "infos": this.helpInfos();
-                                    return false;
-                                case "desc": this.helpDesc();
-                                    return false;
-                                case "finish": this.helpFinish();
-                                    return false;
-                            
-                                // Ajouter tous les cas !!!
-                                default: listOfCommands();
-                                    return false;
+                    case "help":
+                        switch (action[1]){
+                            case "infos": this.helpInfos();
+                                return false;
+                            case "desc": this.helpDesc();
+                                return false;
+                            case "finish": this.helpFinish();
+                                return false;
+                            // Ajouter tous les cas voulus
+                            default: listOfCommands();
+                                return false;
                         }      
-                    case "infos":       // infos on an element
-//                        System.out.println("Dans infos, il y à les détails de chacun de vos batiments");
-//                        System.out.println("taper : school, factory, office, house, city pour les connaitre");
-//                        System.out.println("");
-//                        word = keyboard.nextLine();
+                    case "infos":
                         switch (action[1]){
                             case "school": 
                                 return false;
@@ -187,16 +187,12 @@ public class Game {
                                 return false;
                             case "city":
                                 return false;
-                            // Ajouter tous les cas !!!
+                            // Ajouter tous les cas voulus
                             default: infos();
                                 return false;    
        
                         }
-                    case "desc":     // description of the role of an element
-//                        System.out.println("Dans desc, il y à les détails des informations globales sue votre jeu");
-//                        System.out.println("taper : child, adult, professor, worker, scientist, police, school, factory, office , house pour les connaitre");
-//                        System.out.println("");
-//                        word = keyboard.nextLine();
+                    case "desc":
                         switch (action[1]){
                             case "child": 
                                 Child.description();
@@ -228,14 +224,13 @@ public class Game {
                             case "house":  
                                 House.description();
                                 return false;
-                            // Ajouter tous les cas !!!
+                            // Ajouter tous les cas voulues
                             default: desc();
                                 return false;    
                         }
                     case "finish":
                         System.out.println("--- Fin de la phase d'observation ---");
-                        return true;     // End of the phase,
-                        
+                        return true;
                     default: return false;
                     }
                 }
@@ -250,18 +245,19 @@ public class Game {
      * @return 
      */
     protected boolean decision(){
-        //CODE D'EXECUTION
-        System.out.println("ton return a marche");
         if (turnNumber == 1){
             // Code de l'explication de la phase de décision
         }
         
         System.out.println("La phase d'observation est dorenavant terminee.");
-        
         System.out.println("Quelles decisions majeures pour " + this.townName + " allez vous prendre maintenant ?");
         
         characterGestion();
         shop();
+        this.cash = this.cash - Building.entretien(this);
+        
+        System.out.println("A la fin du tour, vous avez : " + this.cash + "€ et un total de " + this.recherche + " points de recherche.");
+        System.out.println("Le tour " + this.turnNumber + " est maintenant terminé. Passons au tour suivant !");
         
         return true;
     }
@@ -291,9 +287,11 @@ public class Game {
     
     /**
      * Initialises the first objects to be created
+     *      creates 1 school, 1 office, 1 factory & 1 house
+     *              1 professor, 2 workers, 1 child
      */
     private void initialisation(){
-
+        
         System.out.println("Vous pouvez maintenant choisir les noms de vos premiers bâtiments. Si vous voulez garder les noms par défaut, appuyez sur Entrée.");
         
         System.out.println("Quelle est le nom de votre école?");
@@ -330,6 +328,9 @@ public class Game {
 
     }
 
+    /**
+     * Get help on 'infos' command
+     */
     public void helpInfos(){
         System.out.println("La commande 'infos' permet de connaître le statut de chaque élément du jeu");
         System.out.println("'info' seul vous donne le statut actuel de votre ville (argent et habitants)");
@@ -338,6 +339,9 @@ public class Game {
         
     }
     
+    /**
+     * Get help on 'desc' command
+     */
     public void helpDesc(){
         System.out.println("La commande 'desc' permet d'accéder aux détails des informations globales sue votre jeu");
         System.out.println("Vous y trouverez les informations concernant chaques metiers ou chaques batiments, mais aussi "
@@ -346,30 +350,50 @@ public class Game {
         
     }
     
+    /**
+     * Get help on 'finish' command
+     */
     public void helpFinish(){
         System.out.println("Si vous entrez 'finish' dans la barre de jeu, alors votre tour d'observation et d'analyse sera terminé");
         System.out.println("Vous passerez donc à la phase décisionnel du jeu");
         System.out.println("");
     }
     
+    /**
+     * Get help on the observation phase
+     */
     public void helpObservation(){
         Game.listOfCommands();
     }
     
+    /**
+     * Get help on the decision phase
+     */
     public void helpDecision(){
         
     }
     
+    /**
+     * Prints the infos of the game
+     */
     public void infos(){
         System.out.println("Dans " + this.townName +" vous avez " + this.cash +" € " );
         System.out.println("");
         System.out.println("Vous avez "+ this.inhabitants.size() + " habitants dans votre ville");
     }
     
+    /**
+     * Prints the description of the game
+     */
     public void desc(){
         System.out.println("Civilism est un jeu issu d'un projet scolaire ISEN, réalisé par Quentin KAMENDA & Benoît PEPIN");
     }
     
+    /**
+     * Quits the game instantly
+     * @param input
+     * @throws QuitException 
+     */
     public void fastQuit(String input)
             throws QuitException{
         if ("quit".equals(input)){
@@ -377,14 +401,24 @@ public class Game {
         }
     }
     
+    /**
+     * Regroups the gestion of all characters (affectation of children)
+     */
     protected void characterGestion(){
         for (Child child : children) {
-            if (child.ambition==null){
+            if (child.getAmbition()==null){
                 this.affectation(child);
+            }
+            if (child.getAmbition()==child.getEducation()){
+                // Code de fin d'études !
             }
         }
     }
     
+    /**
+     * Affects each child to an education process
+     * @param child 
+     */
     protected void affectation(Child child){
         System.out.println(child.name + " " + child.surname + " a besoin d'éducation. Vers quelle filière voulez-vous qu'il se dirige ? ('worker', 'police', 'professor', 'scientist')");
         System.out.println("Filières possibles: worker [1 tour]; police  [3 tours]; professor [5 tours]; scientist [5 tours]");
@@ -395,56 +429,78 @@ public class Game {
         } catch (QuitException e) {}
         switch(action[0]){
             case "worker": 
-                Worker worker = new Worker(this.factories.elementAt(this.factories.size()), Job.WORKER, child.name, child.surname, child.home);
-                child = null;
+                Factory.addWorker(factories, new Worker(this.factories.elementAt(this.factories.size()-1), Job.WORKER, child.name, child.surname, child.home));
+                child.setAmbition(Constantes.OUVRIER);
                 break;
             case "police":
-                Police police = new Police(this.office, Rank.AGENT, child.name, child.surname, child.home);
-                child = null;
+                this.office.policemen.add(new Police(this.office, Rank.AGENT, child.name, child.surname, child.home));
+                child.setAmbition(Constantes.POLICIER);
                 break;
             case "professor":
-                Professor prof = new Professor(this.schools.elementAt(this.schools.size()), Title.ENSEIGNANT, true, child.name, child.surname, child.home);
-                child = null;
+                School.addProfessor(schools, new Professor(this.schools.elementAt(this.schools.size()-1), Title.ENSEIGNANT, true, child.name, child.surname, child.home));
+                child.setAmbition(Constantes.PROFESSEUR);
                 break;
             case "scientist":
-                Scientist scientist = new Scientist(Title.ENSEIGNANT, Domain.PHARMACOLOGY, child.name, child.surname, child.home);
-                child = null;
+                School.addScientist(schools, new Scientist(Title.ENSEIGNANT, Domain.PHARMACOLOGY, child.name, child.surname, child.home));
+                child.setAmbition(Constantes.CHERCHEUR);
                 break;
             default: 
-                affectation(child);
+                characterGestion();
                 break;
         }
     }
     
+    /**
+     * Method to buy new buildings
+     */
     public void shop(){
-        System.out.println("Nous allons maintenant passer Ã  la gestion de vos batiments");
+        System.out.println("Nous allons maintenant passer a la gestion de vos batiments");
         keywords = "";
         while (!"finish".equals(keywords)){
-            System.out.println("Veulliez Ã©crire dans la console l'amÃ©lioration souhaitÃ©, si vous ne voulez rien amÃ©liorer ecrivez finish");
-            System.out.println("Les amÃ©liorations disponibles sont : house, school, factory");
+            System.out.println("Veulliez ecrire dans la console l'amelioration souhaitee, si vous ne voulez rien ameliorer ecrivez 'finish'");
+            System.out.println("Les ameliorations disponibles sont : house, school, factory");
             keywords= keyboard.nextLine();
             switch (keywords){
                 case "house":
                     if (this.houses.elementAt(0).checkBuilding(recherche,cash)){
                         this.houses.elementAt(0).create_building();
+                        cash = cash - Constantes.IMPROVE_HOUSE;
+                        System.out.println("Vos comptes en banque maintenant est de :" + cash);
                     }
                     
                 break;
                 case "school":
                     if (this.schools.elementAt(0).checkBuilding(recherche,cash)){
                         this.schools.elementAt(0).create_building();
+                        update_values();
                     }
                 break;
                 case "factory":
                     if(this.factories.elementAt(0).checkBuilding(recherche,cash)){
                         this.factories.elementAt(0).create_building();
+                        update_values();
                     }
                 break;
                 case "finish": 
-                    System.out.println("Vous sortez de l'amÃ©lioration");
+                    System.out.println("Vous sortez de la phase d'amelioration");
                     
                 default : 
             }       
         }
+    }
+    public void update_values(){
+        recherche =  recherche - Constantes.IMPROVE_SKILL;
+        System.out.println("Vos points de recherches sont maintenant de : " + recherche);
+        cash = cash - Constantes.IMPROVE_MONEY;
+        System.out.println("Votre compte en banque est maintenant de : " + cash);
+    }
+    
+    /**
+     * Ends the game.
+     */
+    public static void gameOver(){
+        System.out.println("--- GAME OVER ---");
+        System.out.println("Vous allez manquer a " + Constantes.NARRATOR + "... Relancez une partie pour retrouver votre conseiller favori.");
+        System.exit(0);
     }
 }

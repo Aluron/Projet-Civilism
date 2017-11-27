@@ -28,7 +28,73 @@ public class Child extends Human{
     /**
      * The number of years the child aims to stay in the education system.
      */
-    public Integer ambition;
+    protected Integer ambition;
+
+    public Integer getEducation() {
+        return education;
+    }
+
+    public void setEducation(Integer education) {
+        this.education = education;
+    }
+
+    public Degree getDegree() {
+        return degree;
+    }
+
+    public void setDegree(Degree degree) {
+        this.degree = degree;
+    }
+
+    public Integer getAmbition() {
+        return ambition;
+    }
+
+    public void setAmbition(Integer ambition) {
+        this.ambition = ambition;
+    }
+
+    public Boolean getIsAlive() {
+        return isAlive;
+    }
+
+    public void setIsAlive(Boolean isAlive) {
+        this.isAlive = isAlive;
+    }
+
+    public Name getName() {
+        return name;
+    }
+
+    public void setName(Name name) {
+        this.name = name;
+    }
+
+    public Surname getSurname() {
+        return surname;
+    }
+
+    public void setSurname(Surname surname) {
+        this.surname = surname;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public House getHome() {
+        return home;
+    }
+
+    public void setHome(House home) {
+        this.home = home;
+    }
+    
+    
 
     public Child(Integer education, Degree degree, Name name, Surname surname, House home) {
         super(name, surname, home);

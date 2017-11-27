@@ -5,7 +5,7 @@
  */
 package civilism.buildings;
 
-import civilism.Constantes;
+import civilism.*;
 
 /**
  *
@@ -43,12 +43,13 @@ public class Building {
     
   /**
    * entretien permet de recuperer le cout de l'entretien total des batiments
+     * @param game the current game
    * @return Integer
    */
-  public static Integer entretien (){
-      Integer maintenance = Constantes.MAINTENANCE_FACTORY * Factory.number_factory
-              + Constantes.MAINTENANCE_OFFICE * 1
-              + Constantes.MAINTENANCE_SCHOOL * School.number_school;
+  public static Integer entretien (Game game){
+      Integer maintenance = Constantes.MAINTENANCE_FACTORY * game.factories.size()
+              + Constantes.MAINTENANCE_OFFICE
+              + Constantes.MAINTENANCE_SCHOOL * game.schools.size();
       return maintenance;
   } 
   /////////////////////////////////////////////////////////

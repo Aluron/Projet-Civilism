@@ -58,7 +58,8 @@ public class House extends Building implements Improvement{
     
     @Override
     public void create_building(){
-        House house2 = new House(Adress.RUE_DE_LA_PAIX);
+        House house = new House(Adress.RUE_DE_LA_PAIX);
+        System.out.println("Vous venez de créer une maison");
     }
 
     @Override

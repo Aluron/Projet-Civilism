@@ -5,9 +5,8 @@
  */
 package civilism.buildings;
 
-import civilism.Constantes;
-import civilism.Game;
-import civilism.characters.Professor;
+import civilism.*;
+import civilism.characters.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -21,6 +20,7 @@ public class School extends Building implements Improvement{
     protected Professor directeur;
     ArrayList eleve = new ArrayList();
     ArrayList prof = new ArrayList();
+    ArrayList scientist = new ArrayList();
     protected static Integer number_school = 1;  //Si nouvel object créé, implémenter la variable
 
     public School(Professor directeur, Adress adress, String name) {
@@ -50,15 +50,16 @@ public class School extends Building implements Improvement{
       public void infos() {
         int i=1;
         // A remplacer apres pour lenght de la liste
-        System.out.println("Le nombre de travalleur dans vos école est de " + School.teacher_number);
+        System.out.println("Le nombre de professeurs dans" + this.name + "est de " + School.teacher_number);
           System.out.println("Le nombre de travailleur dans cette école est de " + this.teacher);
         if (this.directeur== null ){
             System.out.println("Il n'y à pas de directeur dans votre école ");
         }
         System.out.println("Il existe un directeur dans votre école et c'est " + this.directeur );
         System.out.println("Il y a un entretien pour votre école et il s'élève à : "+ Constantes.MAINTENANCE_SCHOOL);  
-  
     }
+      
+      
     /**
      * description permet de connaitre des informations de l'utilité d'un Factory
      */
@@ -100,10 +101,24 @@ public class School extends Building implements Improvement{
         System.out.println("Quelle est le nom de votre nouvelle école?");
         String keywords = Game.keyboard.nextLine();
         School school = new School(null,Adress.AVENUE_DE_L_ISEN,keywords);
+        System.out.println("Vous avez créer une école");
     }
     
     
     public static void addProfessor(Vector<School> schools, Professor prof){
+        int i = 0;
+        while (i < schools.size()){
+            if(!schools.elementAt(i).is_full()){
+                schools.elementAt(i).prof.add(prof);
+                return;
+            }
+            else {
+                i++;
+            }
+        }
+    }
+    
+    public static void addScientist(Vector<School> schools, Scientist prof){
         int i = 0;
         while (i < schools.size()){
             if(!schools.elementAt(i).is_full()){

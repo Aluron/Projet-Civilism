@@ -38,15 +38,12 @@ public class Civilism {
         //INIT DE ETAT
         etat = "observation";
         while(newGame.turnNumber < Constantes.TURN_LIMIT){
-            
             if ("observation".equals(etat)){
                 boolean observation = newGame.observation();
                 if (true == observation ){
                     etat = "decision";
                 }
-                
             }
-            
             if ("decision".equals(etat)){
                 boolean decision = newGame.decision();
                 if (true == decision){

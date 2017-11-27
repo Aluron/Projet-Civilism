@@ -17,9 +17,21 @@ public class Constantes {
     INCIDENCE D AVOIR UN DIRECTEUR ET UN BOSS ??
     */
     //////////Child.///////////////////////
+    /**
+     * Number of years required to become a worker.
+     */
     public final static Integer OUVRIER=1;
+    /**
+     * Number of years required to become a policeman.
+     */
     public final static Integer POLICIER=3;
+    /**
+     * Number of years required to become a professor.
+     */
     public final static Integer PROFESSEUR=5;
+    /**
+     * Number of years required to become a scientist.
+     */
     public final static Integer CHERCHEUR=5;
     
  

@@ -7,6 +7,7 @@ package civilism.buildings;
 
 import civilism.Constantes;
 import civilism.characters.Police;
+import java.util.ArrayList;
 
 /**
  *
@@ -16,6 +17,8 @@ public class Office extends Building {
     
     protected static Integer policeman_number = 0;  // Il existe qu'un object commissariat mais il peut s'ameliorer
     protected Police commissaire ;
+    
+    public ArrayList<Police> policemen = new ArrayList();
 
     public Office(Police commissaire, Adress adress, String name) {
         super(adress, name);
@@ -45,7 +48,7 @@ public class Office extends Building {
             System.out.println("Les policers permettent de faire régner l'ordre dans la ville");
             System.out.println("Pas assez de policiers et trop de mécontentement de la population peut-être un danger pour votre ville.");
     }
-    
+
     //////Qu'es que c'était?///////
     public void rapport (){
         

@@ -7,8 +7,10 @@ package civilism.buildings;
 
 import civilism.Constantes;
 import civilism.Game;
+import civilism.characters.Professor;
 import civilism.characters.Worker;
 import java.util.ArrayList;
+import java.util.Vector;
 
 
 /**
@@ -116,7 +118,22 @@ public class Factory extends Building implements Improvement{
         System.out.println("Quel est le nom de votre nouvelle usine?");
         String keywords = Game.keyboard.nextLine();
         Factory factory = new Factory(null,Adress.RUE_DE_LA_PAIX,keywords);
+        System.out.println("Vous venez de créer une usine");
     }
+    
+    public static void addWorker(Vector<Factory> factories, Worker worker){
+        int i = 0;
+        while (i < factories.size()){
+            if(!factories.elementAt(i).is_full()){
+                factories.elementAt(i).worker.add(worker);
+                return;
+            }
+            else {
+                i++;
+            }
+        }
+    }
+    
 }
 
     // PERMET LA CREATION D UN DICO VOIR AVEC MOREL --> MAP
