@@ -3,9 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.buildings;
 
+import civilism.Constantes;
+import civilism.Game;
+import civilism.characters.Professor;
 import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  *
@@ -19,9 +23,9 @@ public class School extends Building implements Improvement{
     ArrayList prof = new ArrayList();
     protected static Integer number_school = 1;  //Si nouvel object créé, implémenter la variable
 
-    public School(Integer teacher, Professor directeur, Adress adress, String name) {
+    public School(Professor directeur, Adress adress, String name) {
         super(adress, name);
-        this.teacher = teacher;
+        this.teacher = 0;
         this.directeur = directeur;
     }
     
@@ -35,7 +39,7 @@ public class School extends Building implements Improvement{
      * @return boolean
      */
     public boolean is_full(){
-        if (School.teacher_number >=Constantes.SCHOOL_FULL){
+        if (this.teacher >= Constantes.SCHOOL_FULL){
             return (true);
         }
         return (false);
@@ -93,7 +97,23 @@ public class School extends Building implements Improvement{
     //COMMENT ON CREE UN NOUVELLE OBJECT SCHOOL?
     @Override
     public void create_building() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Quelle est le nom de votre nouvelle école?");
+        String keywords = Game.keyboard.nextLine();
+        School school = new School(null,Adress.AVENUE_DE_L_ISEN,keywords);
+    }
+    
+    
+    public static void addProfessor(Vector<School> schools, Professor prof){
+        int i = 0;
+        while (i < schools.size()){
+            if(!schools.elementAt(i).is_full()){
+                schools.elementAt(i).prof.add(prof);
+                return;
+            }
+            else {
+                i++;
+            }
+        }
     }
    
 }

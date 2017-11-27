@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.characters;
 
 /**
- * This Enum contains available Research domains.
+ * This Enum contains several Degree available for the Child.
  * @author qkame
  */
-public enum Domain {
+public enum Degree {
     
-    PHARMACOLOGY, HISTORY, GEOGRAPHY, THEOLOGY, PHILOSOPHY, PSYCHOLOGY, LANGUAGES, MATHEMATICS, PHYSICS;
+    ELEMENTARY, MIDSCHOOL, HIGHSCHOOL, COLLEGE, UNIVERSITY;
     
 }

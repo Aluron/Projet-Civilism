@@ -17,26 +17,26 @@ public class Constantes {
     INCIDENCE D AVOIR UN DIRECTEUR ET UN BOSS ??
     */
     //////////Child.///////////////////////
-    protected final static Integer OUVRIER=1;
-    protected final static Integer POLICIER=3;
-    protected final static Integer PROFESSEUR=5;
-    protected final static Integer CHERCHEUR=5;
+    public final static Integer OUVRIER=1;
+    public final static Integer POLICIER=3;
+    public final static Integer PROFESSEUR=5;
+    public final static Integer CHERCHEUR=5;
     
  
     //////////School///////////
     /**
      * Capacity (max of Students) of a School.
      */
-    protected final static Integer SCHOOL_FULL=5;
+    public final static Integer SCHOOL_FULL=5;
     ////////////////////////////////////////
-    ////protected final static Integer MIDDLE_SCHOOL_FULL=10;
-    ////protected final static Integer BIG_SCHOOL_FULL=15;
+    ////public final static Integer MIDDLE_SCHOOL_FULL=10;
+    ////public final static Integer BIG_SCHOOL_FULL=15;
     ///////////////////////////////////////////////////
     
     /**
      * Number of cash for maintenance about School
      */
-    protected final static Integer MAINTENANCE_SCHOOL = 300 ; 
+    public final static Integer MAINTENANCE_SCHOOL = 300 ; 
     
     
     //////////Game///////////////
@@ -44,24 +44,28 @@ public class Constantes {
     /**
      * Number of inhabitants at the benning of the Game.
      */
-    protected final static Integer BEGIN_HUMAN = 4;
+    public final static Integer BEGIN_HUMAN = 4;
     /**
      * Number of buildings at the beggining of the Game
      */
-    protected final static Integer BEGIN_BUILDING = 4;
+    public final static Integer BEGIN_BUILDING = 4;
     /**
      * Cash available at the beginning of the Game.
      */
-    protected final static Integer BEGIN_MONEY = 10000;
+    public final static Integer BEGIN_MONEY = 10000;
+    /**
+     * Default search at the beginning of the game
+     */
+    public final static Integer BEGIN_SEARCH = 0;
     
     /**
      * Default name of the city
      */
-    protected String NOM_DE_VILLE;    
+    public String NOM_DE_VILLE;    
     /**
      * Limit of turns. Past this limit, the Game is over
      */
-    protected final static Integer TURN_LIMIT = 50;
+    public final static Integer TURN_LIMIT = 50;
     /**
      * Name of the Narrator/Advisor
      */
@@ -72,15 +76,15 @@ public class Constantes {
     /**
      * Capacity (max of Workers) of a Factory.
      */
-    protected final static Integer COMPAGNY_FULL = 5; 
+    public final static Integer COMPAGNY_FULL = 5; 
     /**
      * Number of cash win about worker
      */
-    protected final static Integer WORKER_MONEY = 100 ;
+    public final static Integer WORKER_MONEY = 100 ;
     /**
      * Number of cash for maintenance about Factory
      */
-    protected final static Integer MAINTENANCE_FACTORY = 300 ;
+    public final static Integer MAINTENANCE_FACTORY = 300 ;
     
     ////////////Police_station//////////////////
     
@@ -89,26 +93,26 @@ public class Constantes {
     /**
      * Capacity (max of inhabitants) of a House.
      */
-    protected final static Integer HOUSE_FULL = 5; 
+    public final static Integer HOUSE_FULL = 5; 
     
         ////////////Police_station//////////////////
-    protected final static Integer MAINTENANCE_OFFICE = 300 ; // SUPPOSER CONSTANTE
+    public final static Integer MAINTENANCE_OFFICE = 300 ; // SUPPOSER CONSTANTE
     
     /////////////BUILDING///////////////////////
     
-    protected final static Integer RATE_BURN =90;
+    public final static Integer RATE_BURN =90;
     /////////////////////////////////////////////
-    ///////////protected final static Integer MOYEN_COMPANY =300;
-    ///////////protected final static Integer GRAND_COMPANY =500;
+    ///////////public final static Integer MOYEN_COMPANY =300;
+    ///////////public final static Integer GRAND_COMPANY =500;
     ///////////////////////////////////////////:
    
     
     
     
     ////////////Improvement////////////////////
-    protected final static Integer IMPROVE_MONEY = 500;
-    protected final static Integer IMPROVE_SKILL = 10;
-    protected final static Integer IMPROVE_HOUSE = 400;
+    public final static Integer IMPROVE_MONEY = 500;
+    public final static Integer IMPROVE_SKILL = 10;
+    public final static Integer IMPROVE_HOUSE = 400;
     
     
     

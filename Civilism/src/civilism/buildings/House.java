@@ -3,9 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.buildings;
 
-
+import civilism.*;
+import civilism.characters.*;
+import civilism.buildings.*;
+import civilism.exceptions.*;
 import java.util.ArrayList;
 
 /**

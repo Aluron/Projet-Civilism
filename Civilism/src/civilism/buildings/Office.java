@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.buildings;
+
+import civilism.Constantes;
+import civilism.characters.Police;
 
 /**
  *
@@ -30,7 +33,7 @@ public class Office extends Building {
             System.out.println("Il n'y à pas encore de commissaire");
         }
         else{
-            System.out.println("Votre commaissaire porte le nom de " + commissaire.name + " " + commissaire.surname);
+            System.out.println("Votre commaissaire porte le nom de " + this.commissaire.name + " " + commissaire.surname);
         } 
         System.out.println("L'entretien du commissariat coûte "  + Constantes.MAINTENANCE_OFFICE );
     }

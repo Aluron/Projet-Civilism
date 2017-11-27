@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.characters;
 
 /**
- * This Enum contains all available Surnames for the characters.
+ * This Enum contains available Research domains.
  * @author qkame
  */
-public enum Surname {
+public enum Domain {
     
-    DUPONT, DUPOND, DIDIER, MORELLE, PEPIN, CORDIER, KAMENDA, JOULIA, DROUARD, TARTEMPION;
+    PHARMACOLOGY, HISTORY, GEOGRAPHY, THEOLOGY, PHILOSOPHY, PSYCHOLOGY, LANGUAGES, MATHEMATICS, PHYSICS;
     
 }

@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.characters;
 
 /**
- * This Enum contains all available Title for the Professors/Scientists.
+ * This Enum contains all available ranks for a Police Officer.
  * @author qkame
  */
-public enum Title {
+public enum Rank {
     
-    MAITRE, PROFESSEUR, DOCTEUR, CHERCHEUR, ENSEIGNANT;
+    AGENT, SPECIAL_AGENT, CHIEF, DIRECTOR;
     
 }

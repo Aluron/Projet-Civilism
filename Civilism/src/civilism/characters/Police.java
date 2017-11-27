@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.characters;
+
+import civilism.buildings.House;
+import civilism.buildings.Office;
 
 /**
  * The Police is virtually here to maintain the Law&Order in the city.

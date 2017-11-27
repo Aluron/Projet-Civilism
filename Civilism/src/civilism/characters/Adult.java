@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.characters;
+
+import civilism.buildings.House;
 
 /**
  * The Adult class is the main Character Class.

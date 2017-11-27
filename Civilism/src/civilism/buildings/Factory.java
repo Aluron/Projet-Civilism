@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.buildings;
 
+import civilism.Constantes;
+import civilism.Game;
+import civilism.characters.Worker;
 import java.util.ArrayList;
 
 
@@ -22,9 +25,9 @@ public class Factory extends Building implements Improvement{
     
     ArrayList worker = new ArrayList();
 
-    public Factory(Integer worker_number, Worker boss, Adress adress, String name) {
+    public Factory(Worker boss, Adress adress, String name) {
         super(adress, name);
-        this.worker_number = worker_number;
+        this.worker_number = 0;
         this.boss = boss;
     }
     
@@ -110,7 +113,9 @@ public class Factory extends Building implements Improvement{
 
     @Override
     public void create_building() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println("Quel est le nom de votre nouvelle usine?");
+        String keywords = Game.keyboard.nextLine();
+        Factory factory = new Factory(null,Adress.RUE_DE_LA_PAIX,keywords);
     }
 }
 

@@ -3,7 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.characters;
+
+import civilism.buildings.House;
+import civilism.buildings.School;
 
 /**
  * A Scientist is virtually here to improve the city, trought the improvement of the buildings.

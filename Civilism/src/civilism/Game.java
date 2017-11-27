@@ -5,6 +5,9 @@
  */
 package civilism;
 
+import civilism.characters.*;
+import civilism.buildings.*;
+import civilism.exceptions.*;
 import java.util.Vector;
 import java.util.Date;
 import java.util.List;
@@ -51,10 +54,10 @@ public class Game {
     /**
      * Tool for the input (keyboard).
      */
-    protected static final Scanner keyboard = new Scanner(System.in);
+    public static final Scanner keyboard = new Scanner(System.in);
     
     /**
-     * Command entered by the player.
+     * Command entered by the player.s
      */
     private String[] action;
     /**
@@ -119,6 +122,7 @@ public class Game {
          * Initialization of the Game
          */
         cash = Constantes.BEGIN_MONEY;
+        recherche =Constantes.BEGIN_SEARCH;
         initialisation();
     }
        
@@ -252,9 +256,9 @@ public class Game {
             // Code de l'explication de la phase de décision
         }
         
-        System.out.println("La phase d'observation et dorenavant terminee.");
+        System.out.println("La phase d'observation est dorenavant terminee.");
         
-        System.out.println("Quelles decisions majeures pour " + this.townName + " alez vous prendre maintenant ?");
+        System.out.println("Quelles decisions majeures pour " + this.townName + " allez vous prendre maintenant ?");
         
         characterGestion();
         shop();
@@ -295,30 +299,33 @@ public class Game {
         System.out.println("Quelle est le nom de votre école?");
         String name;
         name= keyboard.nextLine();
-        School school = new School(null,null,Adress.AVENUE_DE_L_ISEN,name);
+        School school = new School(null,Adress.AVENUE_DE_L_ISEN,name);
         buildings.add(school);
+        schools.add(school);
         
-        System.out.println("Quelle est le nom de votre comissariat?");
+        System.out.println("Quel est le nom de votre comissariat?");
         name= keyboard.nextLine();
         office = new Office(null,Adress.BOULEVARD_DES_REVES_BRISES,name);
-        buildings.add(office);   
+        buildings.add(office);  
         
-        System.out.println("Quelle est le nom de votre Factory");
+        
+        System.out.println("Quel est le nom de votre Factory");
         name= keyboard.nextLine();
-        Factory factory = new Factory (0,null,Adress.RUE_PIERRE_DUPONT,name);
+        Factory factory = new Factory (null,Adress.RUE_PIERRE_DUPONT,name);
         buildings.add(factory);
+        factories.add(factory);
         
         House house = new House (Adress.RUE_DE_LA_PAIX);
+        buildings.add(house);
+        houses.add(house);
         
-        Adult mickael = new Professor(school, Title.ENSEIGNANT, true, Name.MAXIME, Surname.DUPOND, house);      
-        this.inhabitants.add(mickael);
-        Adult benoit = new Worker(factory, Job.WORKER, Name.BENOIT, Surname.PEPIN, house);
-        this.inhabitants.add(benoit);
-        Adult quentin = new Worker(factory, Job.WORKER, Name.QUENTIN, Surname.KAMENDA, house);
-        this.inhabitants.add(quentin);
+        Professor person = new Professor(school, Title.ENSEIGNANT, true, Name.MAXIME, Surname.DUPOND, house);
+        this.inhabitants.add(person);
+        School.addProfessor(this.schools , person);
+        this.inhabitants.add(new Worker(factory, Job.WORKER, Name.BENOIT, Surname.PEPIN, house));
+        this.inhabitants.add(new Worker(factory, Job.WORKER, Name.QUENTIN, Surname.KAMENDA, house));
         
-        Child jean = new Child(Name.JEAN, Surname.JOULIA, house);
-        this.children.add(jean);
+        this.children.add(new Child(Name.JEAN, Surname.JOULIA, house));
         
 
     }
@@ -388,7 +395,7 @@ public class Game {
         } catch (QuitException e) {}
         switch(action[0]){
             case "worker": 
-                Worker worker = new Worker(this.factories.elementAt(0), Job.WORKER, child.name, child.surname, child.home);
+                Worker worker = new Worker(this.factories.elementAt(this.factories.size()), Job.WORKER, child.name, child.surname, child.home);
                 child = null;
                 break;
             case "police":
@@ -396,7 +403,7 @@ public class Game {
                 child = null;
                 break;
             case "professor":
-                Professor prof = new Professor(this.schools.elementAt(0), Title.ENSEIGNANT, true, child.name, child.surname, child.home);
+                Professor prof = new Professor(this.schools.elementAt(this.schools.size()), Title.ENSEIGNANT, true, child.name, child.surname, child.home);
                 child = null;
                 break;
             case "scientist":
@@ -418,18 +425,18 @@ public class Game {
             keywords= keyboard.nextLine();
             switch (keywords){
                 case "house":
-                    if (true==this.houses.elementAt(0).checkBuilding(0, cash)){
+                    if (this.houses.elementAt(0).checkBuilding(recherche,cash)){
                         this.houses.elementAt(0).create_building();
                     }
                     
                 break;
                 case "school":
-                    if (true==this.schools.elementAt(0).checkBuilding(recherche, cash)){
+                    if (this.schools.elementAt(0).checkBuilding(recherche,cash)){
                         this.schools.elementAt(0).create_building();
                     }
                 break;
                 case "factory":
-                    if(true == this.factories.elementAt(0).checkBuilding(recherche, cash)){
+                    if(this.factories.elementAt(0).checkBuilding(recherche,cash)){
                         this.factories.elementAt(0).create_building();
                     }
                 break;

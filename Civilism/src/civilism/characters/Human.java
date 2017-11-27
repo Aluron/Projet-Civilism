@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.characters;
+
+import civilism.buildings.House;
 
 /**
  * The Human Class is the class representing every character.
@@ -20,11 +22,11 @@ public abstract class Human{
     /**
      * Name of a character.
      */
-    protected Name name;
+    public Name name;
     /**
      * Surname of a character.
      */
-    protected Surname surname;
+    public Surname surname;
     /**
      * Age of the character (equivalent to his experience).
      */

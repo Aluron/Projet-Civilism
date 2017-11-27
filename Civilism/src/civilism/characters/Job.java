@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.characters;
 
 /**
- * This Enum contains all available ranks for a Police Officer.
+ * This Enum contains all available Jobs.
  * @author qkame
  */
-public enum Rank {
+public enum Job {
     
-    AGENT, SPECIAL_AGENT, CHIEF, DIRECTOR;
+    WORKER, ASSISTANT, CHIEF, BOSS;
     
 }

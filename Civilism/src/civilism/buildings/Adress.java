@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.buildings;
 
 /**
  *
  * @author qkame
  */
-public enum SchoolName {
+public enum Adress {
     
-    SAINT_JEAN, SAINT_PAUL, OZANAM, JULES_FERRY, JEAN_MACE;
+    RUE_PIERRE_DUPONT, AVENUE_DE_L_ISEN, BOULEVARD_DES_REVES_BRISES, RUE_DE_LA_PAIX;
     
 }

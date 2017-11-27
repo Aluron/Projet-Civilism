@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.characters;
 
 /**
- * This Enum contains several Degree available for the Child.
+ * This Enum contains all available Surnames for the characters.
  * @author qkame
  */
-public enum Degree {
+public enum Surname {
     
-    ELEMENTARY, MIDSCHOOL, HIGHSCHOOL, COLLEGE, UNIVERSITY;
+    DUPONT, DUPOND, DIDIER, MORELLE, PEPIN, CORDIER, KAMENDA, JOULIA, DROUARD, TARTEMPION;
     
 }

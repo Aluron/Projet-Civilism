@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.buildings;
 
 /**
- * This Enum contains all available Jobs.
+ *
  * @author qkame
  */
-public enum Job {
+public enum SchoolName {
     
-    WORKER, ASSISTANT, CHIEF, BOSS;
+    SAINT_JEAN, SAINT_PAUL, OZANAM, JULES_FERRY, JEAN_MACE;
     
 }

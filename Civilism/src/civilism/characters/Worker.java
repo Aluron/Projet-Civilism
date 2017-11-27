@@ -3,7 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.characters;
+
+import civilism.Constantes;
+import civilism.buildings.Factory;
+import civilism.buildings.House;
 
 /**
  * The Workers are the characters thet produce for the city. The "create" money.

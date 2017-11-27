@@ -3,7 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.characters;
+
+import civilism.Constantes;
+import civilism.buildings.Factory;
+import civilism.Game;
+import civilism.buildings.House;
 
 /**
  * The child class is the pre-Adult class.
@@ -23,7 +28,7 @@ public class Child extends Human{
     /**
      * The number of years the child aims to stay in the education system.
      */
-    protected Integer ambition;
+    public Integer ambition;
 
     public Child(Integer education, Degree degree, Name name, Surname surname, House home) {
         super(name, surname, home);

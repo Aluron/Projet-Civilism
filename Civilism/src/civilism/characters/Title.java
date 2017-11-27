@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package civilism;
+package civilism.characters;
 
 /**
- *
+ * This Enum contains all available Title for the Professors/Scientists.
  * @author qkame
  */
-public enum Adress {
+public enum Title {
     
-    RUE_PIERRE_DUPONT, AVENUE_DE_L_ISEN, BOULEVARD_DES_REVES_BRISES, RUE_DE_LA_PAIX;
+    MAITRE, PROFESSEUR, DOCTEUR, CHERCHEUR, ENSEIGNANT;
     
 }
