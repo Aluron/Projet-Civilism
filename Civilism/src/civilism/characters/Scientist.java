@@ -38,5 +38,31 @@ public class Scientist extends Adult{
     public void promote(){
         
     }
+
+    public static School getSchool() {
+        return school;
+    }
+
+    public static void setSchool(School school) {
+        Scientist.school = school;
+    }
+
+    public Title getTitle() {
+        return title;
+    }
+
+    public void setTitle(Title title) {
+        this.title = title;
+    }
+
+    public Domain getDomain() {
+        return domain;
+    }
+
+    public void setDomain(Domain domain) {
+        this.domain = domain;
+    }
+    
+    
     
 }

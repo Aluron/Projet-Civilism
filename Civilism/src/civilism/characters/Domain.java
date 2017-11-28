@@ -7,7 +7,7 @@ package civilism.characters;
 
 /**
  * This Enum contains available Research domains.
- * @author qkame
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
  */
 public enum Domain {
     

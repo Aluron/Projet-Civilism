@@ -44,9 +44,24 @@ public class Worker extends Adult{
     public void retire(){
         
     }
-    
-    public void protest(){
-        
+
+    public Factory getFactory() {
+        return factory;
     }
+
+    public void setFactory(Factory factory) {
+        this.factory = factory;
+    }
+
+    public Job getJob() {
+        return job;
+    }
+
+    public void setJob(Job job) {
+        this.job = job;
+    }
+    
+
+    
     
 }

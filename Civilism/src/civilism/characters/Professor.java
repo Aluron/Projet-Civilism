@@ -54,6 +54,48 @@ public class Professor extends Adult{
     public void formerPupil(Adult pupil){
         formerPupils.add(pupil);
     }
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
+    public Title getTitle() {
+        return title;
+    }
+
+    public void setTitle(Title title) {
+        this.title = title;
+    }
+
+    public Boolean getFree() {
+        return free;
+    }
+
+    public void setFree(Boolean free) {
+        this.free = free;
+    }
+
+    public ArrayList<Child> getPupils() {
+        return pupils;
+    }
+
+    public void setPupils(ArrayList<Child> pupils) {
+        this.pupils = pupils;
+    }
+
+    public ArrayList<Adult> getFormerPupils() {
+        return formerPupils;
+    }
+
+    public void setFormerPupils(ArrayList<Adult> formerPupils) {
+        this.formerPupils = formerPupils;
+    }
+    
+    
     
     
 }

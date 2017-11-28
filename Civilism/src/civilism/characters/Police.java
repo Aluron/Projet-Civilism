@@ -45,5 +45,23 @@ public class Police extends Adult{
     public void die(){
         // Si comissaire, on doit promouvoir un nouveau comissaire.
     }
+
+    public Office getOffice() {
+        return office;
+    }
+
+    public void setOffice(Office office) {
+        this.office = office;
+    }
+
+    public Rank getRank() {
+        return rank;
+    }
+
+    public void setRank(Rank rank) {
+        this.rank = rank;
+    }
+    
+    
     
 }

@@ -7,7 +7,7 @@ package civilism.characters;
 
 /**
  * This Enum contains several Degree available for the Child.
- * @author qkame
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
  */
 public enum Degree {
     

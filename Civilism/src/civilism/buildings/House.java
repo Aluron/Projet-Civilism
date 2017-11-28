@@ -10,6 +10,7 @@ import civilism.characters.*;
 import civilism.buildings.*;
 import civilism.exceptions.*;
 import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  * 
@@ -31,7 +32,7 @@ public class House extends Building implements Improvement{
  
     
     public Boolean is_full(){
-        return this.habitant_number >=  Constantes.HOUSE_FULL;
+        return this.habitant.size() >=  Constantes.HOUSE_FULL;
     }
 /**
  * Info permet de connaître le nombre d'habitant de la maison et les personnages 
@@ -70,6 +71,23 @@ public class House extends Building implements Improvement{
         }
         else {
             return true;
+        }
+    }
+    
+    
+    public static void addHabitant(Vector<House> houses, Human human){
+        int i = 0;
+        while (i < houses.size()){
+            if(!houses.elementAt(i).is_full()){
+                houses.elementAt(i).habitant.add(human);
+                return;
+            }
+            else {
+                i++;
+            }
+        }
+        if (i==houses.size()){
+            System.out.println("ATTENTION: Il n'y a actuellement pas de place pour un nouvel habitant dans votre ville.");
         }
     }
  

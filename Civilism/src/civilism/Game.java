@@ -8,13 +8,15 @@ package civilism;
 import civilism.characters.*;
 import civilism.buildings.*;
 import civilism.exceptions.*;
+import java.io.*;
 import java.util.Vector;
 import java.util.Date;
 import java.util.Scanner;
 
 /**
- * This is the clas where everything happens. 
- * @author qkame
+ * This is the clas where everything happens.
+ * It contains every information about the current game.
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
  */
 public class Game {
 
@@ -26,6 +28,15 @@ public class Game {
      * Creation Date of the Game instance.
      */
     public Date creationDate; 
+    
+    /**
+     * FileWriter for the logs (from java.io)
+     */
+    private FileWriter log;
+    /**
+     * BufferedWriter for the logs (from java.io)
+     */
+    private BufferedWriter buffer;
 
     /**
      * Ammount of Cash the player has.
@@ -86,7 +97,7 @@ public class Game {
      * Constructor.
      * Beginning of the Game (Description, Introduction, Creation...)
      */
-    public Game() {
+    public Game() throws IOException {
         turnNumber = 1;
         
         System.console();
@@ -109,8 +120,8 @@ public class Game {
         /**
          * Explication des ressources
          */
-        System.out.println("Pour débuter cette nouvelle aventure en tant que Maire de " + townName + ", plusieurs hommes d'affaires ont déjà investi "
-                + " et de jeunes couples ont d'ores et déjà rejoins les rangs des habitants.");
+        System.out.println("Pour dabuter cette nouvelle aventure en tant que Maire de " + townName + ", plusieurs hommes d'affaires ont déjà investi "
+                + " et de jeunes couples ont d'ores et deja rejoins les rangs des habitants.");
         System.out.println("Ainsi, vous recevez "+ Constantes.BEGIN_MONEY + " € pour le debut de votre partie et " + Constantes.BEGIN_HUMAN + " personnes vivent "
                 + " dans les " + Constantes.BEGIN_BUILDING +" batiments déjà construits,  à savoir :"
                 + "\n - une ecole "
@@ -123,7 +134,7 @@ public class Game {
          */
         System.out.println("\n");
         System.out.println("Un partie de Civilism se joue au tour par tour. Chaque tour de jeu se découpe en deux phases:"
-                + "\n - Une phase d'observation, dans laquelle vous avez acces à toutes les informations concernant votre ville."
+                + "\n - Une phase d'observation, dans laquelle vous avez acces a toutes les informations concernant votre ville."
                 + "\n - Une phase decisionnelle, dans laquelle vous effectuerez des actions concrètes de gestion de votre ville."
                 + "\n");
 
@@ -139,7 +150,16 @@ public class Game {
          */
         cash = Constantes.BEGIN_MONEY;
         recherche =Constantes.BEGIN_SEARCH;
-        initialisation();
+        this.initialisation();
+        
+        /**
+         * Creation of the log file
+         */
+        FileWriter log = new FileWriter(this.townName + "_log.txt");
+        BufferedWriter buffer = new BufferedWriter(log);
+        buffer.write("Partie: " + this.townName + "\n");
+        
+        
     }
        
     /**
@@ -151,6 +171,11 @@ public class Game {
         if (turnNumber == 1){
             // Code de l'explication de la phase d'observation
         }
+        
+        /**
+         * Reminder of the available commands
+         */
+        this.helpObservation();
         
         keywords = keyboard.nextLine();
         
@@ -244,14 +269,19 @@ public class Game {
      * This is the phase when/where the player makes decisions that will impact the game.
      * @return 
      */
-    protected boolean decision(){
+    protected boolean decision() throws IOException{
         if (turnNumber == 1){
             // Code de l'explication de la phase de décision
         }
         
         System.out.println("La phase d'observation est dorenavant terminee.");
+        System.out.println("");
         System.out.println("Quelles decisions majeures pour " + this.townName + " allez vous prendre maintenant ?");
         
+        for (Child child : children){
+            child.setEducation(child.getEducation()+1);
+            // Tous les eleves gagnent en education
+        }    
         characterGestion();
         shop();
         this.cash = this.cash - Building.entretien(this);
@@ -280,7 +310,7 @@ public class Game {
      * @param input (String)
      * @return An Array of detected keywords in the "input" String
      */
-    private String[] analyse(String input){
+    private static String[] analyse(String input){
         return input.split(" ");
     }
 
@@ -292,22 +322,24 @@ public class Game {
      */
     private void initialisation(){
         
-        System.out.println("Vous pouvez maintenant choisir les noms de vos premiers bâtiments. Si vous voulez garder les noms par défaut, appuyez sur Entrée.");
+        System.out.println("Vous disposez au départ , dans " + this.townName +", d'une ecole, d'une usine, d'un commissariat et d'une maison.");
+        System.out.println("Vous pouvez maintenant choisir les noms de vos premiers bâtiments. Si vous souhaitez garder les noms par défaut, appuyez simplement sur Entrée.");
         
-        System.out.println("Quelle est le nom de votre école?");
+        //Creation des batiments
+        System.out.println("Quel nom pour votre école?");
         String name;
         name= keyboard.nextLine();
         School school = new School(null,Adress.AVENUE_DE_L_ISEN,name);
         buildings.add(school);
         schools.add(school);
         
-        System.out.println("Quel est le nom de votre comissariat?");
+        System.out.println("Quel nom pour votre comissariat?");
         name= keyboard.nextLine();
         office = new Office(null,Adress.BOULEVARD_DES_REVES_BRISES,name);
         buildings.add(office);  
         
         
-        System.out.println("Quel est le nom de votre Factory");
+        System.out.println("Quel nom pour votre usine?");
         name= keyboard.nextLine();
         Factory factory = new Factory (null,Adress.RUE_PIERRE_DUPONT,name);
         buildings.add(factory);
@@ -317,11 +349,18 @@ public class Game {
         buildings.add(house);
         houses.add(house);
         
+        // Creation des personnages
         Professor person = new Professor(school, Title.ENSEIGNANT, true, Name.MAXIME, Surname.DUPOND, house);
         this.inhabitants.add(person);
         School.addProfessor(this.schools , person);
-        this.inhabitants.add(new Worker(factory, Job.WORKER, Name.BENOIT, Surname.PEPIN, house));
-        this.inhabitants.add(new Worker(factory, Job.WORKER, Name.QUENTIN, Surname.KAMENDA, house));
+        
+        Worker worker = new Worker(factory, Job.WORKER, Name.BENOIT, Surname.PEPIN, house);
+        this.inhabitants.add(worker);
+        Factory.addWorker(factories, worker);
+        
+        worker = new Worker(factory, Job.WORKER, Name.QUENTIN, Surname.KAMENDA, house);
+        this.inhabitants.add(worker);
+        Factory.addWorker(factories, worker);
         
         this.children.add(new Child(Name.JEAN, Surname.JOULIA, house));
         
@@ -394,7 +433,7 @@ public class Game {
      * @param input
      * @throws QuitException 
      */
-    public void fastQuit(String input)
+    public static void fastQuit(String input)
             throws QuitException{
         if ("quit".equals(input)){
             throw new QuitException();
@@ -402,16 +441,60 @@ public class Game {
     }
     
     /**
+     * Throws an exception if the player has not enough money to continue the game.
+     * @param cash
+     * @throws PoorException 
+     */
+    public static void moneyFail(Integer cash)
+            throws PoorException{
+        if (cash < Constantes.FAIL_MONEY){
+            throw new PoorException();
+        }
+    }
+    
+    /**
+     * Throws an eception if the player has not enough money to buy an item.
+     * @param cash
+     * @param cost
+     * @throws NotEnoughMoneyException 
+     */
+    public void checkMoney(Integer cash, Integer cost)
+            throws NotEnoughMoneyException{
+        if (cash-cost < 0){
+            throw new NotEnoughMoneyException();
+        }
+    }
+    
+    /**
      * Regroups the gestion of all characters (affectation of children)
      */
     protected void characterGestion(){
-        for (Child child : children) {
-            if (child.getAmbition()==null){
-                this.affectation(child);
+        int i = 0;
+        while (i < children.size()) {
+            if (children.elementAt(i).getAmbition()==null){
+                // Code d'affectation de l'eleve à un type d'etudes
+                this.affectation(children.elementAt(i));
             }
-            if (child.getAmbition()==child.getEducation()){
-                // Code de fin d'études !
+            if (children.elementAt(i).getAmbition()==children.elementAt(i).getEducation()-1){
+                // Code de fin d'études
+                switch (children.elementAt(i).getDegree()){
+                    case ELEMENTARY:
+                        Factory.addWorker(factories, new Worker(this.factories.elementAt(this.factories.size()-1), Job.WORKER, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        break;
+                    case HIGHSCHOOL:
+                        this.office.policemen.add(new Police(this.office, Rank.AGENT, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        break;
+                    case COLLEGE:
+                        School.addProfessor(schools, new Professor(this.schools.elementAt(this.schools.size()-1), Title.ENSEIGNANT, true, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        break;
+                    case UNIVERSITY:
+                        School.addScientist(schools, new Scientist(Title.ENSEIGNANT, Domain.PHARMACOLOGY, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        break;
+                    default:
+                }
+                children.addElement(new Child(Name.HUGO, Surname.DIDIER, null));
             }
+            i++;
         }
     }
     
@@ -429,20 +512,20 @@ public class Game {
         } catch (QuitException e) {}
         switch(action[0]){
             case "worker": 
-                Factory.addWorker(factories, new Worker(this.factories.elementAt(this.factories.size()-1), Job.WORKER, child.name, child.surname, child.home));
                 child.setAmbition(Constantes.OUVRIER);
+                child.setDegree(Degree.ELEMENTARY);
                 break;
             case "police":
-                this.office.policemen.add(new Police(this.office, Rank.AGENT, child.name, child.surname, child.home));
                 child.setAmbition(Constantes.POLICIER);
+                child.setDegree(Degree.HIGHSCHOOL);
                 break;
             case "professor":
-                School.addProfessor(schools, new Professor(this.schools.elementAt(this.schools.size()-1), Title.ENSEIGNANT, true, child.name, child.surname, child.home));
                 child.setAmbition(Constantes.PROFESSEUR);
+                child.setDegree(Degree.COLLEGE);
                 break;
             case "scientist":
-                School.addScientist(schools, new Scientist(Title.ENSEIGNANT, Domain.PHARMACOLOGY, child.name, child.surname, child.home));
                 child.setAmbition(Constantes.CHERCHEUR);
+                child.setDegree(Degree.UNIVERSITY);
                 break;
             default: 
                 characterGestion();
@@ -460,6 +543,9 @@ public class Game {
             System.out.println("Veulliez ecrire dans la console l'amelioration souhaitee, si vous ne voulez rien ameliorer ecrivez 'finish'");
             System.out.println("Les ameliorations disponibles sont : house, school, factory");
             keywords= keyboard.nextLine();
+            try{
+                fastQuit(keywords);
+            } catch (QuitException e) {}
             switch (keywords){
                 case "house":
                     if (this.houses.elementAt(0).checkBuilding(recherche,cash)){
@@ -483,11 +569,16 @@ public class Game {
                 break;
                 case "finish": 
                     System.out.println("Vous sortez de la phase d'amelioration");
+                    System.out.println("");
                     
                 default : 
             }       
         }
     }
+    
+    /**
+     * Updates the ressources of the player.
+     */
     public void update_values(){
         recherche =  recherche - Constantes.IMPROVE_SKILL;
         System.out.println("Vos points de recherches sont maintenant de : " + recherche);
@@ -503,4 +594,7 @@ public class Game {
         System.out.println("Vous allez manquer a " + Constantes.NARRATOR + "... Relancez une partie pour retrouver votre conseiller favori.");
         System.exit(0);
     }
+
+    
+    
 }

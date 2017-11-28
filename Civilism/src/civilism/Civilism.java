@@ -5,9 +5,11 @@
  */
 package civilism;
 
+import java.io.*;
+
 /**
  * This is the main Instance, where the Game starts.
- * @author qkame
+ * @authors Quentin KAMENDA & Benoit PEPIN - ISEN 2017
  */
 public class Civilism {
 
@@ -15,7 +17,7 @@ public class Civilism {
     
     protected static String etat;
     
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // TODO code application logic here
         
         /**

@@ -7,7 +7,7 @@ package civilism.characters;
 
 /**
  * This Enum contains every available Names for the characters.
- * @author qkame
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
  */
 public enum Name {
     

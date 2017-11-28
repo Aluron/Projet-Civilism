@@ -7,16 +7,15 @@ package civilism;
 
 /**
  * This Class contains all the Constants of the game. 
- * Possible imprivement: Change these Vars to set the difficulty.
- * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
+ * Possible improvement: Change these Vars to set the difficulty.
+ * @authors Quentin KAMENDA & Benoit PEPIN - ISEN 2017
  */
 public class Constantes {
     
     
-    /*
-    INCIDENCE D AVOIR UN DIRECTEUR ET UN BOSS ??
-    */
+
     //////////Child.///////////////////////
+    
     /**
      * Number of years required to become a worker.
      */
@@ -35,16 +34,17 @@ public class Constantes {
     public final static Integer CHERCHEUR=5;
     
  
+    
     //////////School///////////
+    
     /**
      * Capacity (max of Students) of a School.
      */
     public final static Integer SCHOOL_FULL=5;
-    ////////////////////////////////////////
-    ////public final static Integer MIDDLE_SCHOOL_FULL=10;
-    ////public final static Integer BIG_SCHOOL_FULL=15;
-    ///////////////////////////////////////////////////
-    
+    /**
+     * Capacity in scientists of a School.
+     */
+    public final static Integer SCHOOL_FULL_SCIENCE = 10;
     /**
      * Number of cash for maintenance about School
      */
@@ -69,7 +69,11 @@ public class Constantes {
      * Default search at the beginning of the game
      */
     public final static Integer BEGIN_SEARCH = 0;
-    
+    /**
+     * Lower limit of cash. 
+     * Under this limit, the Game is Over.
+     */
+    public static final Integer FAIL_MONEY = -1000;
     /**
      * Default name of the city
      */
@@ -82,6 +86,8 @@ public class Constantes {
      * Name of the Narrator/Advisor
      */
     public static final String NARRATOR = "Penultimo";
+    
+    
     
     ////////////Factory///////////////////////////
     
@@ -96,9 +102,8 @@ public class Constantes {
     /**
      * Number of cash for maintenance about Factory
      */
-    public final static Integer MAINTENANCE_FACTORY = 300 ;
+    public final static Integer MAINTENANCE_FACTORY = 300 ;    
     
-    ////////////Police_station//////////////////
     
     
     //////////////House////////////////////////
@@ -107,23 +112,36 @@ public class Constantes {
      */
     public final static Integer HOUSE_FULL = 5; 
     
-        ////////////Police_station//////////////////
+    
+    
+    ////////////Police_station//////////////////
+    /**
+     * Cash cost for the maintenance of the office
+     */
     public final static Integer MAINTENANCE_OFFICE = 300 ; // SUPPOSER CONSTANTE
     
-    /////////////BUILDING///////////////////////
     
+    
+    /////////////BUILDING///////////////////////
+    /**
+     * Unused cost of a burn.
+     */
     public final static Integer RATE_BURN =90;
-    /////////////////////////////////////////////
-    ///////////public final static Integer MOYEN_COMPANY =300;
-    ///////////public final static Integer GRAND_COMPANY =500;
-    ///////////////////////////////////////////:
    
     
     
-    
     ////////////Improvement////////////////////
+    /**
+     * 
+     */
     public final static Integer IMPROVE_MONEY = 500;
+    /**
+     * 
+     */
     public final static Integer IMPROVE_SKILL = 10;
+    /**
+     * 
+     */
     public final static Integer IMPROVE_HOUSE = 400;
     
     

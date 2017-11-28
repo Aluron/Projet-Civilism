@@ -21,6 +21,7 @@ public class Factory extends Building implements Improvement{
     
     protected static Integer total_worker_number;
     protected Integer worker_number;
+    protected Integer internNumber;
     protected Worker boss ;
     
     protected static Integer number_factory;
@@ -40,7 +41,7 @@ public class Factory extends Building implements Improvement{
      * @return 
      */
     public Boolean is_full(){
-        return worker_number >=  Constantes.COMPAGNY_FULL;
+        return this.worker.size() >=  Constantes.COMPAGNY_FULL;
     }
     // CEST QUOI CE BORLDE ICI ?
     
@@ -131,6 +132,9 @@ public class Factory extends Building implements Improvement{
             else {
                 i++;
             }
+        }
+        if (i==factories.size()){
+            System.out.println("ATTENTION: Il n'y a actuellement pas de place pour un nouvel ouvrier dans votre ville.");
         }
     }
     

@@ -16,16 +16,14 @@ import java.util.Vector;
  */
 public class School extends Building implements Improvement{
     protected static Integer teacher_number;
-    protected Integer teacher;
     protected Professor directeur;
     ArrayList eleve = new ArrayList();
-    ArrayList prof = new ArrayList();
-    ArrayList scientist = new ArrayList();
+    ArrayList teachers = new ArrayList();
+    ArrayList scientists = new ArrayList();
     protected static Integer number_school = 1;  //Si nouvel object créé, implémenter la variable
 
     public School(Professor directeur, Adress adress, String name) {
         super(adress, name);
-        this.teacher = 0;
         this.directeur = directeur;
     }
     
@@ -39,11 +37,19 @@ public class School extends Building implements Improvement{
      * @return boolean
      */
     public boolean is_full(){
-        if (this.teacher >= Constantes.SCHOOL_FULL){
+        if (this.teachers.size() >= Constantes.SCHOOL_FULL){
             return (true);
         }
         return (false);
     }
+    
+    private boolean is_full_science() {
+        if (this.scientists.size() >= Constantes.SCHOOL_FULL_SCIENCE){
+            return (true);
+        }
+        return (false);
+    }
+    
     /**
      * Permet de récuperer les informations liés à l'object School
      */
@@ -51,7 +57,7 @@ public class School extends Building implements Improvement{
         int i=1;
         // A remplacer apres pour lenght de la liste
         System.out.println("Le nombre de professeurs dans" + this.name + "est de " + School.teacher_number);
-          System.out.println("Le nombre de travailleur dans cette école est de " + this.teacher);
+          System.out.println("Le nombre de travailleur dans cette école est de " + this.teachers.size());
         if (this.directeur== null ){
             System.out.println("Il n'y à pas de directeur dans votre école ");
         }
@@ -109,27 +115,35 @@ public class School extends Building implements Improvement{
         int i = 0;
         while (i < schools.size()){
             if(!schools.elementAt(i).is_full()){
-                schools.elementAt(i).prof.add(prof);
+                schools.elementAt(i).teachers.add(prof);
                 return;
             }
             else {
                 i++;
             }
+        }
+        if (i==schools.size()){
+            System.out.println("ATTENTION: Il n'y a actuellement pas de place pour un nouveau professeur dans votre ville.");
         }
     }
     
     public static void addScientist(Vector<School> schools, Scientist prof){
         int i = 0;
         while (i < schools.size()){
-            if(!schools.elementAt(i).is_full()){
-                schools.elementAt(i).prof.add(prof);
+            if(!schools.elementAt(i).is_full_science()){
+                schools.elementAt(i).scientists.add(prof);
                 return;
             }
             else {
                 i++;
             }
         }
+        if (i==schools.size()){
+            System.out.println("ATTENTION: Il n'y a actuellement pas de place pour un nouveau chercheur dans votre ville.");
+        }
     }
+
+    
    
 }
 ///////////////////////////////////////////////////////////

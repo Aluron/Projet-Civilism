@@ -7,7 +7,7 @@ package civilism.characters;
 
 /**
  * This Enum contains all available Jobs.
- * @author qkame
+ * @author Quenti KAMENDA & Benoit PEPIN - ISEN 2017
  */
 public enum Job {
     
