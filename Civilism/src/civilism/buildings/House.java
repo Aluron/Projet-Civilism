@@ -20,7 +20,9 @@ public class House extends Building implements Improvement{
     //habitant
     //Constantes.HOUSE_FULL;
     protected Integer habitant_number = 0;
-    protected static Integer house_number = 0;
+    protected static Integer house_number = 1;
+    
+    
     
     ArrayList habitant = new ArrayList();
 
@@ -58,9 +60,10 @@ public class House extends Building implements Improvement{
     }
     
     @Override
-    public void create_building(){
+    public void create_building(Vector bulding){
         House house = new House(Adress.RUE_DE_LA_PAIX);
         System.out.println("Vous venez de créer une maison");
+        bulding.add(house);
     }
 
     @Override
