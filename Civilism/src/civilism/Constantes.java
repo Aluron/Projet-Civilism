@@ -68,7 +68,7 @@ public class Constantes {
     /**
      * Default search at the beginning of the game
      */
-    public final static Integer BEGIN_SEARCH = 0;
+    public final static Integer BEGIN_SEARCH = 10;
     /**
      * Lower limit of cash. 
      * Under this limit, the Game is Over.

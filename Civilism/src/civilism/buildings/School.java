@@ -58,13 +58,15 @@ public class School extends Building implements Improvement{
       public void infos() {
         int i=1;
         // A remplacer apres pour lenght de la liste
-        System.out.println("Le nombre de professeurs dans" + this.name + "est de " + School.teacher_number);
-        System.out.println("Le nombre de travailleur dans cette école est de " + this.teachers.size());
+        System.out.println("Le nombre de professeurs dans " + this.name + " est de " + this.teachers.size());
+        System.out.println("Le nombre de travailleur dans vos ecoles est de " + this.teachers.size());
 
         if (this.directeur== null ){
             System.out.println("Il n'y à pas de directeur dans votre école ");
         }
-        System.out.println("Il existe un directeur dans votre école et c'est " + this.directeur );
+        else{
+            System.out.println("Il existe un directeur dans votre école et c'est " + this.directeur );
+        }
         System.out.println("Il y a un entretien pour votre école et il s'élève à : "+ Constantes.MAINTENANCE_SCHOOL);  
     }
       
@@ -90,11 +92,13 @@ public class School extends Building implements Improvement{
      */
     @Override
     public boolean checkBuilding(Integer recherche, Integer money) {
-        if (recherche <= Constantes.IMPROVE_SKILL){
+        System.out.println("recherche" + recherche);
+        System.out.println("Constantes"+Constantes.IMPROVE_SKILL);
+        if (recherche < Constantes.IMPROVE_SKILL){
             System.out.println("Vous n'avez pas assez de point de recherche pour obtenir une nouvelle école");
             return false;
         }
-        if (money <= Constantes.IMPROVE_MONEY){
+        if (money < Constantes.IMPROVE_MONEY){
             System.out.println("Vous n'avez pas assez d'argent pour obtenir une nouvelle école");
             return false;
         }

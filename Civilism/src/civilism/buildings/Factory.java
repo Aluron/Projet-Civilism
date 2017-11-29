@@ -101,11 +101,11 @@ public class Factory extends Building implements Improvement{
      */
     @Override
     public boolean checkBuilding(Integer recherche, Integer money) {
-        if (recherche <= Constantes.IMPROVE_SKILL){
+        if (Constantes.IMPROVE_SKILL <= recherche ){
             System.out.println("Vous n'avez pas assez de point de recherche pour obtenir une nouvelle usine");
             return false;
         }
-        if (money <= Constantes.IMPROVE_MONEY){
+        if (Constantes.IMPROVE_MONEY <= money){
             System.out.println("Vous n'avez pas assez d'argent pour obtenir une nouvelle usine");
             return false;
         }
