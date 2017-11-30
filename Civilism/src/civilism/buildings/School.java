@@ -131,11 +131,11 @@ public class School extends Building implements Improvement{
         }
     }
     
-    public static void addScientist(Vector<School> schools, Scientist prof){
+    public static void addScientist(Vector<School> schools, Scientist scientist){
         int i = 0;
         while (i < schools.size()){
             if(!schools.elementAt(i).is_full_science()){
-                schools.elementAt(i).scientists.add(prof);
+                schools.elementAt(i).scientists.add(scientist);
                 return;
             }
             else {

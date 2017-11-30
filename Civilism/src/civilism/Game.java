@@ -297,6 +297,10 @@ public class Game {
         shop();
         this.cash = this.cash - Building.entretien(this);
         
+        try{
+            Game.moneyFail(cash);
+            } catch (PoorException e) {}
+        
         System.out.println("A la fin du tour, vous avez : " + this.cash + "€ et un total de " + this.recherche + " points de recherche.");
         System.out.println("Le tour " + this.turnNumber + " est maintenant terminé. Passons au tour suivant !");
         
@@ -491,15 +495,20 @@ public class Game {
                 switch (children.elementAt(i).getDegree()){
                     case ELEMENTARY:
                         Factory.addWorker(factories, new Worker(this.factories.elementAt(this.factories.size()-1), Job.WORKER, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        children.remove(i);
                         break;
                     case HIGHSCHOOL:
                         this.office.policemen.add(new Police(this.office, Rank.AGENT, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        children.remove(i);
                         break;
                     case COLLEGE:
                         School.addProfessor(schools, new Professor(this.schools.elementAt(this.schools.size()-1), Title.ENSEIGNANT, true, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        children.remove(i);
+                        children.add(new Child(Name.SAMI, Surname.TARTEMPION, null));
                         break;
                     case UNIVERSITY:
                         School.addScientist(schools, new Scientist(Title.ENSEIGNANT, Domain.PHARMACOLOGY, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        children.remove(i);
                         break;
                     default:
                 }
