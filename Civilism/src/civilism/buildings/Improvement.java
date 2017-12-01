@@ -6,7 +6,7 @@
 package civilism.buildings;
 
 import civilism.Game;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  *
@@ -44,7 +44,7 @@ public interface Improvement {
   * Créer le nouveau batiment
      * @param bulding
   */
- public void create_building(Vector bulding);    
+ public void create_building(ArrayList bulding);    
  
  }
 

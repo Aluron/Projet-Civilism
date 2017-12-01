@@ -9,7 +9,7 @@ import civilism.characters.*;
 import civilism.buildings.*;
 import civilism.exceptions.*;
 import java.io.*;
-import java.util.Vector;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 import java.util.logging.Level;
@@ -55,28 +55,28 @@ public class Game {
     /**
      * List of all the inhabitants(adults) in the city.
      */
-    protected Vector<Human> inhabitants = new Vector();
+    protected ArrayList<Human> inhabitants = new ArrayList();
     /**
      * List of all the children in the city.
      */
-    protected Vector<Child> children = new Vector();
+    protected ArrayList<Child> children = new ArrayList();
     
     /**
      * List of all the buildings in the city.
      */
-    protected Vector<Building> buildings = new Vector();
+    protected ArrayList<Building> buildings = new ArrayList();
     /**
      * List of all the houses in the city.
      */
-    protected Vector<House> houses = new Vector();
+    protected ArrayList<House> houses = new ArrayList();
     /**
      * List of all the schools in the city.
      */
-    public Vector<School> schools = new Vector();
+    public ArrayList<School> schools = new ArrayList();
     /**
      * List of all the schools in the city.
      */
-    public Vector<Factory> factories = new Vector();
+    public ArrayList<Factory> factories = new ArrayList();
     /**
      * Instance of the only office in the city.
      */
@@ -258,51 +258,51 @@ public class Game {
         this.turnNumber = turnNumber;
     }
 
-    public Vector<Human> getInhabitants() {
+    public ArrayList<Human> getInhabitants() {
         return inhabitants;
     }
 
-    public void setInhabitants(Vector<Human> inhabitants) {
+    public void setInhabitants(ArrayList<Human> inhabitants) {
         this.inhabitants = inhabitants;
     }
 
-    public Vector<Child> getChildren() {
+    public ArrayList<Child> getChildren() {
         return children;
     }
 
-    public void setChildren(Vector<Child> children) {
+    public void setChildren(ArrayList<Child> children) {
         this.children = children;
     }
 
-    public Vector<Building> getBuildings() {
+    public ArrayList<Building> getBuildings() {
         return buildings;
     }
 
-    public void setBuildings(Vector<Building> buildings) {
+    public void setBuildings(ArrayList<Building> buildings) {
         this.buildings = buildings;
     }
 
-    public Vector<House> getHouses() {
+    public ArrayList<House> getHouses() {
         return houses;
     }
 
-    public void setHouses(Vector<House> houses) {
+    public void setHouses(ArrayList<House> houses) {
         this.houses = houses;
     }
 
-    public Vector<School> getSchools() {
+    public ArrayList<School> getSchools() {
         return schools;
     }
 
-    public void setSchools(Vector<School> schools) {
+    public void setSchools(ArrayList<School> schools) {
         this.schools = schools;
     }
 
-    public Vector<Factory> getFactories() {
+    public ArrayList<Factory> getFactories() {
         return factories;
     }
 
-    public void setFactories(Vector<Factory> factories) {
+    public void setFactories(ArrayList<Factory> factories) {
         this.factories = factories;
     }
 
@@ -377,9 +377,9 @@ public class Game {
                                 int teacher =0;
                                 int scientist = 0;
                                 for(int i = 0; i <schools.size() ; i++){
-                                    this.schools.elementAt(i).infos();
-                                    teacher = this.schools.elementAt(i).getTeachers().size() + teacher;
-                                    scientist = this.schools.elementAt(i).getScientists().size() + scientist;
+                                    this.schools.get(i).infos();
+                                    teacher = this.schools.get(i).getTeachers().size() + teacher;
+                                    scientist = this.schools.get(i).getScientists().size() + scientist;
                                 }
                                 System.out.println("Vous avez " + teacher + "en tout dans vos ecole ce qui correspond " + teacher + " eleves en formation" );
                                 System.out.println("Vous avez " + scientist + " dans votre jeu ce qui correspond a " + scientist + " points de recherche par tour");
@@ -387,8 +387,8 @@ public class Game {
                             case "factory":
                                 int worker =0;
                                 for(int i = 0; i < factories.size(); i++){
-                                    this.factories.elementAt(i).infos();
-                                    worker  = this.factories.elementAt(i).getWorker().size() + worker;
+                                    this.factories.get(i).infos();
+                                    worker  = this.factories.get(i).getWorker().size() + worker;
                                 }
                                 this.work_worker = worker * Constantes.WORKER_MONEY;
                                 System.out.println("Vous avez " + factories.size() + " usines dans votre jeu");
@@ -400,8 +400,8 @@ public class Game {
                             case "house":
                                 int habitant =0;
                                 for(int i = 0; i <houses.size(); i++){
-                                    this.houses.elementAt(i).infos();
-                                    habitant = habitant  + this.houses.elementAt(i).getHabitant().size();     
+                                    this.houses.get(i).infos();
+                                    habitant = habitant  + this.houses.get(i).getHabitant().size();     
                                 }
                                 System.out.println("Vous avez " + houses.size() + "dans votre jeu");
                                 System.out.println("Vous avez " + habitant + " habitant en tout dans votre jeu ");
@@ -486,7 +486,7 @@ public class Game {
         //Avant ou apres les 2 trucs ?
         
         for (int i=0;i<schools.size();i++){
-            recherche = recherche + schools.elementAt(i).getScientists().size();
+            recherche = recherche + schools.get(i).getScientists().size();
         }
         System.out.println("");
         characterGestion();
@@ -705,33 +705,38 @@ public class Game {
     protected void characterGestion(){
         int i = 0;
         while (i < children.size()) {
-            if (children.elementAt(i).getAmbition()==null){
+            if (children.get(i).getAmbition()==null){
                 // Code d'affectation de l'eleve à un type d'etudes
-                this.affectation(children.elementAt(i));
+                this.affectation(children.get(i));
             }
-            if (children.elementAt(i).getAmbition()==children.elementAt(i).getEducation()-1){
+            if (children.get(i).getAmbition()==children.get(i).getEducation()-1){
                 // Code de fin d'études
-                switch (children.elementAt(i).getDegree()){
+                try {
+                    House.addHabitant(houses, children.get(i));
+                    
+                    switch (children.get(i).getDegree()){
                     case ELEMENTARY:
-                        Factory.addWorker(factories, new Worker(this.factories.elementAt(this.factories.size()-1), Job.WORKER, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        Factory.addWorker(factories, new Worker(this.factories.get(this.factories.size()-1), Job.WORKER, children.get(i).name, children.get(i).surname, children.get(i).home));
                         children.remove(i);
                         break;
                     case HIGHSCHOOL:
-                        this.office.policemen.add(new Police(this.office, Rank.AGENT, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        this.office.policemen.add(new Police(this.office, Rank.AGENT, children.get(i).name, children.get(i).surname, children.get(i).home));
                         children.remove(i);
                         break;
                     case COLLEGE:
-                        School.addProfessor(schools, new Professor(this.schools.elementAt(this.schools.size()-1), Title.ENSEIGNANT, true, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        School.addProfessor(schools, new Professor(this.schools.get(this.schools.size()-1), Title.ENSEIGNANT, true, children.get(i).name, children.get(i).surname, children.get(i).home));
                         children.remove(i);
                         children.add(new Child(Name.SAMI, Surname.TARTEMPION, null));
                         break;
                     case UNIVERSITY:
-                        School.addScientist(schools, new Scientist(Title.ENSEIGNANT, Domain.PHARMACOLOGY, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        School.addScientist(schools, new Scientist(Title.ENSEIGNANT, Domain.PHARMACOLOGY, children.get(i).name, children.get(i).surname, children.get(i).home));
                         children.remove(i);
                         break;
                     default:
                 }
-                children.addElement(new Child(Name.HUGO, Surname.DIDIER, null));
+                } catch (NoSpaceException e){}
+                
+                children.add(new Child(Name.HUGO, Surname.DIDIER, null));
             }
             i++;
         }
@@ -788,22 +793,22 @@ public class Game {
             } catch (QuitException e) {}
             switch (keywords){
                 case "house":
-                    if (this.houses.elementAt(0).checkBuilding(recherche,cash)){
-                        this.houses.elementAt(0).create_building(houses);
+                    if (this.houses.get(0).checkBuilding(recherche,cash)){
+                        this.houses.get(0).create_building(houses);
                         cash = cash - Constantes.IMPROVE_HOUSE;
                         System.out.println("Vos comptes en banque maintenant est de :" + cash);
                     }
                     
                 break;
                 case "school":
-                    if (this.schools.elementAt(0).checkBuilding(recherche,cash)){
-                        this.schools.elementAt(0).create_building(schools);
+                    if (this.schools.get(0).checkBuilding(recherche,cash)){
+                        this.schools.get(0).create_building(schools);
                         update_values();
                     }
                 break;
                 case "factory":
-                    if(this.factories.elementAt(0).checkBuilding(recherche,cash)){
-                        this.factories.elementAt(0).create_building(factories);
+                    if(this.factories.get(0).checkBuilding(recherche,cash)){
+                        this.factories.get(0).create_building(factories);
                         update_values();
                     }
                 break;
@@ -871,7 +876,7 @@ public class Game {
     public void worker_number(){
         int worker =0;
         for(int i = 0; i < factories.size(); i++){
-            worker  = this.factories.elementAt(i).getWorker().size() + worker;
+            worker  = this.factories.get(i).getWorker().size() + worker;
             }
             this.work_worker = worker * Constantes.WORKER_MONEY;
     }

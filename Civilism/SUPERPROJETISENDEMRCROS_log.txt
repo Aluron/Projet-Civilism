@@ -1,0 +1,5 @@
+
+Au commancement de la partie, votre argent est de : 10000
+Au commancement de la partie, vos points de recherche sont de : 10
+---------------------------------------------------------
+Vous etes au tour numero : 1

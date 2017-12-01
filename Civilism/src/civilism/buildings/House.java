@@ -7,8 +7,8 @@ package civilism.buildings;
 
 import civilism.*;
 import civilism.characters.*;
+import civilism.exceptions.NoSpaceException;
 import java.util.ArrayList;
-import java.util.Vector;
 
 /**
  * 
@@ -78,7 +78,7 @@ public class House extends Building implements Improvement{
     }
     
     @Override
-    public void create_building(Vector bulding){
+    public void create_building(ArrayList bulding){
         House house = new House(Adress.RUE_DE_LA_PAIX);
         System.out.println("Vous venez de créer une maison");
         bulding.add(house);
@@ -96,11 +96,12 @@ public class House extends Building implements Improvement{
     }
     
     
-    public static void addHabitant(Vector<House> houses, Human human){
+    public static void addHabitant(ArrayList<House> houses, Human human)
+            throws NoSpaceException{
         int i = 0;
         while (i < houses.size()){
-            if(!houses.elementAt(i).is_full()){
-                houses.elementAt(i).habitant.add(human);
+            if(!houses.get(i).is_full()){
+                houses.get(i).habitant.add(human);
                 return;
             }
             else {
@@ -108,7 +109,7 @@ public class House extends Building implements Improvement{
             }
         }
         if (i==houses.size()){
-            System.out.println("ATTENTION: Il n'y a actuellement pas de place pour un nouvel habitant dans votre ville.");
+            throw new NoSpaceException();
         }
     }
  
