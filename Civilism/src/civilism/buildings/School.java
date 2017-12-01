@@ -92,8 +92,8 @@ public class School extends Building implements Improvement{
      */
     @Override
     public boolean checkBuilding(Integer recherche, Integer money) {
-        System.out.println("recherche" + recherche);
-        System.out.println("Constantes"+Constantes.IMPROVE_SKILL);
+//        System.out.println("recherche" + recherche);
+//        System.out.println("Constantes"+Constantes.IMPROVE_SKILL);
         if (recherche < Constantes.IMPROVE_SKILL){
             System.out.println("Vous n'avez pas assez de point de recherche pour obtenir une nouvelle école");
             return false;

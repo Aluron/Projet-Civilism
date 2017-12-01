@@ -136,7 +136,7 @@ public class Factory extends Building implements Improvement{
             }
         }
         if (i==factories.size()){
-            System.out.println("ATTENTION: Il n'y a actuellement pas de place pour un nouvel ouvrier dans votre ville.");
+            System.out.println("ATTENTION: Il n'y a actuellement pas de place pour un nouvel ouvrier dans votre ville, ce personnage est perdu. \n");
         }
     }
     
