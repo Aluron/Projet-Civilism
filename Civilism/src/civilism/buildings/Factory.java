@@ -10,7 +10,6 @@ import civilism.Game;
 import civilism.characters.Professor;
 import civilism.characters.Worker;
 import java.util.ArrayList;
-import java.util.Vector;
 
 
 /**
@@ -163,7 +162,7 @@ public class Factory extends Building implements Improvement{
     }
 
     @Override
-    public void create_building(Vector bulding) {
+    public void create_building(ArrayList bulding) {
         System.out.println("Quel est le nom de votre nouvelle usine?");
         String keywords = Game.keyboard.nextLine();
         Factory factory = new Factory(null,Adress.RUE_DE_LA_PAIX,keywords);
@@ -172,11 +171,12 @@ public class Factory extends Building implements Improvement{
         
     }
     
-    public static void addWorker(Vector<Factory> factories, Worker worker){
+    public static void addWorker(ArrayList<Factory> factories, Worker worker){
         int i = 0;
+        
         while (i < factories.size()){
-            if(!factories.elementAt(i).is_full()){
-                factories.elementAt(i).worker.add(worker);
+            if(!factories.get(i).is_full()){
+                factories.get(i).worker.add(worker);
                 return;
             }
             else {

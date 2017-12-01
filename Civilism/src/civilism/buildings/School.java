@@ -8,7 +8,7 @@ package civilism.buildings;
 import civilism.*;
 import civilism.characters.*;
 import java.util.ArrayList;
-import java.util.Vector;
+import java.util.ArrayList;
 
 /**
  *
@@ -164,7 +164,7 @@ public class School extends Building implements Improvement{
     
     //COMMENT ON CREE UN NOUVELLE OBJECT SCHOOL?
     @Override
-    public void create_building(Vector bulding) {
+    public void create_building(ArrayList bulding) {
         System.out.println("Quelle est le nom de votre nouvelle école?");
         String keywords = Game.keyboard.nextLine();
         School school = new School(null,Adress.AVENUE_DE_L_ISEN,keywords);
@@ -173,11 +173,11 @@ public class School extends Building implements Improvement{
     }
     
     
-    public static void addProfessor(Vector<School> schools, Professor prof){
+    public static void addProfessor(ArrayList<School> schools, Professor prof){
         int i = 0;
         while (i < schools.size()){
-            if(!schools.elementAt(i).is_full()){
-                schools.elementAt(i).teachers.add(prof);
+            if(!schools.get(i).is_full()){
+                schools.get(i).teachers.add(prof);
                 return;
             }
             else {
@@ -189,11 +189,11 @@ public class School extends Building implements Improvement{
         }
     }
     
-    public static void addScientist(Vector<School> schools, Scientist scientist){
+    public static void addScientist(ArrayList<School> schools, Scientist scientist){
         int i = 0;
         while (i < schools.size()){
-            if(!schools.elementAt(i).is_full_science()){
-                schools.elementAt(i).scientists.add(scientist);
+            if(!schools.get(i).is_full_science()){
+                schools.get(i).scientists.add(scientist);
                 return;
             }
             else {
