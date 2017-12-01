@@ -2,11 +2,3 @@
 Au commancement de la partie, votre argent est de : 10000
 Au commancement de la partie, vos points de recherche sont de : 10
 ---------------------------------------------------------
-Vous etes au tour numero : 1
-Vous venez de terminer votre tour numero : 1
-Votre argent est de : 9100
-Vos points de recherch sont de : 10
-Votre nombre d'habitant s'eleve a : 3
-Vos travailleurs vous rapporte 200
-L'entretien de vos batiments pour ce tour s'eleve a : 900
----------------------------------------------------------

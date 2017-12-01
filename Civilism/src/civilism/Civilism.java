@@ -5,6 +5,7 @@
  */
 package civilism;
 
+import civilism.buildings.House;
 import java.io.*;
 
 /**
@@ -13,9 +14,10 @@ import java.io.*;
  */
 public class Civilism {
 
+    /**
+     *Etat est un variable pour proteger la phase de decision et d'observation
+     */
 
-    
-    protected static String etat;
     
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
@@ -37,14 +39,15 @@ public class Civilism {
         IDEM POur Inhuman
         */
         
+        
         //INIT DE ETAT
+        String etat;
         etat = "observation";
         while(newGame.turnNumber < Constantes.TURN_LIMIT){
             if ("observation".equals(etat)){
                 boolean observation = newGame.observation();
                 if (true == observation ){
                     etat = "decision";
-                    System.out.println("-------------------------------------------------------------------------");
                 }
             }
             if ("decision".equals(etat)){
@@ -52,9 +55,7 @@ public class Civilism {
                 if (true == decision){
                  etat= "observation";
                  newGame.turnNumber++;
-                 System.out.println("-------------------------------------------------------------------------");
-                 System.out.println("-------------------------------------------------------------------------");
-                 System.out.println("-------------------------------------------------------------------------");
+                 
                 }  
             }
         }
