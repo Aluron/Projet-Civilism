@@ -129,9 +129,9 @@ public class Game {
         /**
          * Explication des ressources
          */
-        System.out.println("Pour dabuter cette nouvelle aventure en tant que Maire de " + townName + ", plusieurs hommes d'affaires ont déjà investi "
-                + " et de jeunes couples ont d'ores et deja rejoins les rangs des habitants.");
-        System.out.println("Ainsi, vous recevez "+ Constantes.BEGIN_MONEY + " € pour le debut de votre partie et " + Constantes.BEGIN_HUMAN + " personnes vivent "
+        System.out.println("Pour débuter cette nouvelle aventure en tant que Maire de " + townName + ", plusieurs hommes d'affaires ont déjà investi "
+                + "et de jeunes couples ont d'ores et deja rejoint les rangs des habitants.");
+        System.out.println("Ainsi, vous recevez "+ Constantes.BEGIN_MONEY + " € pour le debut de votre partie et " + Constantes.BEGIN_HUMAN + " personnes vivent"
                 + " dans les " + Constantes.BEGIN_BUILDING +" batiments déjà construits,  à savoir :"
                 + "\n - une ecole "
                 + "\n - une atelier"
@@ -470,10 +470,14 @@ public class Game {
         if (turnNumber == 1){
             // Code de l'explication de la phase de décision
         }
+
         texte_log("Vous etes au tour numero : ", turnNumber);
+
+        
+        System.out.println("- - - - - - - - - - - - - - - - - - - - - - - - - - - -");
         System.out.println("La phase d'observation est dorenavant terminee.");
-        System.out.println("");
         System.out.println("Quelles decisions majeures pour " + this.townName + " allez vous prendre maintenant ?");
+        System.out.println("");
         
         for (Child child : children){
             child.setEducation(child.getEducation()+1);
@@ -491,7 +495,18 @@ public class Game {
         System.out.println("");
         this.cash = this.cash - Building.entretien(this);
         
-        this.fin_tour();
+       this.fin_tour();
+        
+        try{
+            Game.moneyFail(cash);
+            } catch (PoorException e) {}
+        
+ 
+        System.out.println("A la fin du tour, vous avez : " + this.cash + "€ et un total de " + this.recherche + " points de recherche.");
+        System.out.println("Le tour " + this.turnNumber + " est maintenant terminé. Passons au tour suivant !");
+        System.out.println("--------------------------------------------------------");
+        System.out.println("");
+        
         return true;
     }
    
@@ -525,25 +540,34 @@ public class Game {
      */
     private void initialisation(){
         
-        System.out.println("Vous disposez au départ , dans " + this.townName +", d'une ecole, d'une usine, d'un commissariat et d'une maison.");
-        System.out.println("Vous pouvez maintenant choisir les noms de vos premiers bâtiments. Si vous souhaitez garder les noms par défaut, appuyez simplement sur Entrée.");
+        System.out.println("La première tâche qui vous incombe est l'une des plus simples: Inaugurer les premiers bâtiments de " + this.townName);
+        System.out.println("Vous devez maintenant choisir les noms de vos premiers bâtiments. Si vous souhaitez garder les noms par défaut, appuyez simplement sur Entrée.");
         
         //Creation des batiments
         System.out.println("Quel nom pour votre école?");
         String name;
         name= keyboard.nextLine();
+        if ("".equals(name)){
+            name = "ISEN";
+        }
         School school = new School(null,Adress.AVENUE_DE_L_ISEN,name);
         buildings.add(school);
         schools.add(school);
         
         System.out.println("Quel nom pour votre comissariat?");
         name= keyboard.nextLine();
+        if ("".equals(name)){
+            name = "Quai des Orfèvres";
+        }
         office = new Office(null,Adress.BOULEVARD_DES_REVES_BRISES,name);
         buildings.add(office);  
         
         
         System.out.println("Quel nom pour votre usine?");
         name= keyboard.nextLine();
+        if ("".equals(name)){
+            name = "U$in€";
+        }
         Factory factory = new Factory (null,Adress.RUE_PIERRE_DUPONT,name);
         buildings.add(factory);
         factories.add(factory);
@@ -575,9 +599,10 @@ public class Game {
      */
     public void helpInfos(){
         System.out.println("La commande 'infos' permet de connaître le statut de chaque élément du jeu");
-        System.out.println("'info' seul vous donne le statut actuel de votre ville (argent et habitants)");
-        System.out.println("'info' accompagné du nom d'un élément du jeu vous donne le statut actuel de l'élément.");
+        System.out.println("'infos' seul vous donne le statut actuel de votre ville (argent et habitants)");
+        System.out.println("'infos' accompagné du nom d'un élément du jeu vous donne le statut actuel de l'élément.");
         System.out.println("Argumuments disponibles:     'school', 'factory', 'house', city'");
+        System.out.println("");
         
     }
     
@@ -620,8 +645,8 @@ public class Game {
      */
     public void infos(){
         System.out.println("Dans " + this.townName +" vous avez " + this.cash +" € " );
-        System.out.println("");
         System.out.println("Vous avez "+ this.inhabitants.size() + " habitants dans votre ville");
+        System.out.println("");
     }
     
     /**
@@ -629,6 +654,7 @@ public class Game {
      */
     public void desc(){
         System.out.println("Civilism est un jeu issu d'un projet scolaire ISEN, réalisé par Quentin KAMENDA & Benoît PEPIN");
+        System.out.println("");
     }
     
     /**
@@ -688,15 +714,20 @@ public class Game {
                 switch (children.elementAt(i).getDegree()){
                     case ELEMENTARY:
                         Factory.addWorker(factories, new Worker(this.factories.elementAt(this.factories.size()-1), Job.WORKER, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        children.remove(i);
                         break;
                     case HIGHSCHOOL:
                         this.office.policemen.add(new Police(this.office, Rank.AGENT, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        children.remove(i);
                         break;
                     case COLLEGE:
                         School.addProfessor(schools, new Professor(this.schools.elementAt(this.schools.size()-1), Title.ENSEIGNANT, true, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        children.remove(i);
+                        children.add(new Child(Name.SAMI, Surname.TARTEMPION, null));
                         break;
                     case UNIVERSITY:
                         School.addScientist(schools, new Scientist(Title.ENSEIGNANT, Domain.PHARMACOLOGY, children.elementAt(i).name, children.elementAt(i).surname, children.elementAt(i).home));
+                        children.remove(i);
                         break;
                     default:
                 }
@@ -739,6 +770,7 @@ public class Game {
                 characterGestion();
                 break;
         }
+        System.out.println("");
     }
     
     /**
@@ -782,6 +814,7 @@ public class Game {
                 default : 
             }       
         }
+        System.out.println("");
     }
     
     /**
@@ -793,6 +826,7 @@ public class Game {
         System.out.println("Vos points de recherches sont maintenant de : " + recherche);
         cash = cash - Constantes.IMPROVE_MONEY;
         System.out.println("Votre compte en banque est maintenant de : " + cash);
+        System.out.println("");
     }
     
     /**

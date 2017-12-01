@@ -147,6 +147,7 @@ public class School extends Building implements Improvement{
      */
     @Override
     public boolean checkBuilding(Integer recherche, Integer money) {
+
         if (recherche < Constantes.IMPROVE_SKILL){
             System.out.println("Vous n'avez pas assez de point de recherche pour obtenir une nouvelle école");
             return false;
@@ -188,11 +189,11 @@ public class School extends Building implements Improvement{
         }
     }
     
-    public static void addScientist(Vector<School> schools, Scientist prof){
+    public static void addScientist(Vector<School> schools, Scientist scientist){
         int i = 0;
         while (i < schools.size()){
             if(!schools.elementAt(i).is_full_science()){
-                schools.elementAt(i).scientists.add(prof);
+                schools.elementAt(i).scientists.add(scientist);
                 return;
             }
             else {
