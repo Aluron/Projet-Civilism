@@ -44,6 +44,7 @@ public class Civilism {
                 boolean observation = newGame.observation();
                 if (true == observation ){
                     etat = "decision";
+                    System.out.println("-------------------------------------------------------------------------");
                 }
             }
             if ("decision".equals(etat)){
@@ -51,6 +52,9 @@ public class Civilism {
                 if (true == decision){
                  etat= "observation";
                  newGame.turnNumber++;
+                 System.out.println("-------------------------------------------------------------------------");
+                 System.out.println("-------------------------------------------------------------------------");
+                 System.out.println("-------------------------------------------------------------------------");
                 }  
             }
         }

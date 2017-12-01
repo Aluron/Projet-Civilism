@@ -15,7 +15,6 @@ import java.util.Vector;
  * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
  */
 public class School extends Building implements Improvement{
-    protected static Integer teacher_number;
     protected Professor directeur;
     ArrayList eleve = new ArrayList();
     ArrayList teachers = new ArrayList();
@@ -29,7 +28,65 @@ public class School extends Building implements Improvement{
         this.directeur = directeur;
     }
     
- 
+ /////////////////////////////////////////////////////////////
+
+    public Professor getDirecteur() {
+        return directeur;
+    }
+
+    public void setDirecteur(Professor directeur) {
+        this.directeur = directeur;
+    }
+
+    public ArrayList getEleve() {
+        return eleve;
+    }
+
+    public void setEleve(ArrayList eleve) {
+        this.eleve = eleve;
+    }
+
+    public ArrayList getTeachers() {
+        return teachers;
+    }
+
+    public void setTeachers(ArrayList teachers) {
+        this.teachers = teachers;
+    }
+
+    public ArrayList getScientists() {
+        return scientists;
+    }
+
+    public void setScientists(ArrayList scientists) {
+        this.scientists = scientists;
+    }
+
+    public static Integer getNumber_school() {
+        return number_school;
+    }
+
+    public static void setNumber_school(Integer number_school) {
+        School.number_school = number_school;
+    }
+
+    public Adress getAdress() {
+        return adress;
+    }
+
+    public void setAdress(Adress adress) {
+        this.adress = adress;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
+    
     
 /////////////////////////////////////////////////////////////
     /////////////////////////////////////////////
@@ -59,8 +116,6 @@ public class School extends Building implements Improvement{
         int i=1;
         // A remplacer apres pour lenght de la liste
         System.out.println("Le nombre de professeurs dans " + this.name + " est de " + this.teachers.size());
-        System.out.println("Le nombre de travailleur dans vos ecoles est de " + this.teachers.size());
-
         if (this.directeur== null ){
             System.out.println("Il n'y à pas de directeur dans votre école ");
         }
@@ -92,8 +147,6 @@ public class School extends Building implements Improvement{
      */
     @Override
     public boolean checkBuilding(Integer recherche, Integer money) {
-        System.out.println("recherche" + recherche);
-        System.out.println("Constantes"+Constantes.IMPROVE_SKILL);
         if (recherche < Constantes.IMPROVE_SKILL){
             System.out.println("Vous n'avez pas assez de point de recherche pour obtenir une nouvelle école");
             return false;

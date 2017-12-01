@@ -12,6 +12,8 @@ import java.io.*;
 import java.util.Vector;
 import java.util.Date;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This is the clas where everything happens.
@@ -92,10 +94,17 @@ public class Game {
      * Keywords entered by the player.
      */
     private String keywords;
+    
+    protected Integer work_worker;
+    /**
+     *
+     */
+    protected static BufferedWriter writer;
 
     /**
      * Constructor.
      * Beginning of the Game (Description, Introduction, Creation...)
+     * @throws java.io.IOException
      */
     public Game() throws IOException {
         turnNumber = 1;
@@ -144,24 +153,186 @@ public class Game {
         System.out.println("Bon, il est temps pour vous de prendre vos fonctions mais ne vous inquietez pas, je restereai avec vous pour accompagner."
                 + "\n A tout moment il vous suffit de taper le mot clef 'help' suivi du nom de l'élément sur lequel vous désirez plus d'amples informations.");
         System.out.println("");
+        
+        //File writer = new File(this.townName + "_log.txt");
+        
+        /**
+         * Creation of the log file
+         */ 
+        try
+        { 
+        writer = new BufferedWriter(new FileWriter(new File(this.townName + "_log.txt"))) ;
+        writer.newLine();
+        }
+        catch (IOException e)
+        {
+        e.printStackTrace();
+        }
+        /*
+        FileWriter log = new FileWriter(this.townName + "_log.txt");
+        BufferedWriter buffer = new BufferedWriter(log);
+        buffer.write("Partie: " + this.townName + "\n"); */
+       
 
+    
+        
         /**
          * Initialization of the Game ecosystem
          */
         cash = Constantes.BEGIN_MONEY;
         recherche =Constantes.BEGIN_SEARCH;
+        texte_log("Au commancement de la partie, votre argent est de : ", cash);
+        texte_log("Au commancement de la partie, vos points de recherche sont de : ",recherche);
+        texte_log("---------------------------------------------------------");
         this.initialisation();
         
-        /**
-         * Creation of the log file
-         */
-        FileWriter log = new FileWriter(this.townName + "_log.txt");
-        BufferedWriter buffer = new BufferedWriter(log);
-        buffer.write("Partie: " + this.townName + "\n");
+        
         
         
     }
-       
+    ////////////////////////////////////////////////////////////////
+
+    public BufferedWriter getWriter() {
+        return writer;
+    }
+
+    public void setWriter(BufferedWriter writer) {
+        Game.writer = writer;
+    }
+
+
+    
+    public String getTownName() {
+        return townName;
+    }
+
+    public void setTownName(String townName) {
+        this.townName = townName;
+    }
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public FileWriter getLog() {
+        return log;
+    }
+
+    public void setLog(FileWriter log) {
+        this.log = log;
+    }
+
+    public BufferedWriter getBuffer() {
+        return buffer;
+    }
+
+    public void setBuffer(BufferedWriter buffer) {
+        this.buffer = buffer;
+    }
+
+    public Integer getCash() {
+        return cash;
+    }
+
+    public void setCash(Integer cash) {
+        this.cash = cash;
+    }
+
+    public Integer getRecherche() {
+        return recherche;
+    }
+
+    public void setRecherche(Integer recherche) {
+        this.recherche = recherche;
+    }
+
+    public Integer getTurnNumber() {
+        return turnNumber;
+    }
+
+    public void setTurnNumber(Integer turnNumber) {
+        this.turnNumber = turnNumber;
+    }
+
+    public Vector<Human> getInhabitants() {
+        return inhabitants;
+    }
+
+    public void setInhabitants(Vector<Human> inhabitants) {
+        this.inhabitants = inhabitants;
+    }
+
+    public Vector<Child> getChildren() {
+        return children;
+    }
+
+    public void setChildren(Vector<Child> children) {
+        this.children = children;
+    }
+
+    public Vector<Building> getBuildings() {
+        return buildings;
+    }
+
+    public void setBuildings(Vector<Building> buildings) {
+        this.buildings = buildings;
+    }
+
+    public Vector<House> getHouses() {
+        return houses;
+    }
+
+    public void setHouses(Vector<House> houses) {
+        this.houses = houses;
+    }
+
+    public Vector<School> getSchools() {
+        return schools;
+    }
+
+    public void setSchools(Vector<School> schools) {
+        this.schools = schools;
+    }
+
+    public Vector<Factory> getFactories() {
+        return factories;
+    }
+
+    public void setFactories(Vector<Factory> factories) {
+        this.factories = factories;
+    }
+
+    public Office getOffice() {
+        return office;
+    }
+
+    public void setOffice(Office office) {
+        this.office = office;
+    }
+
+    public String[] getAction() {
+        return action;
+    }
+
+    public void setAction(String[] action) {
+        this.action = action;
+    }
+
+    public String getKeywords() {
+        return keywords;
+    }
+
+    public void setKeywords(String keywords) {
+        this.keywords = keywords;
+    }
+    //////////////////////////////////////////////////
+    
+    
+    
     /**
      * First phase of a turn.
      * This is the phase when/where the player is given all the informations he needs before making any decision.
@@ -203,22 +374,37 @@ public class Game {
                     case "infos":
                         switch (action[1]){
                             case "school": 
+                                int teacher =0;
+                                int scientist = 0;
                                 for(int i = 0; i <schools.size() ; i++){
                                     this.schools.elementAt(i).infos();
+                                    teacher = this.schools.elementAt(i).getTeachers().size() + teacher;
+                                    scientist = this.schools.elementAt(i).getScientists().size() + scientist;
                                 }
+                                System.out.println("Vous avez " + teacher + "en tout dans vos ecole ce qui correspond " + teacher + " eleves en formation" );
+                                System.out.println("Vous avez " + scientist + " dans votre jeu ce qui correspond a " + scientist + " points de recherche par tour");
                                 return false;
                             case "factory":
+                                int worker =0;
                                 for(int i = 0; i < factories.size(); i++){
                                     this.factories.elementAt(i).infos();
+                                    worker  = this.factories.elementAt(i).getWorker().size() + worker;
                                 }
+                                this.work_worker = worker * Constantes.WORKER_MONEY;
+                                System.out.println("Vous avez " + factories.size() + " usines dans votre jeu");
+                                System.out.println("Vous avez " + worker + " dans votre entreprise ce qui correspond à " + this.work_worker + "€");
                                 return false;
                             case "office":
                                 office.infos();
                                 return false;
                             case "house":
+                                int habitant =0;
                                 for(int i = 0; i <houses.size(); i++){
                                     this.houses.elementAt(i).infos();
+                                    habitant = habitant  + this.houses.elementAt(i).getHabitant().size();     
                                 }
+                                System.out.println("Vous avez " + houses.size() + "dans votre jeu");
+                                System.out.println("Vous avez " + habitant + " habitant en tout dans votre jeu ");
                                 return false;
                             case "city":
                                 this.infos();
@@ -280,11 +466,11 @@ public class Game {
      * This is the phase when/where the player makes decisions that will impact the game.
      * @return 
      */
-    protected boolean decision() throws IOException{
+    protected boolean decision(){
         if (turnNumber == 1){
             // Code de l'explication de la phase de décision
         }
-        
+        texte_log("Vous etes au tour numero : ", turnNumber);
         System.out.println("La phase d'observation est dorenavant terminee.");
         System.out.println("");
         System.out.println("Quelles decisions majeures pour " + this.townName + " allez vous prendre maintenant ?");
@@ -292,14 +478,20 @@ public class Game {
         for (Child child : children){
             child.setEducation(child.getEducation()+1);
             // Tous les eleves gagnent en education
-        }    
+        }  
+        //Avant ou apres les 2 trucs ?
+        
+        for (int i=0;i<schools.size();i++){
+            recherche = recherche + schools.elementAt(i).getScientists().size();
+        }
+        System.out.println("");
         characterGestion();
+        System.out.println("");
         shop();
+        System.out.println("");
         this.cash = this.cash - Building.entretien(this);
         
-        System.out.println("A la fin du tour, vous avez : " + this.cash + "€ et un total de " + this.recherche + " points de recherche.");
-        System.out.println("Le tour " + this.turnNumber + " est maintenant terminé. Passons au tour suivant !");
-        
+        this.fin_tour();
         return true;
     }
    
@@ -447,6 +639,11 @@ public class Game {
     public static void fastQuit(String input)
             throws QuitException{
         if ("quit".equals(input)){
+            try {
+                close();
+            } catch (IOException ex) {
+                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            }
             throw new QuitException();
         }
     }
@@ -607,6 +804,54 @@ public class Game {
         System.exit(0);
     }
 
-    
+    public static void texte_log(String print,Integer texte){
+         try
+        { 
+       
+        writer.write(String.valueOf(print + texte));
+        writer.flush();
+        writer.newLine();
+        }
+        catch (IOException e)
+        {
+        e.printStackTrace();
+        }
+    }
+    public void texte_log(String texte){
+         try
+        { 
+            
+        writer.write(texte);
+        //writer.write("\r\n");  // PASSER UNE LIGNE 
+        writer.flush();
+        writer.newLine();
+        }
+        catch (IOException e)
+        {
+        e.printStackTrace();
+        }
+    }
+    public static void close() throws IOException{
+        writer.close();
+    }
+    public void worker_number(){
+        int worker =0;
+        for(int i = 0; i < factories.size(); i++){
+            worker  = this.factories.elementAt(i).getWorker().size() + worker;
+            }
+            this.work_worker = worker * Constantes.WORKER_MONEY;
+    }
+    public void fin_tour(){
+        System.out.println("A la fin du tour, vous avez : " + this.cash + "€ et un total de " + this.recherche + " points de recherche.");
+        System.out.println("Le tour " + this.turnNumber + " est maintenant terminé. Passons au tour suivant !");
+        texte_log("Votre argent est de : ",this.cash);
+        texte_log("Vos points de recherch sont de : ", this.recherche);
+        texte_log("Votre nombre d'habitant s'eleve a : ",this.inhabitants.size());
+        this.worker_number();
+        texte_log("Vos travailleurs vous rapporte ",this.work_worker);
+        texte_log("L'entretien de vos batiments pour ce tour s'eleve a : ",Building.entretien(this));
+        texte_log("Vous venez de terminer votre tour numero : ",turnNumber);
+        texte_log("---------------------------------------------------------");
+    }
     
 }

@@ -7,8 +7,6 @@ package civilism.buildings;
 
 import civilism.*;
 import civilism.characters.*;
-import civilism.buildings.*;
-import civilism.exceptions.*;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -19,19 +17,40 @@ import java.util.Vector;
 public class House extends Building implements Improvement{
     //habitant
     //Constantes.HOUSE_FULL;
-    protected Integer habitant_number = 0;
-    protected static Integer house_number = 1;
-    
-    
-    
     ArrayList habitant = new ArrayList();
 
     public House(Adress adress) {
         super(adress);
-        name = "house".concat(House.house_number.toString());
+        //name = "house".concat(House.house_number.toString());
+    }
+ //////////////////////////////////////////////////////////////////
+
+    public ArrayList getHabitant() {
+        return habitant;
+    }
+
+    public void setHabitant(ArrayList habitant) {
+        this.habitant = habitant;
+    }
+
+    public Adress getAdress() {
+        return adress;
+    }
+
+    public void setAdress(Adress adress) {
+        this.adress = adress;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
- 
+    
+    
+    ///////////////////////////////////////////////////////////////
     
     public Boolean is_full(){
         return this.habitant.size() >=  Constantes.HOUSE_FULL;
@@ -40,11 +59,10 @@ public class House extends Building implements Improvement{
  * Info permet de connaître le nombre d'habitant de la maison et les personnages 
  */
     public void infos() {
-        int i=1;
+        int i=0;
         // A remplacer apres pour lenght de la liste
-        System.out.println("le nombre de d'habitant dans votre maison est de " + this.habitant_number);
-        System.out.println("Il existe " + House.house_number + " maisons dans votre ville");
-        while (i< this.habitant_number){
+        System.out.println("le nombre de d'habitant dans votre maison est de " + this.habitant.size());
+        while (i< this.habitant.size()){
             //System.out.print(super.human.name + "" + super.human.surname);
         }   
     }

@@ -5,6 +5,8 @@
  */
 package civilism.exceptions;
 
+
+
 /**
  *
  * @author qkame

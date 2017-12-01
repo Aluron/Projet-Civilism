@@ -19,12 +19,9 @@ import java.util.Vector;
  */
 public class Factory extends Building implements Improvement{
     
-    protected static Integer total_worker_number;
     protected Integer worker_number;
     protected Integer internNumber;
     protected Worker boss ;
-    
-    protected static Integer number_factory;
     
     ArrayList worker = new ArrayList();
 
@@ -33,7 +30,57 @@ public class Factory extends Building implements Improvement{
         this.worker_number = 0;
         this.boss = boss;
     }
+    //////////////////////////////////////////////////////////////
+
+    public Integer getWorker_number() {
+        return worker_number;
+    }
+
+    public void setWorker_number(Integer worker_number) {
+        this.worker_number = worker_number;
+    }
+
+    public Integer getInternNumber() {
+        return internNumber;
+    }
+
+    public void setInternNumber(Integer internNumber) {
+        this.internNumber = internNumber;
+    }
+
+    public Worker getBoss() {
+        return boss;
+    }
+
+    public void setBoss(Worker boss) {
+        this.boss = boss;
+    }
+    public ArrayList getWorker() {
+        return worker;
+    }
+
+    public void setWorker(ArrayList worker) {
+        this.worker = worker;
+    }
+
+    public Adress getAdress() {
+        return adress;
+    }
+
+    public void setAdress(Adress adress) {
+        this.adress = adress;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     
+    
+    /////////////////////////////////////////////////////////////
 
     
     /**
@@ -48,23 +95,25 @@ public class Factory extends Building implements Improvement{
     /**
      * 
      * produce permet de retrouner le nombre d'argent que fait l'entreprise
+     * @param game
      * @return INTEGER
      */
-    public Integer produce(){
-        return (Factory.total_worker_number * Constantes.WORKER_MONEY); //prend en compte toute les usines
+    public Integer produce(Game game){
+        return (game.factories.size() * Constantes.WORKER_MONEY); //prend en compte toute les usines
     }
     /**
      * Calcule le rendement totale de l'usine (combien gagne - combien perdu)
+     * @param game
      * @return Integer
      */
-    public Integer account(){
-        Integer output= Constantes.MAINTENANCE_FACTORY * Factory.number_factory;
-        Integer input = produce();
+    public Integer account(Game game){
+        Integer output= Constantes.MAINTENANCE_FACTORY * game.factories.size();
+        Integer input = produce(null);
         return (input - output);
         
     }
     
-    
+   
     /////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////
     /**
@@ -73,7 +122,6 @@ public class Factory extends Building implements Improvement{
     public void infos() {
         int i=1;
         // A remplacer apres pour lenght de la liste
-        System.out.println("Le nombre de travalleur dans vos usine est de  " + Factory.total_worker_number);
         System.out.println("Le nombre de travailleur de cette usine est de " + this.worker_number);
         if (this.boss== null ){
             System.out.println("Il n'y à pas de patron dans votre usine");
