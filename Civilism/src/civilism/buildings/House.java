@@ -19,6 +19,10 @@ public class House extends Building implements Improvement{
     //Constantes.HOUSE_FULL;
     ArrayList habitant = new ArrayList();
 
+    /**
+     * Constructor to House
+     * @param adress 
+     */
     public House(Adress adress) {
         super(adress);
         //name = "house".concat(House.house_number.toString());
@@ -51,8 +55,11 @@ public class House extends Building implements Improvement{
     
     
     ///////////////////////////////////////////////////////////////
-    
-    public Boolean is_full(){
+/**
+ * Check if your House is full
+ * @return boolean
+ */
+    public boolean is_full(){
         return this.habitant.size() >=  Constantes.HOUSE_FULL;
     }
 /**

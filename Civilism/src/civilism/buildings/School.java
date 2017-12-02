@@ -8,7 +8,6 @@ package civilism.buildings;
 import civilism.*;
 import civilism.characters.*;
 import java.util.ArrayList;
-import java.util.ArrayList;
 
 /**
  *
@@ -19,10 +18,14 @@ public class School extends Building implements Improvement{
     ArrayList eleve = new ArrayList();
     ArrayList teachers = new ArrayList();
     ArrayList scientists = new ArrayList();
-    protected static Integer number_school = 1;  //Si nouvel object créé, implémenter la variable
 
     
-    
+    /**
+     * Constructeur to school
+     * @param directeur
+     * @param adress
+     * @param name 
+     */
     public School(Professor directeur, Adress adress, String name) {
         super(adress, name);
         this.directeur = directeur;
@@ -61,15 +64,7 @@ public class School extends Building implements Improvement{
     public void setScientists(ArrayList scientists) {
         this.scientists = scientists;
     }
-
-    public static Integer getNumber_school() {
-        return number_school;
-    }
-
-    public static void setNumber_school(Integer number_school) {
-        School.number_school = number_school;
-    }
-
+    
     public Adress getAdress() {
         return adress;
     }
@@ -85,14 +80,11 @@ public class School extends Building implements Improvement{
     public void setName(String name) {
         this.name = name;
     }
-    
-    
-    
 /////////////////////////////////////////////////////////////
     /////////////////////////////////////////////
 
     /**
-     * Regarde si l'école est pleine
+     * check if this shcool is full
      * @return boolean
      */
     public boolean is_full(){
@@ -101,7 +93,10 @@ public class School extends Building implements Improvement{
         }
         return (false);
     }
-    
+    /**
+     * check is number of scientist is full in this school
+     * @return boolean
+     */
     private boolean is_full_science() {
         if (this.scientists.size() >= Constantes.SCHOOL_FULL_SCIENCE){
             return (true);
@@ -160,9 +155,10 @@ public class School extends Building implements Improvement{
             return true;
         }
     }
-
-    
-    //COMMENT ON CREE UN NOUVELLE OBJECT SCHOOL?
+    /**
+     * Create a new school
+     * @param bulding 
+     */
     @Override
     public void create_building(ArrayList bulding) {
         System.out.println("Quelle est le nom de votre nouvelle école?");
@@ -172,7 +168,11 @@ public class School extends Building implements Improvement{
         bulding.add(school);
     }
     
-    
+    /**
+     * Add a professor where he can
+     * @param schools
+     * @param prof 
+     */
     public static void addProfessor(ArrayList<School> schools, Professor prof){
         int i = 0;
         while (i < schools.size()){
@@ -189,6 +189,11 @@ public class School extends Building implements Improvement{
         }
     }
     
+    /**
+     * Add a scientist where you can
+     * @param schools
+     * @param scientist 
+     */
     public static void addScientist(ArrayList<School> schools, Scientist scientist){
         int i = 0;
         while (i < schools.size()){
@@ -206,20 +211,3 @@ public class School extends Building implements Improvement{
     }
    
 }
-///////////////////////////////////////////////////////////
-/*
- public Integer correspondance (){
-        if(this.actual_school == "petite_ecole"){
-            return Constantes.SMALL_SCHOOL_FULL;
-        }
-        if(this.actual_school=="moyenne_ecole"){
-            return Constantes.MIDDLE_SCHOOL_FULL;
-        }
-        if(this.actual_school == "grande_entreprise"){
-            return Constantes.BIG_SCHOOL_FULL;
-        }    
-        return -1;
-    }
-
-
-*/

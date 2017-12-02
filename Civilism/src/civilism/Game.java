@@ -166,7 +166,7 @@ public class Game {
         }
         catch (IOException e)
         {
-        e.printStackTrace();
+        System.out.println("Impossible");
         }
         /*
         FileWriter log = new FileWriter(this.townName + "_log.txt");
@@ -191,17 +191,22 @@ public class Game {
         
     }
     ////////////////////////////////////////////////////////////////
-
+//////////////////Getter and Setter////////////////////////////////
+    /**
+     * GetWriter
+     * @return 
+     */
     public BufferedWriter getWriter() {
         return writer;
     }
-
+    /**
+    * SetWriter
+    * @param writer 
+    */
     public void setWriter(BufferedWriter writer) {
         Game.writer = writer;
     }
 
-
-    
     public String getTownName() {
         return townName;
     }
@@ -330,7 +335,66 @@ public class Game {
         this.keywords = keywords;
     }
     //////////////////////////////////////////////////
-    
+     /**
+     * Initialises the first objects to be created
+     *      creates 1 school, 1 office, 1 factory & 1 house
+     *              1 professor, 2 workers, 1 child
+     */
+    private void initialisation(){
+        
+        System.out.println("La première tâche qui vous incombe est l'une des plus simples: Inaugurer les premiers bâtiments de " + this.townName);
+        System.out.println("Vous devez maintenant choisir les noms de vos premiers bâtiments. Si vous souhaitez garder les noms par défaut, appuyez simplement sur Entrée.");
+        
+        //Creation des batiments
+        System.out.println("Quel nom pour votre école?");
+        String name;
+        name= keyboard.nextLine();
+        if ("".equals(name)){
+            name = "ISEN";
+        }
+        School school = new School(null,Adress.AVENUE_DE_L_ISEN,name);
+        buildings.add(school);
+        schools.add(school);
+        
+        System.out.println("Quel nom pour votre comissariat?");
+        name= keyboard.nextLine();
+        if ("".equals(name)){
+            name = "Quai des Orfèvres";
+        }
+        office = new Office(null,Adress.BOULEVARD_DES_REVES_BRISES,name);
+        buildings.add(office);  
+        
+        
+        System.out.println("Quel nom pour votre usine?");
+        name= keyboard.nextLine();
+        if ("".equals(name)){
+            name = "U$in€";
+        }
+        Factory factory = new Factory (null,Adress.RUE_PIERRE_DUPONT,name);
+        buildings.add(factory);
+        factories.add(factory);
+        
+        House house = new House (Adress.RUE_DE_LA_PAIX);
+        buildings.add(house);
+        houses.add(house);
+        
+        // Creation des personnages
+        Professor person = new Professor(school, Title.ENSEIGNANT, true, Name.MAXIME, Surname.DUPOND, house);
+        this.inhabitants.add(person);
+        School.addProfessor(this.schools , person);
+        
+        Worker worker = new Worker(factory, Job.WORKER, Name.BENOIT, Surname.PEPIN, house);
+        this.inhabitants.add(worker);
+        Factory.addWorker(factories, worker);
+        
+        worker = new Worker(factory, Job.WORKER, Name.QUENTIN, Surname.KAMENDA, house);
+        this.inhabitants.add(worker);
+        Factory.addWorker(factories, worker);
+        
+        this.children.add(new Child(Name.JEAN, Surname.JOULIA, house));
+        
+
+    }
     
     
     /**
@@ -479,11 +543,10 @@ public class Game {
         System.out.println("Quelles decisions majeures pour " + this.townName + " allez vous prendre maintenant ?");
         System.out.println("");
         
-        for (Child child : children){
+        children.forEach((child) -> {
             child.setEducation(child.getEducation()+1);
             // Tous les eleves gagnent en education
-        }  
-        //Avant ou apres les 2 trucs ?
+        }); //Avant ou apres les 2 trucs ?
         
         for (int i=0;i<schools.size();i++){
             recherche = recherche + schools.get(i).getScientists().size();
@@ -509,196 +572,49 @@ public class Game {
         
         return true;
     }
-   
-    /**
-     * Prints the List of all implemented commands.
-     */
-    private static void listOfCommands(){
-        System.out.println("");
-        System.out.println("Les commandes disponibles sont: \n"
-        + "help:    "
-        + "infos:    "
-        + "desc:    "
-        + "finish:  ");
-        System.out.println("");
-    }
-
-    /**
-     * Analyses a String and extracts keywords from it.
-     * @param input (String)
-     * @return An Array of detected keywords in the "input" String
-     */
-    private static String[] analyse(String input){
-        return input.split(" ");
-    }
-
+    
+    
+    
+   /////////////////////////////////////////////////////////////////////////
+   /////////////////Methods for Decision and Observation///////////////
+    
     
     /**
-     * Initialises the first objects to be created
-     *      creates 1 school, 1 office, 1 factory & 1 house
-     *              1 professor, 2 workers, 1 child
+     * Affects each child to an education process
+     * @param child 
      */
-    private void initialisation(){
+    protected void affectation(Child child){
+        System.out.println(child.name + " " + child.surname + " a besoin d'éducation. Vers quelle filière voulez-vous qu'il se dirige ? ('worker', 'police', 'professor', 'scientist')");
+        System.out.println("Filières possibles: worker [1 tour]; police  [3 tours]; professor [5 tours]; scientist [5 tours]");
         
-        System.out.println("La première tâche qui vous incombe est l'une des plus simples: Inaugurer les premiers bâtiments de " + this.townName);
-        System.out.println("Vous devez maintenant choisir les noms de vos premiers bâtiments. Si vous souhaitez garder les noms par défaut, appuyez simplement sur Entrée.");
-        
-        //Creation des batiments
-        System.out.println("Quel nom pour votre école?");
-        String name;
-        name= keyboard.nextLine();
-        if ("".equals(name)){
-            name = "ISEN";
+        action = analyse(keyboard.nextLine().concat(" #"));
+        try{
+            fastQuit(action[0]);
+        } catch (QuitException e) {}
+        switch(action[0]){
+            case "worker": 
+                child.setAmbition(Constantes.OUVRIER);
+                child.setDegree(Degree.ELEMENTARY);
+                break;
+            case "police":
+                child.setAmbition(Constantes.POLICIER);
+                child.setDegree(Degree.HIGHSCHOOL);
+                break;
+            case "professor":
+                child.setAmbition(Constantes.PROFESSEUR);
+                child.setDegree(Degree.COLLEGE);
+                break;
+            case "scientist":
+                child.setAmbition(Constantes.CHERCHEUR);
+                child.setDegree(Degree.UNIVERSITY);
+                break;
+            default: 
+                characterGestion();
+                break;
         }
-        School school = new School(null,Adress.AVENUE_DE_L_ISEN,name);
-        buildings.add(school);
-        schools.add(school);
-        
-        System.out.println("Quel nom pour votre comissariat?");
-        name= keyboard.nextLine();
-        if ("".equals(name)){
-            name = "Quai des Orfèvres";
-        }
-        office = new Office(null,Adress.BOULEVARD_DES_REVES_BRISES,name);
-        buildings.add(office);  
-        
-        
-        System.out.println("Quel nom pour votre usine?");
-        name= keyboard.nextLine();
-        if ("".equals(name)){
-            name = "U$in€";
-        }
-        Factory factory = new Factory (null,Adress.RUE_PIERRE_DUPONT,name);
-        buildings.add(factory);
-        factories.add(factory);
-        
-        House house = new House (Adress.RUE_DE_LA_PAIX);
-        buildings.add(house);
-        houses.add(house);
-        
-        // Creation des personnages
-        Professor person = new Professor(school, Title.ENSEIGNANT, true, Name.MAXIME, Surname.DUPOND, house);
-        this.inhabitants.add(person);
-        School.addProfessor(this.schools , person);
-        
-        Worker worker = new Worker(factory, Job.WORKER, Name.BENOIT, Surname.PEPIN, house);
-        this.inhabitants.add(worker);
-        Factory.addWorker(factories, worker);
-        
-        worker = new Worker(factory, Job.WORKER, Name.QUENTIN, Surname.KAMENDA, house);
-        this.inhabitants.add(worker);
-        Factory.addWorker(factories, worker);
-        
-        this.children.add(new Child(Name.JEAN, Surname.JOULIA, house));
-        
-
-    }
-
-    /**
-     * Get help on 'infos' command
-     */
-    public void helpInfos(){
-        System.out.println("La commande 'infos' permet de connaître le statut de chaque élément du jeu");
-        System.out.println("'infos' seul vous donne le statut actuel de votre ville (argent et habitants)");
-        System.out.println("'infos' accompagné du nom d'un élément du jeu vous donne le statut actuel de l'élément.");
-        System.out.println("Argumuments disponibles:     'school', 'factory', 'house', city'");
-        System.out.println("");
-        
-    }
-    
-    /**
-     * Get help on 'desc' command
-     */
-    public void helpDesc(){
-        System.out.println("La commande 'desc' permet d'accéder aux détails des informations globales sue votre jeu");
-        System.out.println("Vous y trouverez les informations concernant chaques metiers ou chaques batiments, mais aussi "
-                + "la compréhension du système du jeu dans les phases enfant/adulte de vos personnages ");
-        System.out.println("");
-        
-    }
-    
-    /**
-     * Get help on 'finish' command
-     */
-    public void helpFinish(){
-        System.out.println("Si vous entrez 'finish' dans la barre de jeu, alors votre tour d'observation et d'analyse sera terminé");
-        System.out.println("Vous passerez donc à la phase décisionnel du jeu");
         System.out.println("");
     }
-    
-    /**
-     * Get help on the observation phase
-     */
-    public void helpObservation(){
-        Game.listOfCommands();
-    }
-    
-    /**
-     * Get help on the decision phase
-     */
-    public void helpDecision(){
-        
-    }
-    
-    /**
-     * Prints the infos of the game
-     */
-    public void infos(){
-        System.out.println("Dans " + this.townName +" vous avez " + this.cash +" € " );
-        System.out.println("Vous avez "+ this.inhabitants.size() + " habitants dans votre ville");
-        System.out.println("");
-    }
-    
-    /**
-     * Prints the description of the game
-     */
-    public void desc(){
-        System.out.println("Civilism est un jeu issu d'un projet scolaire ISEN, réalisé par Quentin KAMENDA & Benoît PEPIN");
-        System.out.println("");
-    }
-    
-    /**
-     * Quits the game instantly
-     * @param input
-     * @throws QuitException 
-     */
-    public static void fastQuit(String input)
-            throws QuitException{
-        if ("quit".equals(input)){
-            try {
-                close();
-            } catch (IOException ex) {
-                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            throw new QuitException();
-        }
-    }
-    
-    /**
-     * Throws an exception if the player has not enough money to continue the game.
-     * @param cash
-     * @throws PoorException 
-     */
-    public static void moneyFail(Integer cash)
-            throws PoorException{
-        if (cash < Constantes.FAIL_MONEY){
-            throw new PoorException();
-        }
-    }
-    
-    /**
-     * Throws an eception if the player has not enough money to buy an item.
-     * @param cash
-     * @param cost
-     * @throws NotEnoughMoneyException 
-     */
-    public void checkMoney(Integer cash, Integer cost)
-            throws NotEnoughMoneyException{
-        if (cash-cost < 0){
-            throw new NotEnoughMoneyException();
-        }
-    }
-    
+     
     /**
      * Regroups the gestion of all characters (affectation of children)
      */
@@ -740,42 +656,6 @@ public class Game {
             }
             i++;
         }
-    }
-    
-    /**
-     * Affects each child to an education process
-     * @param child 
-     */
-    protected void affectation(Child child){
-        System.out.println(child.name + " " + child.surname + " a besoin d'éducation. Vers quelle filière voulez-vous qu'il se dirige ? ('worker', 'police', 'professor', 'scientist')");
-        System.out.println("Filières possibles: worker [1 tour]; police  [3 tours]; professor [5 tours]; scientist [5 tours]");
-        
-        action = analyse(keyboard.nextLine().concat(" #"));
-        try{
-            fastQuit(action[0]);
-        } catch (QuitException e) {}
-        switch(action[0]){
-            case "worker": 
-                child.setAmbition(Constantes.OUVRIER);
-                child.setDegree(Degree.ELEMENTARY);
-                break;
-            case "police":
-                child.setAmbition(Constantes.POLICIER);
-                child.setDegree(Degree.HIGHSCHOOL);
-                break;
-            case "professor":
-                child.setAmbition(Constantes.PROFESSEUR);
-                child.setDegree(Degree.COLLEGE);
-                break;
-            case "scientist":
-                child.setAmbition(Constantes.CHERCHEUR);
-                child.setDegree(Degree.UNIVERSITY);
-                break;
-            default: 
-                characterGestion();
-                break;
-        }
-        System.out.println("");
     }
     
     /**
@@ -822,6 +702,108 @@ public class Game {
         System.out.println("");
     }
     
+    ////////////////////////////////////////////////////////////////////////
+    ////////////// ////////////////////////////////////////////////////////
+    /**
+     * Prints the List of all implemented commands.
+     */
+    private void listOfCommands(){
+        System.out.println("");
+        System.out.println("Les commandes disponibles sont: \n"
+        + "help:    "
+        + "infos:    "
+        + "desc:    "
+        + "finish:  ");
+        System.out.println("");
+    }
+
+    /**
+     * Analyses a String and extracts keywords from it.
+     * @param input (String)
+     * @return An Array of detected keywords in the "input" String
+     */
+    private String[] analyse(String input){
+        return input.split(" ");
+    }
+
+    /**
+     * Get help on 'infos' command
+     */
+    public void helpInfos(){
+        System.out.println("La commande 'infos' permet de connaître le statut de chaque élément du jeu");
+        System.out.println("'infos' seul vous donne le statut actuel de votre ville (argent et habitants)");
+        System.out.println("'infos' accompagné du nom d'un élément du jeu vous donne le statut actuel de l'élément.");
+        System.out.println("Argumuments disponibles:     'school', 'factory', 'house', city'");
+        System.out.println("");
+        
+    }
+    
+    /**
+     * Get help on 'desc' command
+     */
+    public void helpDesc(){
+        System.out.println("La commande 'desc' permet d'accéder aux détails des informations globales sue votre jeu");
+        System.out.println("Vous y trouverez les informations concernant chaques metiers ou chaques batiments, mais aussi "
+                + "la compréhension du système du jeu dans les phases enfant/adulte de vos personnages ");
+        System.out.println("");
+        
+    }
+    
+    /**
+     * Get help on 'finish' command
+     */
+    public void helpFinish(){
+        System.out.println("Si vous entrez 'finish' dans la barre de jeu, alors votre tour d'observation et d'analyse sera terminé");
+        System.out.println("Vous passerez donc à la phase décisionnel du jeu");
+        System.out.println("");
+    }
+    
+    /**
+     * Get help on the observation phase
+     */
+    public void helpObservation(){
+        this.listOfCommands();
+    }
+    
+    /**
+     * Get help on the decision phase
+     */
+    public void helpDecision(){
+        
+    }
+    
+    /**
+     * Prints the infos of the game
+     */
+    public void infos(){
+        System.out.println("Dans " + this.townName +" vous avez " + this.cash +" € " );
+        System.out.println("Vous avez "+ this.inhabitants.size() + " habitants dans votre ville");
+        System.out.println("");
+    }
+    
+    /**
+     * Prints the description of the game
+     */
+    public void desc(){
+        System.out.println("Civilism est un jeu issu d'un projet scolaire ISEN, réalisé par Quentin KAMENDA & Benoît PEPIN");
+        System.out.println("");
+    }
+    
+    
+    /**
+     * Throws an eception if the player has not enough money to buy an item.
+     * @param cash
+     * @param cost
+     * @throws NotEnoughMoneyException 
+     */
+    public void checkMoney(Integer cash, Integer cost)
+            throws NotEnoughMoneyException{
+        if (cash-cost < 0){
+            throw new NotEnoughMoneyException();
+        }
+    }
+
+    
     /**
      * Updates the ressources of the player.
      * 
@@ -833,46 +815,9 @@ public class Game {
         System.out.println("Votre compte en banque est maintenant de : " + cash);
         System.out.println("");
     }
-    
     /**
-     * Ends the game.
+     * Give the worker's number in totality in your town to knoow how many cash you win.
      */
-    public static void gameOver(){
-        System.out.println("--- GAME OVER ---");
-        System.out.println("Vous allez manquer a " + Constantes.NARRATOR + "... Relancez une partie pour retrouver votre conseiller favori.");
-        System.exit(0);
-    }
-
-    public static void texte_log(String print,Integer texte){
-         try
-        { 
-       
-        writer.write(String.valueOf(print + texte));
-        writer.flush();
-        writer.newLine();
-        }
-        catch (IOException e)
-        {
-        e.printStackTrace();
-        }
-    }
-    public void texte_log(String texte){
-         try
-        { 
-            
-        writer.write(texte);
-        //writer.write("\r\n");  // PASSER UNE LIGNE 
-        writer.flush();
-        writer.newLine();
-        }
-        catch (IOException e)
-        {
-        e.printStackTrace();
-        }
-    }
-    public static void close() throws IOException{
-        writer.close();
-    }
     public void worker_number(){
         int worker =0;
         for(int i = 0; i < factories.size(); i++){
@@ -880,6 +825,10 @@ public class Game {
             }
             this.work_worker = worker * Constantes.WORKER_MONEY;
     }
+    
+    /**
+     * Print in your end of turn some actuality about your town
+     */
     public void fin_tour(){
         System.out.println("A la fin du tour, vous avez : " + this.cash + "€ et un total de " + this.recherche + " points de recherche.");
         System.out.println("Le tour " + this.turnNumber + " est maintenant terminé. Passons au tour suivant !");
@@ -892,5 +841,92 @@ public class Game {
         texte_log("Vous venez de terminer votre tour numero : ",turnNumber);
         texte_log("---------------------------------------------------------");
     }
+    
+    /////////////////////////STATIC METHODS////////////////////////////////////
+    /**
+     * Close and save your log
+     * @throws IOException 
+     */
+     public static void close() throws IOException{
+        writer.close();
+    }
+     
+    /**
+     * Add texte and Integer (convert Integer to String )in your in file.txt in you folder for log file
+     * @param print
+     * @param texte 
+     */
+     public static void texte_log(String print,Integer texte){
+         try
+        { 
+       
+        writer.write(String.valueOf(print + texte));
+        writer.flush();
+        writer.newLine();
+        }
+        catch (IOException e)
+        {
+            System.out.println("Impossible");
+        }
+    }
+         
+         /**
+          * Add texte in file.txt in your folder for log file
+          * @param texte 
+          */
+    public static void texte_log(String texte){
+         try
+        { 
+            
+        writer.write(texte);
+        //writer.write("\r\n");  // PASSER UNE LIGNE 
+        writer.flush();
+        writer.newLine();
+        }
+        catch (IOException e)
+        {
+            System.out.println("Impossible");
+        }
+    }
+     /**
+     * Ends the game.
+     * 
+     */
+    public static void gameOver(){
+        System.out.println("--- GAME OVER ---");
+        System.out.println("Vous allez manquer a " + Constantes.NARRATOR + "... Relancez une partie pour retrouver votre conseiller favori.");
+        System.exit(0);
+    }
+    
+    /**
+     * Quits the game instantly
+     * @param input
+     * @throws QuitException 
+     */
+    public static void fastQuit(String input)
+            throws QuitException{
+        if ("quit".equals(input)){
+            try {
+                close();
+            } catch (IOException ex) {
+                Logger.getLogger(Game.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            throw new QuitException();
+        }
+    }
+    
+    /**
+     * Throws an exception if the player has not enough money to continue the game.
+     * @param cash
+     * @throws PoorException 
+     */
+    public static void moneyFail(Integer cash)
+            throws PoorException{
+        if (cash < Constantes.FAIL_MONEY){
+            throw new PoorException();
+        }
+    }
+    
+
     
 }

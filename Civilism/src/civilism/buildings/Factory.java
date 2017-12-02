@@ -7,7 +7,6 @@ package civilism.buildings;
 
 import civilism.Constantes;
 import civilism.Game;
-import civilism.characters.Professor;
 import civilism.characters.Worker;
 import java.util.ArrayList;
 
@@ -23,7 +22,12 @@ public class Factory extends Building implements Improvement{
     protected Worker boss ;
     
     ArrayList worker = new ArrayList();
-
+/**
+ * Constructor to Factory
+ * @param boss
+ * @param adress
+ * @param name 
+ */
     public Factory(Worker boss, Adress adress, String name) {
         super(adress, name);
         this.worker_number = 0;
@@ -83,13 +87,12 @@ public class Factory extends Building implements Improvement{
 
     
     /**
-     * is_full permet de savoir si Factory est pleine ou pas
+     * is_full permit to know if this factory is full
      * @return 
      */
     public Boolean is_full(){
         return this.worker.size() >=  Constantes.COMPAGNY_FULL;
     }
-    // CEST QUOI CE BORLDE ICI ?
     
     /**
      * 
@@ -170,7 +173,11 @@ public class Factory extends Building implements Improvement{
         bulding.add(factory);
         
     }
-    
+    /**
+     * Add worker where you can
+     * @param factories
+     * @param worker 
+     */
     public static void addWorker(ArrayList<Factory> factories, Worker worker){
         int i = 0;
         
@@ -189,37 +196,3 @@ public class Factory extends Building implements Improvement{
     }
     
 }
-
-    // PERMET LA CREATION D UN DICO VOIR AVEC MOREL --> MAP
-
-/*
-    public Integer correspondance (){
-        if(this.actual_compagny == "petite"){
-            return Constantes.SMALL_SCHOOL_FULL;
-        }
-        if(this.actual_compagny=="moyenne"){
-            return Constantes.MIDDLE_SCHOOL_FULL;
-        }
-        if(this.actual_compagny == "grande"){
-            return Constantes.BIG_SCHOOL_FULL;
-        }    
-        return -1;
-    }
-
-   public Integer account(){
-        Integer output= correspondance();
-        Integer input = produce();
-        if (this.actual_compagny == "petite"){
-            output = Constantes.PETIT_COMPANY;
-        }
-        if (this.actual_compagny == "moyenne"){
-            output = Constantes.MOYEN_COMPANY;
-        }
-        if (this.actual_compagny == "grande"){
-            output = Constantes.GRAND_COMPANY;
-        }
-        return (input - output);
-        
-    }
-    
-*/
