@@ -95,6 +95,9 @@ public class Game {
      */
     private String keywords;
     
+    /**
+     *
+     */
     protected Integer work_worker;
     /**
      *
@@ -193,147 +196,279 @@ public class Game {
     ////////////////////////////////////////////////////////////////
 //////////////////Getter and Setter////////////////////////////////
     /**
-     * GetWriter
-     * @return 
+     * Gets the writer for the log
+     * @return the writer
      */
     public BufferedWriter getWriter() {
         return writer;
     }
     /**
-    * SetWriter
-    * @param writer 
+    * Sets the writer for the log
+    * @param writer the new writer
     */
     public void setWriter(BufferedWriter writer) {
         Game.writer = writer;
     }
 
+    /**
+     * Gets the town name of the game
+     * @return the name of the town
+     */
     public String getTownName() {
         return townName;
     }
 
+    /**
+     * Sets the town name of the game
+     * @param townName 
+     */
     public void setTownName(String townName) {
         this.townName = townName;
     }
 
+    /**
+     * Gets the creation date of the game
+     * @return the creation date
+     */
     public Date getCreationDate() {
         return creationDate;
     }
 
+    /**
+     * Sets the creation date of the game
+     * Why would you do this ?
+     * @param creationDate the new creation date
+     */
     public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
-
+    
+    /**
+     * Gets the filewriter for the log
+     * @return the file writer
+     */
     public FileWriter getLog() {
         return log;
     }
 
+    /**
+     * Sets the file writer for the log
+     * @param log the new file writer
+     */
     public void setLog(FileWriter log) {
         this.log = log;
     }
 
+    /**
+     * Gets the buffer writer for the log
+     * @return the buffer writer
+     */
     public BufferedWriter getBuffer() {
         return buffer;
     }
 
+    /**
+     * Sets the buffer writer for the log
+     * @param buffer the new buffer writer
+     */
     public void setBuffer(BufferedWriter buffer) {
         this.buffer = buffer;
     }
 
+    /**
+     * Gets the amount of cash available for the player
+     * @return the cash
+     */
     public Integer getCash() {
         return cash;
     }
 
+    /**
+     * Sets the amount of cash the player has
+     * @param cash the new amount of cash
+     */
     public void setCash(Integer cash) {
         this.cash = cash;
     }
 
+    /**
+     * Gets the number of research points the player has
+     * @return the number of research points
+     */
     public Integer getRecherche() {
         return recherche;
     }
 
+    /**
+     * Sets the number of research point the player has
+     * @param recherche the new number of research points
+     */
     public void setRecherche(Integer recherche) {
         this.recherche = recherche;
     }
 
+    /**
+     * Gets the turn number of the game
+     * @return the turn number
+     */
     public Integer getTurnNumber() {
         return turnNumber;
     }
 
+    /**
+     * Sets the turn number of the game
+     * Are you trying to cheat ?
+     * @param turnNumber 
+     */
     public void setTurnNumber(Integer turnNumber) {
         this.turnNumber = turnNumber;
     }
 
+    /**
+     * Gets the list of all inhabitants
+     * @return the list of all inhabitants
+     */
     public ArrayList<Human> getInhabitants() {
         return inhabitants;
     }
 
+    /**
+     * Sets the list of all inhabitants
+     * @param inhabitants the new list of inhabitants
+     */
     public void setInhabitants(ArrayList<Human> inhabitants) {
         this.inhabitants = inhabitants;
     }
 
+    /**
+     * Gets the list of all children
+     * @return the list of all children
+     */
     public ArrayList<Child> getChildren() {
         return children;
     }
 
+    /**
+     * Sets the list of all students 
+     * @param children the new list of all students
+     */
     public void setChildren(ArrayList<Child> children) {
         this.children = children;
     }
 
+    /**
+     * Gets the list of all buildings in the city
+     * @return the list of all buildings
+     */
     public ArrayList<Building> getBuildings() {
         return buildings;
     }
 
+    /**
+     * Sets the list of all buildings in the city
+     * @param buildings the new list of all buildings
+     */
     public void setBuildings(ArrayList<Building> buildings) {
         this.buildings = buildings;
     }
 
+    /**
+     * Gets the list of all the houses in the city
+     * @return the list of all houses
+     */
     public ArrayList<House> getHouses() {
         return houses;
     }
 
+    /**
+     * Sets the list of all the houses in the city
+     * @param houses the new list of all houses
+     */
     public void setHouses(ArrayList<House> houses) {
         this.houses = houses;
     }
 
+    /**
+     * Gets the list of all the schools in the city 
+     * @return the list of all schools
+     */
     public ArrayList<School> getSchools() {
         return schools;
     }
 
+    /**
+     * Sets the list of all the schools in the city
+     * @param schools the new list of schools
+     */
     public void setSchools(ArrayList<School> schools) {
         this.schools = schools;
     }
 
+    /**
+     * Gets the list of all the factories in the city
+     * @return the list of factories
+     */
     public ArrayList<Factory> getFactories() {
         return factories;
     }
 
+    /**
+     * Sets the list of all factories in the city
+     * @param factories the new list of factories
+     */
     public void setFactories(ArrayList<Factory> factories) {
         this.factories = factories;
     }
 
+    /**
+     * Gets the office of the city
+     * @return the office of the city
+     */
     public Office getOffice() {
         return office;
     }
 
+    /**
+     * Sets the office of the city
+     * @param office the new office
+     */
     public void setOffice(Office office) {
         this.office = office;
     }
 
+    /**
+     * Gets the action command of the game
+     * @return the action command
+     */
     public String[] getAction() {
         return action;
     }
 
+    /**
+     * Sets the action command of the game
+     * @param action the new action
+     */
     public void setAction(String[] action) {
         this.action = action;
     }
 
+    /**
+     * Gets the keyword command of the game
+     * @return the keyword command
+     */
     public String getKeywords() {
         return keywords;
     }
 
+    /**
+     * Sets the keyword command of the game
+     * @param keywords the new keyword
+     */
     public void setKeywords(String keywords) {
         this.keywords = keywords;
     }
+    
+    
     //////////////////////////////////////////////////
      /**
      * Initialises the first objects to be created
@@ -352,7 +487,7 @@ public class Game {
         if ("".equals(name)){
             name = "ISEN";
         }
-        School school = new School(null,Adress.AVENUE_DE_L_ISEN,name);
+        School school = new School(null,Adress.randomAdress(),name);
         buildings.add(school);
         schools.add(school);
         
@@ -361,7 +496,7 @@ public class Game {
         if ("".equals(name)){
             name = "Quai des Orfèvres";
         }
-        office = new Office(null,Adress.BOULEVARD_DES_REVES_BRISES,name);
+        office = new Office(null,Adress.randomAdress(),name);
         buildings.add(office);  
         
         
@@ -370,28 +505,28 @@ public class Game {
         if ("".equals(name)){
             name = "U$in€";
         }
-        Factory factory = new Factory (null,Adress.RUE_PIERRE_DUPONT,name);
+        Factory factory = new Factory (null,Adress.randomAdress(),name);
         buildings.add(factory);
         factories.add(factory);
         
-        House house = new House (Adress.RUE_DE_LA_PAIX);
+        House house = new House (Adress.randomAdress());
         buildings.add(house);
         houses.add(house);
         
         // Creation des personnages
-        Professor person = new Professor(school, Title.ENSEIGNANT, true, Name.MAXIME, Surname.DUPOND, house);
+        Professor person = new Professor(school, Title.ENSEIGNANT, true, Name.randomName(), Surname.randomSurname(), house);
         this.inhabitants.add(person);
         School.addProfessor(this.schools , person);
         
-        Worker worker = new Worker(factory, Job.WORKER, Name.BENOIT, Surname.PEPIN, house);
+        Worker worker = new Worker(factory, Job.WORKER, Name.randomName(), Surname.randomSurname(), house);
         this.inhabitants.add(worker);
         Factory.addWorker(factories, worker);
         
-        worker = new Worker(factory, Job.WORKER, Name.QUENTIN, Surname.KAMENDA, house);
+        worker = new Worker(factory, Job.WORKER, Name.randomName(), Surname.randomSurname(), house);
         this.inhabitants.add(worker);
         Factory.addWorker(factories, worker);
         
-        this.children.add(new Child(Name.JEAN, Surname.JOULIA, house));
+        this.children.add(new Child(Name.randomName(), Surname.randomSurname(), house));
         
 
     }
@@ -616,7 +751,7 @@ public class Game {
     }
      
     /**
-     * Regroups the gestion of all characters (affectation of children)
+     * Regroups the gestion of all characters (affectation of children, check the number of policemen)
      */
     protected void characterGestion(){
         int i = 0;
@@ -642,19 +777,23 @@ public class Game {
                     case COLLEGE:
                         School.addProfessor(schools, new Professor(this.schools.get(this.schools.size()-1), Title.ENSEIGNANT, true, children.get(i).name, children.get(i).surname, children.get(i).home));
                         children.remove(i);
-                        children.add(new Child(Name.SAMI, Surname.TARTEMPION, null));
+                        children.add(new Child(Name.randomName(), Surname.randomSurname(), null));
                         break;
                     case UNIVERSITY:
-                        School.addScientist(schools, new Scientist(Title.ENSEIGNANT, Domain.PHARMACOLOGY, children.get(i).name, children.get(i).surname, children.get(i).home));
+                        School.addScientist(schools, new Scientist(Title.ENSEIGNANT, Domain.randomDomain(), children.get(i).name, children.get(i).surname, children.get(i).home));
                         children.remove(i);
                         break;
                     default:
                 }
                 } catch (NoSpaceException e){}
                 
-                children.add(new Child(Name.HUGO, Surname.DIDIER, null));
+                children.add(new Child(Name.randomName(), Surname.randomSurname(), null));
             }
             i++;
+        }
+        Integer criminals = this.inhabitants.size() - this.office.policemen.size()*Constantes.POLICE_HANDLE;
+        if (criminals > 0){
+            this.cash = this.cash-Constantes.CRIME_COST*criminals;
         }
     }
     

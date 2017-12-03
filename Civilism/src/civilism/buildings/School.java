@@ -14,6 +14,10 @@ import java.util.ArrayList;
  * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
  */
 public class School extends Building implements Improvement{
+
+    /**
+     *
+     */
     protected Professor directeur;
     ArrayList eleve = new ArrayList();
     ArrayList teachers = new ArrayList();
@@ -33,50 +37,99 @@ public class School extends Building implements Improvement{
     
  /////////////////////////////////////////////////////////////
 
+    /**
+     *
+     * @return
+     */
+
     public Professor getDirecteur() {
         return directeur;
     }
 
+    /**
+     *
+     * @param directeur
+     */
     public void setDirecteur(Professor directeur) {
         this.directeur = directeur;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList getEleve() {
         return eleve;
     }
 
+    /**
+     *
+     * @param eleve
+     */
     public void setEleve(ArrayList eleve) {
         this.eleve = eleve;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList getTeachers() {
         return teachers;
     }
 
+    /**
+     *
+     * @param teachers
+     */
     public void setTeachers(ArrayList teachers) {
         this.teachers = teachers;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList getScientists() {
         return scientists;
     }
 
+    /**
+     *
+     * @param scientists
+     */
     public void setScientists(ArrayList scientists) {
         this.scientists = scientists;
     }
     
+    /**
+     *
+     * @return
+     */
     public Adress getAdress() {
         return adress;
     }
 
+    /**
+     *
+     * @param adress
+     */
     public void setAdress(Adress adress) {
         this.adress = adress;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }

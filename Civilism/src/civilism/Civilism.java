@@ -5,20 +5,21 @@
  */
 package civilism;
 
-import civilism.buildings.House;
 import java.io.*;
 
 /**
  * This is the main Instance, where the Game starts.
  * @authors Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
  */
 public class Civilism {
 
     /**
-     *Etat est un variable pour proteger la phase de decision et d'observation
+     * C'est ici que débute le jeu.
+     * Etat est un variable pour proteger la phase de decision et d'observation
+     * @param args UNUSED
+     * @throws java.io.IOException
      */
-
-    
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         

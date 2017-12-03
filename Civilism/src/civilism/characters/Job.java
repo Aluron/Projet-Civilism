@@ -7,10 +7,28 @@ package civilism.characters;
 
 /**
  * This Enum contains all available Jobs.
- * @author Quenti KAMENDA & Benoit PEPIN - ISEN 2017
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
  */
 public enum Job {
     
-    WORKER, ASSISTANT, CHIEF, BOSS;
+    /**
+     *
+     */
+    WORKER, 
+
+    /**
+     *
+     */
+    ASSISTANT, 
+
+    /**
+     *
+     */
+    CHIEF, 
+
+    /**
+     *
+     */
+    BOSS;
     
 }

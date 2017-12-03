@@ -29,26 +29,50 @@ public class House extends Building implements Improvement{
     }
  //////////////////////////////////////////////////////////////////
 
+    /**
+     *
+     * @return
+     */
     public ArrayList getHabitant() {
         return habitant;
     }
 
+    /**
+     *
+     * @param habitant
+     */
     public void setHabitant(ArrayList habitant) {
         this.habitant = habitant;
     }
 
+    /**
+     *
+     * @return
+     */
     public Adress getAdress() {
         return adress;
     }
 
+    /**
+     *
+     * @param adress
+     */
     public void setAdress(Adress adress) {
         this.adress = adress;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
@@ -102,7 +126,12 @@ public class House extends Building implements Improvement{
         }
     }
     
-    
+    /**
+     *
+     * @param houses
+     * @param human
+     * @throws NoSpaceException
+     */
     public static void addHabitant(ArrayList<House> houses, Human human)
             throws NoSpaceException{
         int i = 0;

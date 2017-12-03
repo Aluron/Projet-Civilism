@@ -17,8 +17,19 @@ import java.util.ArrayList;
  */
 public class Factory extends Building implements Improvement{
     
+    /**
+     *
+     */
     protected Integer worker_number;
+
+    /**
+     *
+     */
     protected Integer internNumber;
+
+    /**
+     *
+     */
     protected Worker boss ;
     
     ArrayList worker = new ArrayList();
@@ -35,49 +46,98 @@ public class Factory extends Building implements Improvement{
     }
     //////////////////////////////////////////////////////////////
 
+    /**
+     *
+     * @return
+     */
     public Integer getWorker_number() {
         return worker_number;
     }
 
+    /**
+     *
+     * @param worker_number
+     */
     public void setWorker_number(Integer worker_number) {
         this.worker_number = worker_number;
     }
 
+    /**
+     *
+     * @return
+     */
     public Integer getInternNumber() {
         return internNumber;
     }
 
+    /**
+     *
+     * @param internNumber
+     */
     public void setInternNumber(Integer internNumber) {
         this.internNumber = internNumber;
     }
 
+    /**
+     *
+     * @return
+     */
     public Worker getBoss() {
         return boss;
     }
 
+    /**
+     *
+     * @param boss
+     */
     public void setBoss(Worker boss) {
         this.boss = boss;
     }
+
+    /**
+     *
+     * @return
+     */
     public ArrayList getWorker() {
         return worker;
     }
 
+    /**
+     *
+     * @param worker
+     */
     public void setWorker(ArrayList worker) {
         this.worker = worker;
     }
 
+    /**
+     *
+     * @return
+     */
     public Adress getAdress() {
         return adress;
     }
 
+    /**
+     *
+     * @param adress
+     */
     public void setAdress(Adress adress) {
         this.adress = adress;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }

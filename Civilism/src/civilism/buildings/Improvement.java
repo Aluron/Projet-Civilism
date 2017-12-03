@@ -5,7 +5,6 @@
  */
 package civilism.buildings;
 
-import civilism.Game;
 import java.util.ArrayList;
 
 /**

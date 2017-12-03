@@ -120,6 +120,15 @@ public class Constantes {
      */
     public final static Integer MAINTENANCE_OFFICE = 300 ; // SUPPOSER CONSTANTE
     
+    /**
+     * Number of inhabitants a police man can handle by itself
+     */
+    public final static Integer POLICE_HANDLE = 6;
+    
+    /**
+     * The amount of cash the player looses for each crimianl in the city
+     */
+    public final static Integer CRIME_COST = 100;
     
     
     /////////////BUILDING///////////////////////
@@ -132,15 +141,15 @@ public class Constantes {
     
     ////////////Improvement////////////////////
     /**
-     * 
+     * The money needed to improve a building
      */
     public final static Integer IMPROVE_MONEY = 500;
     /**
-     * 
+     * The research points needed to improve a building
      */
     public final static Integer IMPROVE_SKILL = 10;
     /**
-     * 
+     * The money needed toimprove a house
      */
     public final static Integer IMPROVE_HOUSE = 400;
     

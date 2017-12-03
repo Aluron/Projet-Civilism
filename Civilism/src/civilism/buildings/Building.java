@@ -13,17 +13,33 @@ import civilism.*;
  */
 public class Building {
     
+    /**
+     *
+     */
     protected Adress adress;
+
+    /**
+     *
+     */
     protected String name;
 //    protected Integer price;
 //    protected Integer max_capacity;
 
+    /**
+     *
+     * @param adress
+     * @param name
+     */
     public Building(Adress adress, String name) {
         this.adress = adress;
         this.name = name;
         
     }
     
+    /**
+     *
+     * @param adress
+     */
     public Building(Adress adress){
         this.adress = adress;
     }

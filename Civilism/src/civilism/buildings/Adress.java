@@ -5,12 +5,48 @@
  */
 package civilism.buildings;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
+
 /**
  *
  * @author qkame
  */
 public enum Adress {
     
-    RUE_PIERRE_DUPONT, AVENUE_DE_L_ISEN, BOULEVARD_DES_REVES_BRISES, RUE_DE_LA_PAIX;
+    /**
+     *
+     */
+    RUE_PIERRE_DUPONT, 
+
+    /**
+     *
+     */
+    AVENUE_DE_L_ISEN, 
+
+    /**
+     *
+     */
+    BOULEVARD_DES_REVES_BRISES, 
+
+    /**
+     *
+     */
+    RUE_DE_LA_PAIX;
+    
+    private static final List<Adress> VALUES =
+        Collections.unmodifiableList(Arrays.asList(values()));
+        private static final int SIZE = VALUES.size();
+        private static final Random RANDOM = new Random();
+
+    /**
+     *
+     * @return
+     */
+    public static Adress randomAdress()  {
+        return VALUES.get(RANDOM.nextInt(SIZE));
+    }
     
 }

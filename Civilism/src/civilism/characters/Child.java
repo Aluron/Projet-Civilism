@@ -30,6 +30,21 @@ public class Child extends Human{
      */
     protected Integer ambition;
 
+    /**
+     * Constructor for a Child
+     * UNUSED
+     * @param education the educational level
+     * @param degree the current degree
+     * @param name the name
+     * @param surname the surname
+     * @param home the place where he lives
+     */
+    public Child(Integer education, Degree degree, Name name, Surname surname, House home) {
+        super(name, surname, home);
+        this.education = education;
+        this.degree = degree;
+        System.out.println("Félicitations! " + this.name + this.surname + "est né!");
+    }    
     
     /**
      * Gets the current educational level of the child.
@@ -78,21 +93,6 @@ public class Child extends Human{
         this.ambition = ambition;
     }
 
-    /**
-     * Constructor for a Child
-     * UNUSED
-     * @param education the educational level
-     * @param degree the current degree
-     * @param name the name
-     * @param surname the surname
-     * @param home the place where he lives
-     */
-    public Child(Integer education, Degree degree, Name name, Surname surname, House home) {
-        super(name, surname, home);
-        this.education = education;
-        this.degree = degree;
-        System.out.println("Félicitations! " + this.name + this.surname + "est né!");
-    }
     
     /**
      * Constructor for a Child Object.
@@ -103,9 +103,7 @@ public class Child extends Human{
     public Child(Name name, Surname surname, House home){
         super(name, surname, home);
         this.education = 0;
-    }
-    
-    
+    }    
     
     /**
      * Represents the fact that the child passes an educational year (Increments the eductation level).
@@ -118,10 +116,42 @@ public class Child extends Human{
      * The child becomes a worker. Deletes the Object to create his equivalent as an Adult.
      * UNUSED
      * @param child The Child to become Worker.
+     * @param factory
      */
     public static void becomeWorker(Child child, Factory factory){
         Worker worker = new Worker(factory, Job.WORKER, child.name, child.surname, child.home);
         
+    }
+    
+    /**
+     * Prints help on the Child Class.
+     */
+    public static void description (){
+            System.out.println("Les enfants sont le futur de votre ville.");
+            System.out.println("Vous obtenez un nouvel enfant quand un enfant finit sa formation.");
+            System.out.println("Le nombre d'enfants est limité par le nombre de professeurs.");
+            System.out.println("Pour que votre enfant devienne un ouvrier, il lui faut: " + Constantes.OUVRIER );
+            System.out.println("Pour devenir policier: " + Constantes.POLICIER);
+            System.out.println("Pour devenir professeur: " + Constantes.PROFESSEUR);
+            System.out.println("Pour devenir chercheur: "+ Constantes.CHERCHEUR);
+    }
+    
+    /**
+     * Affects a child to a specified degree (asked to the player)
+     * UNUSED
+     * @param child the child who will attend a class
+     */
+    protected void affectation(Child child){
+        System.out.println("Un enfant est ne et pret à se former. " + child.name + " " + child.surname + " est en attente d'une formation. Que choisissez-vous comme etudes pour lui ?");
+        System.out.println("(RAPPEL: un enfant peut étudier les metiers d'ouvrier, de policier, de professeur ou de chercheur.)");
+        switch (Game.keyboard.nextLine()){
+            //case "help": 
+            case "ouvrier": child.degree = Degree.ELEMENTARY;
+            case "policier": child.degree = Degree.HIGHSCHOOL;
+            case "professeur": child.degree = Degree.COLLEGE;
+            case "chercheur": child.degree = Degree.UNIVERSITY;
+            default: 
+        }
     }
     
     /**
@@ -149,39 +179,6 @@ public class Child extends Human{
      */
     public static void becomeScientist(Child child){
         
-    }
-    
-    /**
-     * Prints help on the Child Class.
-     */
-    public static void description (){
-            System.out.println("Les enfants sont le futur de votre ville");
-            System.out.println("Vous avez un nouvel enfant quand un enfant fini sa formation");
-            System.out.println("Votre nombre d'enfant est limité selon le nombre de professeur");
-            System.out.println("Pour que votre enfant soit un ouvrier, il lui faut " + Constantes.OUVRIER );
-            System.out.println("¨Pour un policier " + Constantes.POLICIER);
-            System.out.println("Pour un professeur " + Constantes.PROFESSEUR);
-            System.out.println("Pour un chercheur "+ Constantes.CHERCHEUR);
-    }
-    
-    /**
-     * Affects a child to a specified degree (asked to the player)
-     * UNUSED
-     * @param child the child who will attend a class
-     */
-    protected void affectation(Child child){
-        System.out.println("Un enfant est ne et pret à se former. " + child.name + " " + child.surname + " est en attente d'une formation. Que choisissez-vous comme etudes pour lui ?");
-        System.out.println("(RAPPEL: un enfant peut étudier les metiers d'ouvrier, de policier, de professuer ou de chercheur.)");
-        switch (Game.keyboard.nextLine()){
-            case "help": 
-            case "ouvrier": child.degree = Degree.ELEMENTARY;
-            case "policier": child.degree = Degree.HIGHSCHOOL;
-            case "professeur": child.degree = Degree.COLLEGE;
-            case "chercheur": child.degree = Degree.UNIVERSITY;
-            default: 
-        }
-    }
-    
-    
+    }    
     
 }

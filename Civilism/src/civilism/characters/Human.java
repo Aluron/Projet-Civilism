@@ -10,7 +10,7 @@ import civilism.buildings.House;
 /**
  * The Human Class is the class representing every character.
  * It is the "mother" of the Child and the Adult class.
- * Since no Human can be anything else than CHild or Adult, this class is implemented as abstact.
+ * Since no Human can be anything else than Child or Adult, this class is implemented as abstact.
  * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
  */
 public abstract class Human{
@@ -39,10 +39,12 @@ public abstract class Human{
     public House home;
     /**
      * Father of the character.
+     * UNUSED
      */
     //public Adult father; IMPROVEMENT
     /**
      * Mother of the character.
+     * UNUSED
      */
     //public Adult mother; IMPROVEMENT
 

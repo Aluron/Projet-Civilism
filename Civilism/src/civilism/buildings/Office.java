@@ -15,11 +15,27 @@ import java.util.ArrayList;
  */
 public class Office extends Building {
     
+    /**
+     *
+     */
     protected static Integer policeman_number = 0;  // Il existe qu'un object commissariat mais il peut s'ameliorer
+
+    /**
+     *
+     */
     protected Police commissaire ;
     
+    /**
+     *
+     */
     public ArrayList<Police> policemen = new ArrayList();
 
+    /**
+     *
+     * @param commissaire
+     * @param adress
+     * @param name
+     */
     public Office(Police commissaire, Adress adress, String name) {
         super(adress, name);
         this.commissaire = commissaire;
@@ -30,6 +46,11 @@ public class Office extends Building {
     /*
     Infos permet d'afficher le nom du commissaire et et le nombre de policier
     */
+
+    /**
+     *
+     */
+
     public void infos(){
         System.out.println("Vous avez " + policeman_number + " dans votre commissariat");
         if (commissaire == null ){
@@ -43,6 +64,11 @@ public class Office extends Building {
     /*
     Affiche l'utilité du commissariat
     */
+
+    /**
+     *
+     */
+
     public static void description (){
             System.out.println("Le commissariat est l'endroit òu l'on trouve les policers en service");
             System.out.println("Les policers permettent de faire régner l'ordre dans la ville");
@@ -50,6 +76,10 @@ public class Office extends Building {
     }
 
     //////Qu'es que c'était?///////
+
+    /**
+     *
+     */
     public void rapport (){
         
     }

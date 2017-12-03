@@ -21,15 +21,12 @@ public class Adult extends Human{
     //public Adult partner;
     //public Child child;
     
-    public static Integer experience;
-    
     /**
-     * Sadly, an adult can die. This is a simple SOUT function announcing the death of the character.
+     * The experience (years/turns already worked) of the character.
      * UNUSED
      */
-    public void die(){
-        System.out.println("La ville est en deuil aujourd'hui. " + name + " " + surname + " est mort à l'âge de " + age + ".");       
-    }
+    public static Integer experience;
+   
 
     /**
      * Constructor for a object of Adult type.
@@ -41,19 +38,7 @@ public class Adult extends Human{
         super(name, surname, home);
     }
     
-    /**
-     * Displays help on what a Human is.
-     */
-     public static void description (){
-            System.out.println("L'adulte est un enfant qui a fini sa formation ");
-            System.out.println("A la fin de sa formation devient un adulte à voué à un travail soit :");
-            System.out.println("- Policier");
-            System.out.println("- travailleur à l'usine");
-            System.out.println("- professeur");
-            System.out.println("- chercheur");
-    }
-
-
+    
      /**
       * Getter for the experience of the character
       * @return the experience of the character
@@ -69,7 +54,27 @@ public class Adult extends Human{
     public static void setExperience(Integer experience) {
         Adult.experience = experience;
     }
+    
+    
+    /**
+     * Displays help on what a Human is.
+     */
+     public static void description (){
+            System.out.println("L'adulte est un enfant qui a fini sa formation ");
+            System.out.println("A la fin de sa formation, il devient un adulte voué à un travail, soit :");
+            System.out.println("- Policier");
+            System.out.println("- Travailleur à l'usine");
+            System.out.println("- Professeur");
+            System.out.println("- Chercheur");
+    }
 
-     
+
+    /**
+     * Sadly, an adult can die. This is a simple SOUT function announcing the death of the character.
+     * UNUSED
+     */
+    public void die(){
+        System.out.println("La ville est en deuil aujourd'hui. " + name + " " + surname + " est mort à l'âge de " + age + ".");       
+    }
      
 }
