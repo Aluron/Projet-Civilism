@@ -14,6 +14,8 @@ import civilism.buildings.House;
  * The child class is the pre-Adult class.
  * The "Child" character is a character that is slowly becoming an adult by going to school.
  * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public class Child extends Human{
     

@@ -11,7 +11,9 @@ import civilism.buildings.School;
 /**
  * A Scientist is virtually here to improve the city, trought the improvement of the buildings.
  * The Scientist class inherits from the Adult class.
- * @author qkame
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public class Scientist extends Adult{
     

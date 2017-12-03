@@ -8,6 +8,8 @@ package civilism.characters;
 /**
  * This Enum contains all available ranks for a Police Officer.
  * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public enum Rank {
     

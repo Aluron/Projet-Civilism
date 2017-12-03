@@ -12,132 +12,92 @@ import java.util.ArrayList;
 
 
 /**
- *
- * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
+ * Factory is a inheritante to building, factory is a class where the workers work
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
+
 public class Factory extends Building implements Improvement{
-    
-    /**
-     *
-     */
-    protected Integer worker_number;
 
     /**
-     *
-     */
-    protected Integer internNumber;
-
-    /**
-     *
+     * 
      */
     protected Worker boss ;
     
     ArrayList worker = new ArrayList();
 /**
- * Constructor to Factory
+ * Constructor for Factory
  * @param boss
  * @param adress
  * @param name 
  */
     public Factory(Worker boss, Adress adress, String name) {
         super(adress, name);
-        this.worker_number = 0;
         this.boss = boss;
     }
     //////////////////////////////////////////////////////////////
 
     /**
-     *
-     * @return
-     */
-    public Integer getWorker_number() {
-        return worker_number;
-    }
-
-    /**
-     *
-     * @param worker_number
-     */
-    public void setWorker_number(Integer worker_number) {
-        this.worker_number = worker_number;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Integer getInternNumber() {
-        return internNumber;
-    }
-
-    /**
-     *
-     * @param internNumber
-     */
-    public void setInternNumber(Integer internNumber) {
-        this.internNumber = internNumber;
-    }
-
-    /**
-     *
-     * @return
+     * Gets the boss in factory
+     * @return boss
      */
     public Worker getBoss() {
         return boss;
     }
-
     /**
-     *
-     * @param boss
+     * Sets the boss in factory
+     * @param boss the new boss
      */
     public void setBoss(Worker boss) {
         this.boss = boss;
     }
-
     /**
-     *
-     * @return
+     * Gets the worker in factory
+     * @return worker
      */
     public ArrayList getWorker() {
         return worker;
     }
 
     /**
-     *
-     * @param worker
+     * Sets the worker in factory
+     * @param worker  the new worker
      */
     public void setWorker(ArrayList worker) {
         this.worker = worker;
     }
 
     /**
-     *
-     * @return
+     * Gets adress in factory inherite building
+     * @return adress
      */
+    @Override
     public Adress getAdress() {
         return adress;
     }
-
     /**
-     *
-     * @param adress
+     * Sets the new adress in factory inherite building
+     * @param adress the new adress
      */
+    @Override
     public void setAdress(Adress adress) {
         this.adress = adress;
     }
-
     /**
-     *
-     * @return
+     * Gets name in factory inherite building
+     * @return 
      */
+    @Override
     public String getName() {
         return name;
     }
 
     /**
-     *
-     * @param name
+     * Sets the new name in factory inherite building
+     * @param name the new name
      */
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -163,6 +123,7 @@ public class Factory extends Building implements Improvement{
     public Integer produce(Game game){
         return (game.factories.size() * Constantes.WORKER_MONEY); //prend en compte toute les usines
     }
+    
     /**
      * Calcule le rendement totale de l'usine (combien gagne - combien perdu)
      * @param game
@@ -174,8 +135,7 @@ public class Factory extends Building implements Improvement{
         return (input - output);
         
     }
-    
-   
+
     /////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////
     /**
@@ -184,7 +144,8 @@ public class Factory extends Building implements Improvement{
     public void infos() {
         int i=1;
         // A remplacer apres pour lenght de la liste
-        System.out.println("Le nombre de travailleur de cette usine est de " + this.worker_number);
+        System.out.println("Le nom de votre usine est : " + this.getName());
+        System.out.println("Le nombre de travailleur de cette usine est de " + worker.size());
         if (this.boss== null ){
             System.out.println("Il n'y à pas de patron dans votre usine");
         }
@@ -197,17 +158,17 @@ public class Factory extends Building implements Improvement{
      */
     public static void description(){
         System.out.println("L'usine permet de rapporter de l'argent");
-        System.out.println("L'usine est à sa pleine capacité à " + Constantes.COMPAGNY_FULL+ "mais vous pouvez avoir plusieurs usines");
+        System.out.println("L'usine est à sa pleine capacité à " + Constantes.COMPAGNY_FULL+ " mais vous pouvez avoir plusieurs usines");
         System.out.println("Chaque travailleur vous crée de la richesse d'une valeur de " + Constantes.WORKER_MONEY);
         System.out.println("Mais attention, il y a un coût d'entretien à votre usine" );
     }
 
     
     /**
-     * Permet de savoir si un nouveau batiment peut-être crée
+     * Check if is possible the create a new factory
      * @param recherche
      * @param money
-     * @return 
+     * @return boolean
      */
     @Override
     public boolean checkBuilding(Integer recherche, Integer money) {
@@ -223,7 +184,10 @@ public class Factory extends Building implements Improvement{
             return true;
         }
     }
-
+    /**
+     * Create a new factory in the game
+     * @param bulding 
+     */
     @Override
     public void create_building(ArrayList bulding) {
         System.out.println("Quel est le nom de votre nouvelle usine?");

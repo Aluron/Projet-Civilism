@@ -13,6 +13,8 @@ import java.util.Random;
 /**
  * This Enum contains available Research domains.
  * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public enum Domain {
     

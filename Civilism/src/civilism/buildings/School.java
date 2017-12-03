@@ -11,7 +11,9 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public class School extends Building implements Improvement{
 
@@ -163,6 +165,7 @@ public class School extends Building implements Improvement{
       public void infos() {
         int i=1;
         // A remplacer apres pour lenght de la liste
+          System.out.println("Le nom de votre ecole est : " + this.getName());
         System.out.println("Le nombre de professeurs dans " + this.name + " est de " + this.teachers.size());
         if (this.directeur== null ){
             System.out.println("Il n'y à pas de directeur dans votre école ");
@@ -179,8 +182,11 @@ public class School extends Building implements Improvement{
      */
     public static void description(){
         System.out.println("L'école est le lieu ou les élèves apprennent leur futur métier");
-        System.out.println("L'école à pour capacité " + Constantes.SCHOOL_FULL + "mais vous pouvez en avoir plusieurs");
+        System.out.println("L'école à pour capacité " + Constantes.SCHOOL_FULL + " pour le nombre de professeur mais vous pouvez avoir plusieurs ecole");
+        System.out.println("L'école à pour capacité " + Constantes.SCHOOL_FULL_SCIENCE + " pour le nombre de scientifique");
         System.out.println("Chaque professeur peut avoir un et seulement un élève pendant sa période de formation " );
+        System.out.println("Chaque scientifique vous apporte un point de recherche par tour");
+        System.out.println("Il vous faudra des points de recherche pour créer de nouvelles usines et de nouvelles écoles  ");
         System.out.println("Une formation est plus ou moins longue selon la formation de l'élève");
         System.out.println("Mais attention, il y a un coût d'entretien à votre école" );
     }
