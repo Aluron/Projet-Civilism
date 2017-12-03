@@ -6,8 +6,10 @@
 package civilism.buildings;
 
 /**
- *
- * @author qkame
+ * This Enum contains several Adress available for factory,office and school.
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public enum Adress {
     

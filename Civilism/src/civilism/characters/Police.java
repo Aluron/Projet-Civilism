@@ -11,7 +11,9 @@ import civilism.buildings.Office;
 /**
  * The Police is virtually here to maintain the Law&Order in the city.
  * The Police class inherits from the Adult Class.
- * @author qkame
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public class Police extends Adult{
     

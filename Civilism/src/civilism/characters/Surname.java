@@ -7,7 +7,9 @@ package civilism.characters;
 
 /**
  * This Enum contains all available Surnames for the characters.
- * @author qkame
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public enum Surname {
     

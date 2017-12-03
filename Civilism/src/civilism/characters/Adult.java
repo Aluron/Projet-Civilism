@@ -11,6 +11,8 @@ import civilism.buildings.House;
  * The Adult class is the main Character Class.
  * It extends the Human class and is the "mother" of the functionnal character classes (Scientist, Professor, Worker & Police)
  * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public class Adult extends Human{
     

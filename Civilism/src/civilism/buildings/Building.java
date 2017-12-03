@@ -8,26 +8,63 @@ package civilism.buildings;
 import civilism.*;
 
 /**
- *
- * @author Object ou class fait par BENOIT PEPIN ISEN LILLE 2017 JAVA
+ * Building is the mother of factory,house,school and office
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public class Building {
     
     protected Adress adress;
     protected String name;
-//    protected Integer price;
-//    protected Integer max_capacity;
-
+ 
+    
+    /**
+     * Constructor for building
+     * @param adress 
+     * @param name 
+     */
     public Building(Adress adress, String name) {
         this.adress = adress;
         this.name = name;
         
     }
-    
+    /**
+     * There is no name with our house
+     * @param adress 
+     */
     public Building(Adress adress){
         this.adress = adress;
     }
-
+    
+    /**
+     * Gets the adress of the building
+     * @return the adress
+     */
+    public Adress getAdress() {
+        return adress;
+    }
+    /**
+     * Sets the adress of the bulding
+     * @param adress the new adress
+     */
+    public void setAdress(Adress adress) {
+        this.adress = adress;
+    }
+    /**
+     * Gets the name of the bulding
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+    /**
+     * Sets the name of the bulding
+     * @param name  the new name
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 //////////////////////////////////////////////////////////////  
     /**
      * Dependra de 2 pourcentages et retournera si oui ou non l'object brule

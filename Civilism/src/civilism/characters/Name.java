@@ -8,6 +8,8 @@ package civilism.characters;
 /**
  * This Enum contains every available Names for the characters.
  * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public enum Name {
     

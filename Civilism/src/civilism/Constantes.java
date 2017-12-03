@@ -8,7 +8,9 @@ package civilism;
 /**
  * This Class contains all the Constants of the game. 
  * Possible improvement: Change these Vars to set the difficulty.
- * @authors Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public class Constantes {
     
@@ -118,7 +120,12 @@ public class Constantes {
     /**
      * Cash cost for the maintenance of the office
      */
-    public final static Integer MAINTENANCE_OFFICE = 300 ; // SUPPOSER CONSTANTE
+    public final static Integer MAINTENANCE_OFFICE = 300 ; 
+    /**
+     * Cash per turn lose if you don't have enough Policeman
+     */
+    public final static Integer CRIME = 200;
+    
     
     
     

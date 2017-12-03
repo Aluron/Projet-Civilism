@@ -19,6 +19,8 @@ import java.util.logging.Logger;
  * This is the clas where everything happens.
  * It contains every information about the current game.
  * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public class Game {
 
@@ -373,6 +375,7 @@ public class Game {
         Factory factory = new Factory (null,Adress.RUE_PIERRE_DUPONT,name);
         buildings.add(factory);
         factories.add(factory);
+ 
         
         House house = new House (Adress.RUE_DE_LA_PAIX);
         buildings.add(house);
@@ -445,8 +448,8 @@ public class Game {
                                     teacher = this.schools.get(i).getTeachers().size() + teacher;
                                     scientist = this.schools.get(i).getScientists().size() + scientist;
                                 }
-                                System.out.println("Vous avez " + teacher + "en tout dans vos ecole ce qui correspond " + teacher + " eleves en formation" );
-                                System.out.println("Vous avez " + scientist + " dans votre jeu ce qui correspond a " + scientist + " points de recherche par tour");
+                                System.out.println("Vous avez " + teacher + " professeurs en tout dans vos ecole ce qui correspond " + teacher + " eleves en formation" );
+                                System.out.println("Vous avez " + scientist + " scientifiques dans votre jeu ce qui correspond a " + scientist + " points de recherche par tour");
                                 return false;
                             case "factory":
                                 int worker =0;
@@ -456,7 +459,7 @@ public class Game {
                                 }
                                 this.work_worker = worker * Constantes.WORKER_MONEY;
                                 System.out.println("Vous avez " + factories.size() + " usines dans votre jeu");
-                                System.out.println("Vous avez " + worker + " dans votre entreprise ce qui correspond à " + this.work_worker + "€");
+                                System.out.println("Vous avez " + worker + " travailleurs dans votre ville ce qui correspond à " + this.work_worker + "€");
                                 return false;
                             case "office":
                                 office.infos();
@@ -464,11 +467,11 @@ public class Game {
                             case "house":
                                 int habitant =0;
                                 for(int i = 0; i <houses.size(); i++){
-                                    this.houses.get(i).infos();
+                                    this.houses.get(i).infos(i);
                                     habitant = habitant  + this.houses.get(i).getHabitant().size();     
                                 }
-                                System.out.println("Vous avez " + houses.size() + "dans votre jeu");
-                                System.out.println("Vous avez " + habitant + " habitant en tout dans votre jeu ");
+                                System.out.println("Vous avez " + houses.size() + " maisons dans votre jeu");
+                                System.out.println("Vous avez " + habitant + " habitants en tout dans votre jeu ");
                                 return false;
                             case "city":
                                 this.infos();

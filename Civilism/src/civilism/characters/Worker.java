@@ -12,7 +12,9 @@ import civilism.buildings.House;
 /**
  * The Workers are the characters thet produce for the city. The "create" money.
  * The Worker class inherits from the Adult class.
- * @author qkame
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public class Worker extends Adult{
     

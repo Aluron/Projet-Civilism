@@ -12,7 +12,9 @@ import java.util.ArrayList;
 /**
  * A Professor is virtually here to teach Children.
  * The Professsor clas inherits from the Adult class.
- * @author qkame
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public class Professor extends Adult{
     

@@ -12,6 +12,8 @@ import civilism.buildings.House;
  * It is the "mother" of the Child and the Adult class.
  * Since no Human can be anything else than CHild or Adult, this class is implemented as abstact.
  * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public abstract class Human{
     

@@ -5,12 +5,13 @@
  */
 package civilism;
 
-import civilism.buildings.House;
 import java.io.*;
 
 /**
  * This is the main Instance, where the Game starts.
- * @authors Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
+ * @version 1.0
+ * @since Septembre 2017
  */
 public class Civilism {
 
