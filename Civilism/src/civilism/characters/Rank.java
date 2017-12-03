@@ -13,6 +13,24 @@ package civilism.characters;
  */
 public enum Rank {
     
-    AGENT, SPECIAL_AGENT, CHIEF, DIRECTOR;
+    /**
+     *
+     */
+    AGENT, 
+
+    /**
+     *
+     */
+    SPECIAL_AGENT, 
+
+    /**
+     *
+     */
+    CHIEF, 
+
+    /**
+     *
+     */
+    DIRECTOR;
     
 }

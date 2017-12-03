@@ -13,6 +13,29 @@ package civilism.characters;
  */
 public enum Degree {
     
-    ELEMENTARY, MIDSCHOOL, HIGHSCHOOL, COLLEGE, UNIVERSITY;
+    /**
+     *
+     */
+    ELEMENTARY, 
+
+    /**
+     *
+     */
+    MIDSCHOOL, 
+
+    /**
+     *
+     */
+    HIGHSCHOOL, 
+
+    /**
+     *
+     */
+    COLLEGE, 
+
+    /**
+     *
+     */
+    UNIVERSITY;
     
 }

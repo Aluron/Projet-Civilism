@@ -13,6 +13,29 @@ package civilism.characters;
  */
 public enum Title {
     
-    MAITRE, PROFESSEUR, DOCTEUR, CHERCHEUR, ENSEIGNANT;
+    /**
+     *
+     */
+    MAITRE, 
+
+    /**
+     *
+     */
+    PROFESSEUR, 
+
+    /**
+     *
+     */
+    DOCTEUR, 
+
+    /**
+     *
+     */
+    CHERCHEUR, 
+
+    /**
+     *
+     */
+    ENSEIGNANT;
     
 }

@@ -15,9 +15,16 @@ import civilism.*;
  */
 public class Building {
     
+    /**
+     *
+     */
     protected Adress adress;
+
+    /**
+     *
+     */
     protected String name;
- 
+
     
     /**
      * Constructor for building
@@ -29,6 +36,7 @@ public class Building {
         this.name = name;
         
     }
+
     /**
      * There is no name with our house
      * @param adress 

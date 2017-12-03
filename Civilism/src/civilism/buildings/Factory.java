@@ -19,7 +19,10 @@ import java.util.ArrayList;
  */
 
 public class Factory extends Building implements Improvement{
-   
+
+    /**
+     * 
+     */
     protected Worker boss ;
     
     ArrayList worker = new ArrayList();
@@ -34,17 +37,18 @@ public class Factory extends Building implements Improvement{
         this.boss = boss;
     }
     //////////////////////////////////////////////////////////////
-/**
- * Gets the boss in factory
- * @return boss
- */
+
+    /**
+     * Gets the boss in factory
+     * @return boss
+     */
     public Worker getBoss() {
         return boss;
     }
-/**
- * Sets the boss in factory
- * @param boss the new boss
- */
+    /**
+     * Sets the boss in factory
+     * @param boss the new boss
+     */
     public void setBoss(Worker boss) {
         this.boss = boss;
     }
@@ -55,6 +59,7 @@ public class Factory extends Building implements Improvement{
     public ArrayList getWorker() {
         return worker;
     }
+
     /**
      * Sets the worker in factory
      * @param worker  the new worker
@@ -62,6 +67,7 @@ public class Factory extends Building implements Improvement{
     public void setWorker(ArrayList worker) {
         this.worker = worker;
     }
+
     /**
      * Gets adress in factory inherite building
      * @return adress

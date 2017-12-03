@@ -13,6 +13,24 @@ package civilism.characters;
  */
 public enum Job {
     
-    WORKER, ASSISTANT, CHIEF, BOSS;
+    /**
+     *
+     */
+    WORKER, 
+
+    /**
+     *
+     */
+    ASSISTANT, 
+
+    /**
+     *
+     */
+    CHIEF, 
+
+    /**
+     *
+     */
+    BOSS;
     
 }

@@ -10,12 +10,14 @@ import civilism.characters.*;
 import java.util.ArrayList;
 
 /**
- *
+ * School is a class inherite to building, school is a place where scientists and professor work
  * @author Quentin KAMENDA & Benoit PEPIN - ISEN 2017
  * @version 1.0
  * @since Septembre 2017
  */
 public class School extends Building implements Improvement{
+
+
     protected Professor directeur;
     ArrayList eleve = new ArrayList();
     ArrayList teachers = new ArrayList();
@@ -35,50 +37,103 @@ public class School extends Building implements Improvement{
     
  /////////////////////////////////////////////////////////////
 
+    /**
+     * Gets directeur in this school
+     * @return directeur
+     */
+
     public Professor getDirecteur() {
         return directeur;
     }
 
+    /**
+     * Sets the new directeur in this school
+     * @param directeur the new directeur
+     */
     public void setDirecteur(Professor directeur) {
         this.directeur = directeur;
     }
 
+    /**
+     * Gets eleve in this school
+     * @return eleve 
+     */
     public ArrayList getEleve() {
         return eleve;
     }
 
+    /**
+     *Sets the new eleve in this school
+     * @param eleve the new eleve 
+     */
     public void setEleve(ArrayList eleve) {
         this.eleve = eleve;
     }
 
+    /**
+     * Gets teacher in this school
+     * @return teachers
+     */
     public ArrayList getTeachers() {
         return teachers;
     }
 
+    /**
+     * Sets the nex teacher in this school
+     * @param teachers the new teacher
+     */
     public void setTeachers(ArrayList teachers) {
         this.teachers = teachers;
     }
 
+    /**
+     * Gets scientists in this school
+     * @return scientists
+     */
     public ArrayList getScientists() {
         return scientists;
     }
 
+    /**
+     * Setes the new scientist in this school
+     * @param scientists the new scientists
+     */
     public void setScientists(ArrayList scientists) {
         this.scientists = scientists;
     }
     
+    /**
+     * Get adress in this school inheritate building
+     * @return adress
+     */
+    @Override
     public Adress getAdress() {
         return adress;
     }
 
+    /**
+     * Sets the new adress in this school inheritate building
+     * @param adress the new adress
+     */
+    @Override
     public void setAdress(Adress adress) {
         this.adress = adress;
     }
 
+    /**
+     * Gets name in this school inheritate building
+     * @return name
+     */
+    @Override
     public String getName() {
         return name;
     }
 
+    /**
+     *Sets the new name in this school inheritate building
+     * @param name the new name
+     */
+    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -144,7 +199,7 @@ public class School extends Building implements Improvement{
      * Permet de savoir si un nouveau batiment peut-être crée
      * @param recherche
      * @param money
-     * @return 
+     * @return boolean
      */
     @Override
     public boolean checkBuilding(Integer recherche, Integer money) {
@@ -175,7 +230,7 @@ public class School extends Building implements Improvement{
     }
     
     /**
-     * Add a professor where he can
+     * Add a professor where it can
      * @param schools
      * @param prof 
      */

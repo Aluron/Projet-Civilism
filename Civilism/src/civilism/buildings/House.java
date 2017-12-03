@@ -29,6 +29,7 @@ public class House extends Building implements Improvement{
         super(adress);
     }
 
+
     //////////////////////////////////////////////////////////////////
     /**
      * Gets habitant in house 
@@ -37,6 +38,7 @@ public class House extends Building implements Improvement{
     public ArrayList getHabitant() {
         return habitant;
     }
+
     /**
      * Sets the new habitant in factory
      * @param habitant the new habitant
@@ -44,6 +46,7 @@ public class House extends Building implements Improvement{
     public void setHabitant(ArrayList habitant) {
         this.habitant = habitant;
     }
+
     /**
      * Gets adress in factory inherite building
      * @return adress the new adress
@@ -137,6 +140,7 @@ public class House extends Building implements Improvement{
     }
     
     /**
+
      * Add a new habitant in houses if you can
      * @param houses
      * @param human

@@ -17,52 +17,81 @@ import civilism.buildings.Office;
  */
 public class Police extends Adult{
     
+    /**
+     * THe police office where the police man works.
+     */
     public Office office;
     
+    /**
+     * The current rank of the police man.
+     */
     public Rank rank;
     
-    public void takeIn(){
-        // event arrestation
-    }
-
+    /**
+     * Constructor for the Police class.
+     * @param office the work place of the character
+     * @param rank the rank of the character
+     * @param name the name of the character
+     * @param surname the surname of the character
+     * @param home the house where the character lives
+     */
     public Police(Office office, Rank rank, Name name, Surname surname, House home) {
         super(name, surname, home);
         this.office = office;
         this.rank = rank;
     }
     
-    public static void description (){
-            System.out.println("Le Policier sert au matien de l'ordre ");
-            System.out.println("Le policier travaille au commisseriat");
-            System.out.println("Pas assez de policiers et trop de mécontentement de la population peut-être un danger pour votre ville.");
-    }
-    
-    
-    public void promote(Rank rank){
-        System.out.println(name + " " + surname + " a été promu " + rank + " après " + experience + " années de service.");
-        this.rank = rank;
-    }
-    
-    @Override
-    public void die(){
-        // Si comissaire, on doit promouvoir un nouveau comissaire.
-    }
-
+    /**
+     * Gets the office where the character lives
+     * @return the office
+     */
     public Office getOffice() {
         return office;
     }
 
+    /**
+     * Sets the office of the policeman
+     * @param office the new office
+     */
     public void setOffice(Office office) {
         this.office = office;
     }
 
+    /**
+     * Gets the rank of the policeman
+     * @return the rank
+     */
     public Rank getRank() {
         return rank;
     }
 
+    /**
+     * Sets the new rank of the policeman
+     * You can also use the 'promote' method in this class
+     * @param rank thenew rank
+     */
     public void setRank(Rank rank) {
         this.rank = rank;
     }
+    
+    /**
+     * Displays informations of what a Police object is
+     */
+    public static void description (){
+            System.out.println("Le Policier sert au maintien de l'ordre.");
+            System.out.println("Il travaille dans un commisseriat.");
+            System.out.println("Pas assez de policiers et trop de mécontentement de la population peut-être un danger pour votre ville.");
+    }
+    
+    /**
+     * Promotes a Police man to a new rank
+     * @param rank the new rank
+     */
+    public void promote(Rank rank){
+        System.out.println(name + " " + surname + " a été promu " + rank + " après " + experience + " années de service.");
+        this.rank = rank;
+    }
+
     
     
     
