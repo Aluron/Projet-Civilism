@@ -129,8 +129,23 @@ public class Game {
          */
         System.out.println("Votre première mission mais non des moindres: Nommer votre ville."
                 + "\n   - Quel nom magestueux voulez-vous pour votre ville ?");
+        System.out.println("PS: En utilisateur sensé et intelligent que vous êtes, ne choisissez pas un nom comprennant un caractère spécial... svp!");
         townName = keyboard.nextLine();
 
+        /**
+         * Creation of the log file
+         */ 
+        try
+        { 
+        writer = new BufferedWriter(new FileWriter(new File(this.townName + "_log.txt"))) ;
+        writer.newLine();
+        }
+        catch (IOException e)
+        {
+        System.out.println("\n On vous avait bien dit de ne pas faire ça !");
+        Game.gameOver();
+        }
+        
         /**
          * Explication des ressources
          */
@@ -155,24 +170,15 @@ public class Game {
         /**
          * Début du jeu (aide + lancement)
          */
-        System.out.println("Bon, il est temps pour vous de prendre vos fonctions mais ne vous inquietez pas, je restereai avec vous pour accompagner."
-                + "\n A tout moment il vous suffit de taper le mot clef 'help' suivi du nom de l'élément sur lequel vous désirez plus d'amples informations.");
+        System.out.println("La phase d'observation fonctionne par commandes. Pour cela, il vous suffit de taper l'une des commandes principales suivies d'un de ses arguments.");
+        System.out.println("Par exemple pour avoir des informations sur les écoles, tapez 'infos school'."
+                + " \n A tout moment lors de la phase d'observation, il vous suffit de taper le mot clef 'help' suivi du nom de l'élément sur lequel vous désirez plus d'amples informations.");
+        System.out.println("Bon, il est temps pour vous de prendre vos fonctions mais ne vous inquietez pas, je restereai avec vous pour accompagner.");
+               
         System.out.println("");
         
         //File writer = new File(this.townName + "_log.txt");
         
-        /**
-         * Creation of the log file
-         */ 
-        try
-        { 
-        writer = new BufferedWriter(new FileWriter(new File(this.townName + "_log.txt"))) ;
-        writer.newLine();
-        }
-        catch (IOException e)
-        {
-        System.out.println("Impossible");
-        }
         /*
         FileWriter log = new FileWriter(this.townName + "_log.txt");
         BufferedWriter buffer = new BufferedWriter(log);
